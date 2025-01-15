@@ -1,0 +1,307 @@
+/* Estilos para los botones de inicio */
+.botones-inicio {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los botones */
+}
+
+.boton-inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px; /* Aumentar el tamaño de los botones */
+    height: 250px; /* Aumentar el tamaño de los botones */
+    text-decoration: none;
+    color: #fff;
+    background-color: #004080; /* Azul marino para los botones */
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.boton-inicio:hover {
+    background-color: #003366; /* Oscurecer el color al pasar el mouse */
+}
+
+/* Estilos para la tabla de renta variable */
+.tabla-container {
+    overflow-x: auto; /* Permitir el desplazamiento horizontal si la tabla es demasiado grande */
+}
+
+.tabla-renta-variable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabla-renta-variable th, .tabla-renta-variable td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Aumentar padding */
+    text-align: center; /* Centrar el texto */
+}
+
+.tabla-renta-variable th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.tabla-renta-variable td.alza {
+    color: green;
+}
+
+.tabla-renta-variable td.baja {
+    color: red;
+}
+
+.tabla-renta-variable td.neutro {
+    color: gray;
+}
+
+/* Estilos para la variación semanal */
+.variacion {
+    font-weight: bold;
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
+}
+
+.variacion.positiva {
+    color: green;
+}
+.variacion.positiva::after {
+    content: " ↑";
+    font-size: 1.5em; /* Aumentar tamaño de la flecha */
+    color: green;
+}
+
+.variacion.negativa {
+    color: red;
+}
+.variacion.negativa::after {
+    content: " ↓";
+    font-size: 1.5em; /* Aumentar tamaño de la flecha */
+    color: red;
+}
+
+.variacion.cero {
+    color: black;
+}
+.variacion.cero::after {
+    content: " →";
+    font-size: 1.5em; /* Aumentar tamaño de la flecha */
+    color: black;
+}
+
+/* Estilos para los logos de las empresas */
+.logo-empresa {
+    max-width: 150px;
+    max-height: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}
+
+/* Nuevos estilos para los botones con imágenes */
+.boton-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.boton-imagen {
+    width: 300px; /* Tamaño más grande para los botones */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.boton-imagen:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para las secciones de noticias */
+#noticias-mercado-nacional, #noticias-mercado-internacional {
+    margin-bottom: 40px;
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logos a {
+    margin: 10px;
+}
+
+.logos img {
+    max-width: 200px; /* Aumentar el tamaño máximo */
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.logos img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para las listas de empresas */
+.empresa-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.empresa-lista li {
+    margin: 10px;
+    flex: 1 0 30%; /* Mostrar solo tres empresas horizontalmente */
+    display: flex;
+    justify-content: center;
+}
+
+.empresa-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Ajustar el tamaño del botón */
+    height: 200px; /* Ajustar el tamaño del botón */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.empresa-boton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.empresa-boton img {
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    object-fit: contain; /* Asegurar que la imagen mantenga sus proporciones */
+}
+
+/* Estilos específicos para logos cuadrados */
+.empresa-boton img[src*="BOLSA DE VALORES DE GUAYAQUIL.png"],
+.empresa-boton img[src*="INVERSANCARLOS.png"] {
+    max-height: 140px; /* Agrandar un poco más */
+}
+
+/* Estilos para la sección de índices financieros */
+.indices-financieros {
+    padding: 20px;
+    background-color: #f4f4f4; /* Fondo gris claro para diferenciar la sección */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.indices-financieros h2 {
+    font-size: 24px;
+    color: #004080; /* Azul marino para el título */
+    margin-bottom: 20px;
+}
+
+.indices-financieros p {
+    font-size: 18px;
+    color: #000;
+    margin: 5px 0;
+}
+/* Estilos para el menú de navegación */
+.nav a {
+    color: #0000FF; /* Azul */
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.nav a:hover {
+    color: #0000FF; /* Azul */
+}
+
+.nav a.active {
+    color: #000000; /* Negro */
+}
+/* Estilos para las imágenes de dividendos alineadas a la izquierda */
+.dividendos-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    float: left;
+    margin: 10px 0 10px 0; /* Añadir márgenes para separación */
+}
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Espacio entre las imágenes */
+}
+/* Estilos para las listas de empresas */
+.empresa-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.empresa-lista li {
+    margin: 10px;
+    flex: 1 0 30%; /* Mostrar solo tres empresas horizontalmente */
+    display: flex;
+    justify-content: center;
+}
+
+.empresa-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Ajustar el tamaño del botón */
+    height: 200px; /* Ajustar el tamaño del botón */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.empresa-boton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.empresa-boton img {
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    object-fit: contain; /* Asegurar que la imagen mantenga sus proporciones */
+}
+/* Estilos para hacer las tablas más compactas y aumentar el tamaño de los elementos */
+.tabla-renta-variable {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+.tabla-renta-variable th, .tabla-renta-variable td {
+    border: 1px solid #ddd;
+    padding: 8px; /* Reducir padding para compactar */
+    font-size: 20px; /* Aumentar tamaño de fuente */
+    height: 100px;
+}
+
+.tabla-renta-variable th {
+    background-color: #f4f4f4;
+    color: #000;
+    font-size: 20px; /* Aumentar tamaño de fuente en encabezados */
+}
+
+.logo-empresa {
+    max-width: 150px; /* Aumentar tamaño de las imágenes */
+    max-height: 115px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}

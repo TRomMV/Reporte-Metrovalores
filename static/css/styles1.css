@@ -1,0 +1,342 @@
+/* Estilos generales y de cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Fondo azul claro para la página */
+    color: #040042; /* Texto color azul oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #004080; /* Azul marino */
+    color: #000; /* Color del texto negro */
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff; /* Espacio blanco dentro del encabezado */
+    padding: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #000; /* Texto negro en los enlaces */
+    text-decoration: none;
+    font-size: 1em; /* Ajustar el tamaño según lo necesitado */
+    text-transform: capitalize; /* Convertir solo la primera letra a mayúscula */
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el contenedor de los enlaces */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; /* Color de texto negro dentro del contenedor principal */
+}
+
+/* Estilos para las noticias */
+#noticias {
+    margin-bottom: 20px;
+}
+
+.noticia-principal img {
+    width: 100%;
+    height: auto;
+}
+
+.otras-noticias {
+    display: flex;
+    justify-content: space-between;
+}
+
+.noticia-horizontal .noticia {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.noticia-horizontal .noticia:last-child {
+    margin-right: 0;
+}
+
+.noticia h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.noticia p {
+    font-size: 0.9em;
+}
+
+/* Estilos para el análisis de mercado */
+#analisis-mercado {
+    margin-top: 20px;
+}
+
+#tabla-tops-flops {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las tablas */
+}
+
+.tabla {
+    flex: 1;
+    height: auto;
+    min-height: 400px; /* Aumentar altura mínima */
+    margin-bottom: 20px;
+}
+
+.tabla h3 {
+    text-align: center;
+}
+
+.tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Asegurar tamaño fijo */
+}
+
+.tabla table, .tabla th, .tabla td {
+    border: 1px solid #ddd;
+}
+
+.tabla th, .tabla td {
+    padding: 15px; /* Aumentar padding */
+    text-align: center; /* Centrar el texto */
+    font-size: 14px; /* Aumentar tamaño de fuente */
+}
+
+.tabla th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.tabla .verde {
+    color: green;
+}
+
+.tabla .rojo {
+    color: red;
+}
+
+.tabla td:last-child {
+    text-align: center; /* Centrar el contenido de la última columna */
+}
+
+/* Estilos para los botones de las empresas */
+.empresa-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.empresa-boton:hover {
+    background-color: #f0f0f0;
+}
+
+.empresa-boton img {
+    width: auto;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+/* Estilos específicos para la página de noticias */
+.noticias-header {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000; /* Color negro */
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logos a {
+    margin: 20px;
+}
+
+.logos img {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.logos img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para los subtítulos de empresas */
+#empresas-del-sector-financiero h2,
+#empresas-sector-real h2 {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000; /* Color negro */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para el botón de reporte */
+.boton-reporte, .boton-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #004080; /* Azul marino */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.boton-reporte:hover, .boton-volver:hover {
+    background-color: #003366; /* Oscurecer el color al pasar el mouse */
+}
+
+/* Estilos para los títulos de Empresas y Noticias */
+.titulo-principal {
+    font-family: 'Times New Roman', Times, serif; /* Fuente específica */
+    font-size: 2.5em; /* Ajustar el tamaño según lo necesitado */
+    color: #000; /* Color negro */
+    text-align: center;
+    margin: 30px 0;
+    font-weight: bold;
+    text-transform: uppercase; /* Convertir a mayúsculas */
+}
+
+/* Estilos para los logos de las empresas en la página Empresa */
+.logo {
+    width: 300px; /* Ajusta el tamaño para que sean más grandes */
+    height: auto;
+    margin-left: 20px; /* Espacio entre el título y el logo */
+}
+
+/* Estilos específicos para logos más pequeños */
+.logo-pequeno {
+    width: 150px; /* Ajusta el tamaño para que sean más pequeños */
+    height: auto;
+    margin-left: 20px; /* Espacio entre el título y el logo */
+}
+/* Estilos para el título del índice de cotizaciones */
+.cotizaciones {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cotizaciones h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #040042; /* Texto color azul oscuro */
+}
+
+.cotizaciones-lista {
+    margin-bottom: 20px;
+}
+
+.cotizaciones-lista h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #040042; /* Texto color azul oscuro */
+}
+
+.cotizaciones-lista ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cotizaciones-lista li {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+/* Estilo para los títulos de empresas */
+#empresas-del-sector-financiero h2,
+#empresas-sector-real h2 {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000; /* Color negro */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para la tabla de renta variable */
+.tabla-container {
+    overflow-x: auto; /* Permitir el desplazamiento horizontal si la tabla es demasiado grande */
+}
+
+.tabla-renta-variable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabla-renta-variable th, .tabla-renta-variable td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Aumentar padding */
+    text-align: center; /* Centrar el texto */
+}
+
+.tabla-renta-variable th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.tabla-renta-variable td.alza {
+    color: green;
+}
+
+.tabla-renta-variable td.baja {
+    color: red;
+}
+
+.tabla-renta-variable td.neutro {
+    color: gray;
+}
+
+/* Estilos para los logos de las empresas */
+.logo-empresa {
+    max-width: 150px;
+    max-height: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}
+/* Estilos para centrar las tablas específicas de renta_variable.html */
+#empresas-del-sector-financiero .centrar-tabla,
+#empresas-sector-real .centrar-tabla {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
