@@ -213,5 +213,7 @@ def renta_fija():
     # Por ahora, simplemente devolverá una página vacía o un mensaje de "en construcción"
     return "<h1>Renta Fija - En construcción</h1>"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
