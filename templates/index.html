@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metrovalores</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='img/Logo_pestaña.png') }}" type="image/png">
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
 </head>
 <body class="azul-marino">
     <header>
         <div class="container">
             <a href="/">
-                <img src="{{ url_for('static', filename='img/Logo.PNG') }}" alt="Metrovalores Logo" id="logo">
+                <img src="/static/img/Logo.PNG" alt="Metrovalores Logo" id="logo">
             </a>
             <nav>
                 <ul class="nav">
@@ -28,14 +28,14 @@
         <div class="container">
             <div class="boton-container">
                 <a href="/renta-fija">
-                    <img src="{{ url_for('static', filename='img/botones/Renta_fija_boton.PNG') }}" alt="Renta Fija" class="boton-imagen">
+                    <img src="/static/img/botones/Renta_fija_boton.PNG" alt="Renta Fija" class="boton-imagen">
                 </a>
                 <a href="/renta-variable">
-                    <img src="{{ url_for('static', filename='img/botones/Renta_variable_boton.PNG') }}" alt="Renta Variable" class="boton-imagen">
+                    <img src="/static/img/botones/Renta_variable_boton.PNG" alt="Renta Variable" class="boton-imagen">
                 </a>
             </div>
         </div>
     </main>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="/static/js/scripts.js"></script>
 </body>
 </html>
