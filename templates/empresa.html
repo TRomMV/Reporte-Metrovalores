@@ -120,18 +120,21 @@
                 </div>
                 
                 <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-                <div class="dashboard-section">
+                <div class="dashboard-section" style="display: flex; justify-content: space-between;">
                     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-                    <div class="card" style="margin-right: 10px;">
-                        <h2>Dividendos Repartidos en 2024</h2>
+                    <div class="card" style="flex: 1; margin-right: 10px;">
+                        <h2>Dividendos Repartidos</h2>
                         <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                        <!-- Espacio para el resumen -->
+                        <p id="resumen-dividendos"></p>
                     </div>
                     {% endif %}
-                    <div class="card" style="text-align: center;">
-                        <h2>Calculadora de rendimientos de la BVQ</h2>
-                        <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                    </div>
                 </div>
+                <div class="card" style="text-align: center;">
+                    <h2>Calculadora de rendimientos de la BVQ</h2>
+                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
+                </div>
+                
             </section>
         </div>
     </main>

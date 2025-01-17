@@ -227,7 +227,7 @@
 }
 /* Estilos para las imágenes de dividendos alineadas a la izquierda */
 .dividendos-img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     display: block;
     float: left;
@@ -304,4 +304,10 @@
     height: auto;
     display: block;
     margin: 0 auto; /* Centrar la imagen */
+}
+/* Ajustes específicos para la calculadora */
+#calculator {
+    width: 80%;
+    height: 600px;
+    border: none;
 }
