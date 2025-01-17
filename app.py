@@ -213,6 +213,13 @@ def renta_fija():
     # Por ahora, simplemente devolverá una página vacía o un mensaje de "en construcción"
     return "<h1>Renta Fija - En construcción</h1>"
 
+@app.route('/update-data') 
+def update_data(): 
+    os.system('python update_data.py') 
+    os.system('python combine_data.py') 
+    os.system('python actualizar_variacion.py') 
+    return "Data updated successfully!"
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
