@@ -13,7 +13,7 @@
             font-size: 1.2em;
             margin: 0 auto;
             text-align: center;
-            border-collapse: collapse;
+            border-collapse: collapse.
         }
         .cotizaciones th, .cotizaciones td {
             border: 1px solid #ddd;
@@ -21,7 +21,22 @@
         }
         .cotizaciones th {
             background-color: #f2f2f2;
-            color: black;
+            color: black.
+        }
+        .dividendos-section {
+            display: flex;
+            justify-content: space-between.
+            align-items: flex-start.
+        }
+        .dividendos-resumen {
+            flex: 1.
+            padding-left: 20px.
+        }
+        .dividendos-img {
+            max-width: 50%.
+        }
+        .card h2 {
+            text-align: center.
         }
     </style>
 </head>
@@ -120,13 +135,15 @@
                 </div>
                 
                 <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-                <div class="dashboard-section" style="display: flex; justify-content: space-between;">
+                <div class="dashboard-section dividendos-section">
                     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-                    <div class="card" style="flex: 1; margin-right: 10px;">
+                    <div class="card">
                         <h2>Dividendos Repartidos</h2>
                         <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                        <!-- Espacio para el resumen -->
-                        <p id="resumen-dividendos"></p>
+                    </div>
+                    <div class="card dividendos-resumen">
+                        <h2>Resumen de Dividendos</h2>
+                        <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
                     </div>
                     {% endif %}
                 </div>
@@ -138,5 +155,15 @@
             </section>
         </div>
     </main>
+    <script>
+        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
+        async function fetchResumenDividendos(company) {
+            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
+            const data = await response.text();
+            document.getElementById('resumen-dividendos').innerHTML = data;
+        }
+
+        fetchResumenDividendos("{{ profile.Nombre }}");
+    </script>
 </body>
 </html>
