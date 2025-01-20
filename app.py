@@ -44,6 +44,9 @@ df_empresas = df_empresas[df_empresas['PRECIO'].notnull()]
 def format_date(date_obj):
     return date_obj.strftime('%d/%m/%Y')
 
+def format_price(price):
+    return "{:.2f}".format(price)
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -140,8 +143,8 @@ def show_company(company):
         if not datos_año.empty:
             max_cotizacion = datos_año.loc[datos_año['PRECIO'].idxmax()]
             min_cotizacion = datos_año.loc[datos_año['PRECIO'].idxmin()]
-            max_quotes.append({'AÑO': año, 'FECHA': format_date(max_cotizacion['FECHA']), 'PRECIO': max_cotizacion['PRECIO']})
-            min_quotes.append({'AÑO': año, 'FECHA': format_date(min_cotizacion['FECHA']), 'PRECIO': min_cotizacion['PRECIO']})
+            max_quotes.append({'AÑO': año, 'FECHA': format_date(max_cotizacion['FECHA']), 'PRECIO': format_price(max_cotizacion['PRECIO'])})
+            min_quotes.append({'AÑO': año, 'FECHA': format_date(min_cotizacion['FECHA']), 'PRECIO': format_price(min_cotizacion['PRECIO'])})
 
     # Obtener la cotización máxima y mínima del último mes cerrado
     fecha_actual = datetime.now()
@@ -164,8 +167,8 @@ def show_company(company):
     if not datos_ultimo_mes.empty:
         max_cotizacion_mes = datos_ultimo_mes.loc[datos_ultimo_mes['PRECIO'].idxmax()]
         min_cotizacion_mes = datos_ultimo_mes.loc[datos_ultimo_mes['PRECIO'].idxmin()]
-        max_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(max_cotizacion_mes['FECHA']), 'PRECIO': max_cotizacion_mes['PRECIO']})
-        min_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(min_cotizacion_mes['FECHA']), 'PRECIO': min_cotizacion_mes['PRECIO']})
+        max_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(max_cotizacion_mes['FECHA']), 'PRECIO': format_price(max_cotizacion_mes['PRECIO'])})
+        min_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(min_cotizacion_mes['FECHA']), 'PRECIO': format_price(min_cotizacion_mes['PRECIO'])})
 
     return render_template('empresa.html', company=company, profile=profile, max_quotes=max_quotes, min_quotes=min_quotes, graph=graph, indices_financieros=indices_financieros)
 
@@ -225,5 +228,5 @@ def update_data():
 
 if __name__ == "__main__":
     import os
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environget("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
