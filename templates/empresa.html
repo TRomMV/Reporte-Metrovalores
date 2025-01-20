@@ -86,7 +86,7 @@
                                         {% for quote in max_quotes %}
                                         <tr>
                                             <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
+                                            <td>{{ quote.FECHA|date('d/m/Y') }}</td>
                                             <td>${{ quote.PRECIO }}</td>
                                         </tr>
                                         {% endfor %}
@@ -108,13 +108,13 @@
                                         {% for quote in min_quotes %}
                                         <tr>
                                             <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
+                                            <td>{{ quote.FECHA|date('d/m/Y') }}</td>
                                             <td>${{ quote.PRECIO }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                            </div>                            
+                            </div>                                                                                                                
                         </div>
                     </div>
                 </div>

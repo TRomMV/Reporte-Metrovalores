@@ -41,6 +41,9 @@ df_empresas = df_empresas.dropna(subset=['FECHA'])
 # Filtrar por precio de cierre
 df_empresas = df_empresas[df_empresas['PRECIO'].notnull()]
 
+def format_date(date_obj):
+    return date_obj.strftime('%d/%m/%Y')
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -57,7 +60,7 @@ def show_company(company):
 
     if company_data.empty:
         return render_template('empresa.html', company=company, profile={}, max_quotes=[], min_quotes=[], graph="")
-    
+
     # Filtrar por precio de cierre
     company_data_precio = company_data[company_data['PRECIO'].notnull()]
 
@@ -121,7 +124,7 @@ def show_company(company):
         "Descripción": descripcion_empresa,
         "Sector": sector_empresa
     }
-           # Calcular los índices financieros utilizando data_processing.py
+    # Calcular los índices financieros utilizando data_processing.py
     try:
         indices_financieros = procesar_datos_empresa(acciones_combinadas_path, company)
     except IndexError:
@@ -137,10 +140,10 @@ def show_company(company):
         if not datos_año.empty:
             max_cotizacion = datos_año.loc[datos_año['PRECIO'].idxmax()]
             min_cotizacion = datos_año.loc[datos_año['PRECIO'].idxmin()]
-            max_quotes.append({'AÑO': año, 'FECHA': max_cotizacion['FECHA'].strftime('%Y-%m-%d'), 'PRECIO': max_cotizacion['PRECIO']})
-            min_quotes.append({'AÑO': año, 'FECHA': min_cotizacion['FECHA'].strftime('%Y-%m-%d'), 'PRECIO': min_cotizacion['PRECIO']})
+            max_quotes.append({'AÑO': año, 'FECHA': format_date(max_cotizacion['FECHA']), 'PRECIO': max_cotizacion['PRECIO']})
+            min_quotes.append({'AÑO': año, 'FECHA': format_date(min_cotizacion['FECHA']), 'PRECIO': min_cotizacion['PRECIO']})
 
-       # Obtener la cotización máxima y mínima del último mes cerrado
+    # Obtener la cotización máxima y mínima del último mes cerrado
     fecha_actual = datetime.now()
     año_actual = fecha_actual.year
     ultimo_mes_cerrado = (fecha_actual.replace(day=1) - timedelta(days=1)).month
@@ -161,8 +164,8 @@ def show_company(company):
     if not datos_ultimo_mes.empty:
         max_cotizacion_mes = datos_ultimo_mes.loc[datos_ultimo_mes['PRECIO'].idxmax()]
         min_cotizacion_mes = datos_ultimo_mes.loc[datos_ultimo_mes['PRECIO'].idxmin()]
-        max_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': max_cotizacion_mes['FECHA'].strftime('%Y-%m-%d'), 'PRECIO': max_cotizacion_mes['PRECIO']})
-        min_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': min_cotizacion_mes['FECHA'].strftime('%Y-%m-%d'), 'PRECIO': min_cotizacion_mes['PRECIO']})
+        max_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(max_cotizacion_mes['FECHA']), 'PRECIO': max_cotizacion_mes['PRECIO']})
+        min_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(min_cotizacion_mes['FECHA']), 'PRECIO': min_cotizacion_mes['PRECIO']})
 
     return render_template('empresa.html', company=company, profile=profile, max_quotes=max_quotes, min_quotes=min_quotes, graph=graph, indices_financieros=indices_financieros)
 
