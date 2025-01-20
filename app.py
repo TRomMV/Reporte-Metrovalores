@@ -60,7 +60,7 @@ def show_company(company):
 
     if company_data.empty:
         return render_template('empresa.html', company=company, profile={}, max_quotes=[], min_quotes=[], graph="")
-
+    
     # Filtrar por precio de cierre
     company_data_precio = company_data[company_data['PRECIO'].notnull()]
 
