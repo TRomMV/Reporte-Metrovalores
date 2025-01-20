@@ -13,7 +13,7 @@
             font-size: 1.2em;
             margin: 0 auto;
             text-align: center;
-            border-collapse: collapse
+            border-collapse: collapse;
         }
         .cotizaciones th, .cotizaciones td {
             border: 1px solid #ddd;
@@ -21,22 +21,32 @@
         }
         .cotizaciones th {
             background-color: #f2f2f2;
-            color: black
+            color: black;
         }
         .dividendos-section {
             display: flex;
-            justify-content: space-between
-            align-items flex-start
+            justify-content: space-between;
+            align-items: flex-start;
         }
-        .dividendos-resumen {
-            flex: 1.
-            padding-left 20px
+        .dividendos-content {
+            display: flex;
+            width: 100%;
+        }
+        .dividendos-img-container {
+            flex: 1;
         }
         .dividendos-img {
-            max-width: 50%
+            width: 100%;
+            height: auto;
+        }
+        .dividendos-resumen {
+            flex: 1;
+            padding-left: 20px;
+            font-size: 1.1em;
+            text-align: justify;
         }
         .card h2 {
-            text-align: center
+            text-align: center;
         }
     </style>
 </head>
@@ -79,7 +89,6 @@
                         <p>{{ profile.Descripción }}</p>
                         <p><strong>Sector:</strong> {{ profile.Sector }}</p>
                     </div>
-                    
                 </div>
                 <!-- Índice de Cotizaciones Máximas y Mínimas -->
                 <div class="dashboard-section">
@@ -108,7 +117,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+                            <!-- Tabla de Cotizaciones Mínimas -->
                             <div class="cotizaciones-lista" style="flex: 1; margin-left: 10px;">
                                 <h3>Cotizaciones Mínimas</h3>
                                 <table>
@@ -129,21 +138,21 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                            </div>                                                                                                                
+                            </div>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Sección de Dividendos y Calculadora de Rendimientos -->
                 <div class="dashboard-section dividendos-section">
                     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-                    <div class="card">
-                        <h2>Dividendos Repartidos</h2>
-                        <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                    </div>
-                    <div class="card dividendos-resumen">
-                        <h2>Resumen de Dividendos</h2>
-                        <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                    <div class="dividendos-content">
+                        <div class="dividendos-img-container">
+                            <h2>Dividendos Repartidos</h2>
+                            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                        </div>
+                        <div class="dividendos-resumen">
+                            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                        </div>
                     </div>
                     {% endif %}
                 </div>
@@ -151,7 +160,6 @@
                     <h2>Calculadora de rendimientos de la BVQ</h2>
                     <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
                 </div>
-                
             </section>
         </div>
     </main>
