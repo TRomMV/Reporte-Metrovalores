@@ -11,12 +11,11 @@ from data_processing import procesar_datos_empresa
 
 app = Flask(__name__)
 
-# Llamar al script de actualización de variación semanal o variación específica de lunes
-hoy = datetime.now()
-if hoy.weekday() == 0:  # 0 = lunes
-    subprocess.run(["python", "actualizar_variacion_lunes.py"])
-else:
+# Llamar al script de actualización de variación semanal
+if os.path.exists("actualizar_variacion.py"):
     subprocess.run(["python", "actualizar_variacion.py"])
+else:
+    print("El archivo 'actualizar_variacion.py' no se encuentra.")
 
 # Ruta de los archivos CSV
 datos_actualizados_path = 'data/datos_actualizados.csv'
@@ -227,6 +226,5 @@ def update_data():
     return "Data updated successfully!"
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environget("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
