@@ -25,15 +25,17 @@
         }
         .dividendos-section {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
         }
         .dividendos-content {
             display: flex;
+            justify-content: space-between;
             width: 100%;
         }
         .dividendos-img-container {
             flex: 1;
+            padding-right: 20px;
         }
         .dividendos-img {
             width: 100%;
@@ -145,9 +147,9 @@
                 <!-- Sección de Dividendos y Calculadora de Rendimientos -->
                 <div class="dashboard-section dividendos-section">
                     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
+                    <h2>Dividendos Repartidos</h2>
                     <div class="dividendos-content">
                         <div class="dividendos-img-container">
-                            <h2>Dividendos Repartidos</h2>
                             <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
                         </div>
                         <div class="dividendos-resumen">
