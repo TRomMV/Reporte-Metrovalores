@@ -216,11 +216,6 @@ def noticias():
 
 @app.route('/renta-fija')
 def renta_fija():
-    # Por ahora, simplemente devolverá una página vacía o un mensaje de "en construcción"
-    return "<h1>Renta Fija - En construcción</h1>"
-
-@app.route('/renta-fija')
-def renta_fija():
     return render_template('renta_fija.html')
 
 @app.route('/update-data') 
