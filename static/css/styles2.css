@@ -324,3 +324,21 @@
     color: #333; /* Color oscuro para contraste */
     margin-bottom: 10px; /* Margen inferior para separación */
 }
+/* Estilos para la página de Renta Fija en construcción */
+.en-construccion {
+    text-align: center;
+    margin-top: 50px; /* Añadir margen superior para separación */
+}
+
+.en-construccion h1 {
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Fuente profesional */
+    font-size: 32px; /* Tamaño grande para destacar */
+    color: #333; /* Color oscuro para contraste */
+    margin-bottom: 20px; /* Margen inferior para separación */
+}
+
+.en-construccion img {
+    max-width: 100%; /* Ajustar al 100% del contenedor */
+    height: auto;
+    margin-top: 20px; /* Añadir margen superior para separación */
+}

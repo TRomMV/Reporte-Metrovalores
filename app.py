@@ -219,6 +219,10 @@ def renta_fija():
     # Por ahora, simplemente devolverá una página vacía o un mensaje de "en construcción"
     return "<h1>Renta Fija - En construcción</h1>"
 
+@app.route('/renta-fija')
+def renta_fija():
+    return render_template('renta_fija.html')
+
 @app.route('/update-data') 
 def update_data(): 
     os.system('python update_data.py') 
@@ -229,3 +233,4 @@ def update_data():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
