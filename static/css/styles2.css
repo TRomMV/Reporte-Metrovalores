@@ -311,3 +311,16 @@
     height: 600px;
     border: none;
 }
+/* Centrado del título y la explicación */
+.titulo-centro {
+    text-align: center;
+    margin-bottom: 20px; /* Añadir margen inferior para separación */
+}
+
+/* Estilo profesional para el título "Acciones" */
+.titulo-profesional {
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Fuente profesional */
+    font-size: 36px; /* Tamaño grande para destacar */
+    color: #333; /* Color oscuro para contraste */
+    margin-bottom: 10px; /* Margen inferior para separación */
+}
