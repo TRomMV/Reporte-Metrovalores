@@ -225,14 +225,14 @@
 .nav a.active {
     color: #000000; /* Negro */
 }
-/* Estilos para las imágenes de dividendos alineadas a la izquierda */
+/* Estilos para las imágenes de dividendos */
 .dividendos-img {
-    max-width: 50%;
+    width: 100%; /* Ajustar al 100% del contenedor */
     height: auto;
-    display: block;
-    float: left;
-    margin: 10px 0 10px 0; /* Añadir márgenes para separación */
+    margin: 10px 0; /* Añadir márgenes para separación */
+    float: none; /* Quitar el float */
 }
+
 .noticias-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas */
