@@ -408,4 +408,21 @@ header nav ul li a {
         max-width: 100%;
         height: auto;
     }
+    
+    /* Ajustes para las tablas de cotizaciones máximas y mínimas */
+    .cotizaciones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cotizaciones-lista {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cotizaciones th, 
+    .cotizaciones td {
+        font-size: 12px;
+    }
 }
