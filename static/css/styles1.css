@@ -363,7 +363,14 @@ header nav ul li a {
     }
 
     .tabla-renta-variable {
+        width: 100%;
         font-size: 12px;
+        overflow-x: auto;
+    }
+
+    .tabla-renta-variable th,
+    .tabla-renta-variable td {
+        padding: 8px;
     }
 
     .boton-container {
@@ -376,5 +383,29 @@ header nav ul li a {
         max-width: 100%;
         height: auto;
         margin-bottom: 10px;
+    }
+
+    .logo-empresa {
+        max-width: 80px;
+        height: auto;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .dividendos-content {
+        flex-direction: column;
+    }
+
+    .dividendos-img-container,
+    .dividendos-resumen {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dividendos-img {
+        max-width: 100%;
+        height: auto;
     }
 }
