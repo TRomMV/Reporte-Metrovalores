@@ -338,7 +338,7 @@
 }
 
 .en-construccion img {
-    max-width: 100%; /* Ajustar al 100% del contenedor */
+    max-width: 45%; /* Ajustar al 100% del contenedor */
     height: auto;
     margin-top: 20px; /* Añadir margen superior para separación */
 }
