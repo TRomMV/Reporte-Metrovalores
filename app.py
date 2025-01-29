@@ -182,13 +182,10 @@ def renta_variable_view():
     hoy = datetime.now()
     lunes_actual = hoy - timedelta(days=hoy.weekday())
     viernes_actual = lunes_actual + timedelta(days=4)
-    viernes_anterior = lunes_actual - timedelta(days=3)
-    lunes_anterior = viernes_anterior - timedelta(days=4)
-
+    lunes_anterior = viernes_actual - timedelta(days=7)
+    
     semana_actual_inicio = lunes_actual.strftime('%d de %B')
-    semana_actual_fin = viernes_actual.strftime('%d de %B')
     semana_anterior_inicio = lunes_anterior.strftime('%d de %B')
-    semana_anterior_fin = viernes_anterior.strftime('%d de %B')
 
     # Mapear los nombres de los meses en inglés a español
     meses = {
@@ -200,11 +197,9 @@ def renta_variable_view():
 
     for mes_ing, mes_esp in meses.items():
         semana_actual_inicio = semana_actual_inicio.replace(mes_ing, mes_esp)
-        semana_actual_fin = semana_actual_fin.replace(mes_ing, mes_esp)
         semana_anterior_inicio = semana_anterior_inicio.replace(mes_ing, mes_esp)
-        semana_anterior_fin = semana_anterior_fin.replace(mes_ing, mes_esp)
 
-    return render_template('renta_variable.html', datos=datos.to_dict(orient='records'), semana_actual_inicio=semana_actual_inicio, semana_actual_fin=semana_actual_fin, semana_anterior_inicio=semana_anterior_inicio, semana_anterior_fin=semana_anterior_fin)
+    return render_template('renta_variable.html', datos=datos.to_dict(orient='records'), semana_actual_inicio=semana_actual_inicio, semana_anterior_inicio=semana_anterior_inicio)
 
 @app.route('/data/<path:filename>')
 def serve_data_file(filename):

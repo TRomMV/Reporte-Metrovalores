@@ -18,7 +18,7 @@
                 <ul class="nav">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/noticias">Noticias</a></li>
-                    <li><a href="/renta-variable" class="active">Renta Variable</a></li> <!-- Aquí añadimos la clase active -->
+                    <li><a href="/renta-variable" class="active">Renta Variable</a></li>
                     <li><a href="/renta-fija">Renta Fija</a></li>
                 </ul>
             </nav>
@@ -28,7 +28,6 @@
         <div class="container">
             <div class="titulo-centro">
                 <h1 class="titulo-profesional">Acciones</h1>
-                <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} al {{ semana_anterior_fin }} con el ultimo precio de la semana del {{ semana_actual_inicio }} al {{ semana_actual_fin }}</p>
             </div>
 
             <!-- Tabla de empresas del sector financiero -->
@@ -99,6 +98,10 @@
                     </table>
                 </div>
             </section>
+            <!-- Texto de comparación de precios al final de la página -->
+            <div class="texto-comparacion">
+                <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
+            </div>
         </div>
     </main>
     <script src="/static/js/scripts.js"></script>
