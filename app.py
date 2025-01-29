@@ -180,6 +180,8 @@ def renta_variable_view():
     datos = datos[datos['PRECIO_FINAL'].notnull()]
 
     hoy = datetime.now()
+    fecha_actual = hoy.strftime('%d de %B de %Y')
+
     lunes_actual = hoy - timedelta(days=hoy.weekday())
     viernes_actual = lunes_actual + timedelta(days=4)
     lunes_anterior = viernes_actual - timedelta(days=7)
@@ -198,8 +200,9 @@ def renta_variable_view():
     for mes_ing, mes_esp in meses.items():
         semana_actual_inicio = semana_actual_inicio.replace(mes_ing, mes_esp)
         semana_anterior_inicio = semana_anterior_inicio.replace(mes_ing, mes_esp)
+        fecha_actual = fecha_actual.replace(mes_ing, mes_esp)
 
-    return render_template('renta_variable.html', datos=datos.to_dict(orient='records'), semana_actual_inicio=semana_actual_inicio, semana_anterior_inicio=semana_anterior_inicio)
+    return render_template('renta_variable.html', datos=datos.to_dict(orient='records'), semana_actual_inicio=semana_actual_inicio, semana_anterior_inicio=semana_anterior_inicio, fecha_actual=fecha_actual)
 
 @app.route('/data/<path:filename>')
 def serve_data_file(filename):
