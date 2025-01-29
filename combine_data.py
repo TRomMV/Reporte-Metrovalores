@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 
 # Definir los nombres de las columnas esperados para todos los archivos
 column_names = [
@@ -26,9 +25,9 @@ df_2025 = df_2025.loc[:, ~df_2025.columns.str.contains('^Unnamed')]
 # Limpiar los datos
 def clean_data(df, date_column):
     df.columns = df.columns.str.strip().str.upper()  # Asegurarse de que las columnas estén en mayúsculas
-    df[date_column] = pd.to_datetime(df[date_column], format='%d/%m/%Y', errors='coerce')
+    df[date_column] = pd.to_datetime(df[date_column], errors='coerce')
     df = df.dropna(subset=[date_column])
-    df.loc[:, 'PRECIO'] = df['PRECIO'].apply(lambda x: str(x).replace(',', '')).astype(float, errors='ignore')
+    df['PRECIO'] = df['PRECIO'].apply(lambda x: str(x).replace(',', '')).astype(float, errors='ignore')
     return df
 
 # Limpiar los DataFrames
@@ -71,12 +70,8 @@ df_2025 = df_2025.sort_values(by='FECHA').drop_duplicates(subset=['FECHA', 'EMIS
 # Unir todos los datos
 combined_df = pd.concat([df_2019_2023, df_2024, df_2025], ignore_index=True)
 
-# Verificar si el archivo existe y eliminarlo antes de escribir
-combined_csv_path = 'data/acciones_combinadas.csv'
-if os.path.exists(combined_csv_path):
-    os.remove(combined_csv_path)
-
 # Guardar el DataFrame combinado como CSV
+combined_csv_path = 'data/acciones_combinadas.csv'
 combined_df.to_csv(combined_csv_path, index=False)
 
 print('Datos combinados correctamente.')
