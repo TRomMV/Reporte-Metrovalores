@@ -51,11 +51,6 @@ def format_price(price):
 def home():
     return render_template('index.html')
 
-@app.route('/renta-variable-pestana')
-def renta_variable_pestana():
-    companies = df_empresas['EMISOR'].unique()
-    return render_template('renta_variable_pestana.html', companies=companies)
-
 @app.route('/empresa/<company>')
 def show_company(company):
     company = company.replace('-', ' ').upper()  # Asegurarse de que el formato del nombre sea correcto
