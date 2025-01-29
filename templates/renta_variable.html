@@ -81,7 +81,7 @@
                         </thead>
                         <tbody>
                             {% for empresa in datos %}
-                            {% if empresa.EMISOR in ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.'] %}
+                            {% if empresa.EMISOR in ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL'] %}
                             <tr>
                                 <td>
                                     <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
