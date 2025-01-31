@@ -15,7 +15,8 @@ sectores_empresas = {
     "BOLSA DE VALORES DE QUITO": "Mercado de valores",
     "CONTINENTAL TIRE ANDINA S A": "Automotriz",
     "BEVERAGE BRAND PATENTS SA": "Propiedad intelectual/Bebidas",
-    "INDUSTRIAS ALES": "Consumo masivo"
+    "INDUSTRIAS ALES": "Consumo masivo",
+    "CONCLINA C A  CIA CONJU CLINICO NACIONAL": "Salud"
 }
 
 
