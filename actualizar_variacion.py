@@ -45,13 +45,16 @@ def obtener_precio_cierre_2024(grupo):
     cierre_2024 = grupo[grupo['FECHA'].dt.year == 2024].sort_values(by='FECHA').iloc[-1]
     return pd.Series([cierre_2024['FECHA'], cierre_2024['PRECIO']], index=['FECHA', 'PRECIO_CIERRE_2024'])
 
-def actualizar_variacion_semanal():
+def obtener_fechas_semana():
     hoy = datetime.now()
     lunes_actual = hoy - timedelta(days=hoy.weekday())
-    viernes_actual = lunes_actual + timedelta(days=4)
-    viernes_anterior = lunes_actual - timedelta(days=3)
-    lunes_anterior = viernes_anterior - timedelta(days=4)
+    lunes_anterior = lunes_actual - timedelta(days=7)
+    return lunes_anterior, lunes_actual
 
+def actualizar_variacion_semanal():
+    lunes_anterior, lunes_actual = obtener_fechas_semana()
+    viernes_actual = lunes_actual + timedelta(days=4)
+    viernes_anterior = lunes_anterior + timedelta(days=4)
 
     todas_las_empresas = df['EMISOR'].unique()
 
