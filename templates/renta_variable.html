@@ -99,10 +99,11 @@
                     </table>
                 </div>
             </section>
-            <!-- Texto de comparación de precios al final de la página -->
+           <!-- Texto de comparación de precios al final de la página -->
 <div class="texto-comparacion">
-    <p>Comparación del precio de cierre de la semana del {{ lunes_anterior }} con el último precio de la semana del {{ semana_actual_inicio }} (lunes).</p>
+    <p>Comparación del precio de cierre de la semana del {{ lunes_anterior | date("d de F") }} con el último precio de la semana del {{ lunes_actual | date("d de F") }}.</p>
 </div>
+
         </div>
     </main>
     <script src="/static/js/scripts.js"></script>

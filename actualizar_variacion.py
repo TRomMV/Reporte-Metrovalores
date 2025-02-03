@@ -52,6 +52,7 @@ def actualizar_variacion_semanal():
     viernes_anterior = lunes_actual - timedelta(days=3)
     lunes_anterior = viernes_anterior - timedelta(days=4)
 
+
     todas_las_empresas = df['EMISOR'].unique()
 
     precios_ultimos = df.groupby('EMISOR').apply(obtener_ultimo_precio, include_groups=False).reset_index()
