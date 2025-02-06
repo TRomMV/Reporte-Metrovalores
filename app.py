@@ -178,8 +178,7 @@ def renta_variable_view():
     fecha_actual = hoy.strftime('%d de %B de %Y')
 
     lunes_actual = hoy - timedelta(days=hoy.weekday())
-    viernes_actual = lunes_actual + timedelta(days=4)
-    lunes_anterior = viernes_actual - timedelta(days=7)
+    lunes_anterior = lunes_actual - timedelta(days=7)
     
     semana_actual_inicio = lunes_actual.strftime('%d de %B')
     semana_anterior_inicio = lunes_anterior.strftime('%d de %B')
