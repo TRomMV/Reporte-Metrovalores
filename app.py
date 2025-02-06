@@ -32,14 +32,14 @@ df_empresas = pd.read_csv(acciones_combinadas_path)
 
 # Limpiar los datos de empresas
 df_empresas.columns = df_empresas.columns.str.strip().str.upper()  # Asegurarse de que las columnas estén en mayúsculas
-if 'FECHA' not in df_empresas.columns or 'EMISOR' not in df_empresas.columns:
-    raise KeyError("Las columnas 'FECHA' o 'EMISOR' no se encuentran en los datos. Verifique que los datos estén en el formato correcto.")
+if 'FECHA' not in df_empresas.columns or 'EMISOR' not in df_empresas.columns or 'VALOR' not in df_empresas.columns:
+    raise KeyError("Las columnas 'FECHA', 'EMISOR' o 'VALOR' no se encuentran en los datos. Verifique que los datos estén en el formato correcto.")
 
 df_empresas['FECHA'] = pd.to_datetime(df_empresas['FECHA'], errors='coerce')
 df_empresas = df_empresas.dropna(subset=['FECHA'])
 
-# Filtrar por precio de cierre
-df_empresas = df_empresas[df_empresas['PRECIO'].notnull()]
+# Filtrar por precio de cierre y tipo de acción
+df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
 
 def format_date(date_obj):
     return date_obj.strftime('%d/%m/%Y')

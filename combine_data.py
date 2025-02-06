@@ -35,10 +35,10 @@ df_2019_2023 = clean_data(df_2019_2023, 'FECHA')
 df_2024 = clean_data(df_2024, 'FECHA')
 df_2025 = clean_data(df_2025, 'FECHA')
 
-# Filtrar los datos para incluir solo las filas con 'ACCIONES' o 'ACCIONES PREFERIDAS' en la columna 'VALOR'
-df_2019_2023 = df_2019_2023[df_2019_2023['VALOR'].str.strip().str.upper().isin(['ACCIONES', 'ACCIONES PREFERIDAS'])]
-df_2024 = df_2024[df_2024['VALOR'].str.strip().str.upper().isin(['ACCIONES', 'ACCIONES PREFERIDAS'])]
-df_2025 = df_2025[df_2025['VALOR'].str.strip().str.upper().isin(['ACCIONES', 'ACCIONES PREFERIDAS'])]
+# Filtrar los datos para incluir solo las filas con 'ACCIONES' en la columna 'VALOR'
+df_2019_2023 = df_2019_2023[df_2019_2023['VALOR'].str.strip().str.upper() == 'ACCIONES']
+df_2024 = df_2024[df_2024['VALOR'].str.strip().str.upper() == 'ACCIONES']
+df_2025 = df_2025[df_2025['VALOR'].str.strip().str.upper() == 'ACCIONES']
 
 # Renombrar columnas para que coincidan en todos los DataFrames
 df_2019_2023 = df_2019_2023.rename(columns={'NUMERO ACCIONES': 'ACCIONES'})
