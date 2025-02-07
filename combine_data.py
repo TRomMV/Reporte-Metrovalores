@@ -35,6 +35,11 @@ df_2019_2023 = clean_data(df_2019_2023, 'FECHA')
 df_2024 = clean_data(df_2024, 'FECHA')
 df_2025 = clean_data(df_2025, 'FECHA')
 
+# Verificar que las columnas esperadas existen después de limpiar los datos
+for df in [df_2019_2023, df_2024, df_2025]:
+    if not all(col in df.columns for col in ['FECHA', 'EMISOR', 'VALOR']):
+        raise KeyError("Las columnas 'FECHA', 'EMISOR' o 'VALOR' no se encuentran en los datos. Verifique que los datos estén en el formato correcto.")
+
 # Filtrar los datos para incluir solo las filas con 'ACCIONES' en la columna 'VALOR'
 df_2019_2023 = df_2019_2023[df_2019_2023['VALOR'].str.strip().str.upper() == 'ACCIONES']
 df_2024 = df_2024[df_2024['VALOR'].str.strip().str.upper() == 'ACCIONES']
@@ -42,11 +47,11 @@ df_2025 = df_2025[df_2025['VALOR'].str.strip().str.upper() == 'ACCIONES']
 
 # Renombrar columnas para que coincidan en todos los DataFrames
 df_2019_2023 = df_2019_2023.rename(columns={'NUMERO ACCIONES': 'ACCIONES'})
-df_2024 = df_2024.rename(columns={'VALOR NOMINAL': 'VALOR NOMINAL', 'NUMERO ACCIONES': 'ACCIONES'})
-df_2025 = df_2025.rename(columns={'VALOR NOMINAL': 'VALOR NOMINAL', 'NUMERO ACCIONES': 'ACCIONES'})
+df_2024 = df_2024.rename(columns={'NUMERO ACCIONES': 'ACCIONES'})
+df_2025 = df_2025.rename(columns={'NUMERO ACCIONES': 'ACCIONES'})
 
 # Seleccionar columnas comunes
-common_columns = ['FECHA', 'EMISOR', 'PRECIO', 'VALOR NOMINAL', 'ACCIONES', 'VALOR EFECTIVO', 'PROCEDENCIA']
+common_columns = ['FECHA', 'EMISOR', 'VALOR', 'VALOR NOMINAL', 'PRECIO', 'ACCIONES', 'VALOR EFECTIVO', 'PROCEDENCIA']
 df_2019_2023 = df_2019_2023[common_columns]
 df_2024 = df_2024[common_columns]
 df_2025 = df_2025[common_columns]
