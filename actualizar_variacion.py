@@ -95,3 +95,4 @@ def actualizar_variacion_semanal():
     print("Actualización completada: Los datos se han guardado correctamente en 'data/datos_actualizados.csv'.")
 
 actualizar_variacion_semanal()
+
