@@ -145,19 +145,24 @@
                     </div>
                 </div>
                 <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-                <div class="dashboard-section dividendos-section">
-                    {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-                    <h2>Dividendos Repartidos</h2>
-                    <div class="dividendos-content">
-                        <div class="dividendos-img-container">
-                            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                        </div>
-                        <div class="dividendos-resumen">
-                            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
+<div class="dashboard-section dividendos-section">
+    {% if profile.Nombre == "BANCO GUAYAQUIL S.A." %}
+    <h2>Dividendos Repartidos</h2>
+    <div class="dividendos-content">
+        <iframe src="{{ url_for('static', filename='juntas_2024.html') }}" style="width:100%; height:600px; border:none;"></iframe>
+    </div>
+    {% else %}
+    <h2>Dividendos Repartidos</h2>
+    <div class="dividendos-content">
+        <div class="dividendos-img-container">
+            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+        </div>
+        <div class="dividendos-resumen">
+            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
                 <div class="card" style="text-align: center;">
                     <h2>Calculadora de rendimientos de la BVQ</h2>
                     <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
