@@ -217,6 +217,10 @@ def update_data():
     os.system('python actualizar_variacion.py') 
     return "Data updated successfully!"
 
+@app.route('/juntas_2024')
+def juntas_2024():
+    return render_template('juntas_2024.html')
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
