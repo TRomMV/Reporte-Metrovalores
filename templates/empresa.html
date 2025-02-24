@@ -177,14 +177,6 @@
 </script>
 </body>
 </html>
-        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
-        async function fetchResumenDividendos(company) {
-            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-            const data = await response.text();
-            document.getElementById('resumen-dividendos').innerHTML = data;
-        }
 
-        fetchResumenDividendos("{{ profile.Nombre }}");
-    </script>
 </body>
 </html>
