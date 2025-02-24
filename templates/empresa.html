@@ -177,14 +177,6 @@
 </script>
 </body>
 </html>
-                <div class="card" style="text-align: center;">
-                    <h2>Calculadora de rendimientos de la BVQ</h2>
-                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                </div>
-            </section>
-        </div>
-    </main>
-    <script>
         // Incluir el resumen de dividendos desde data/resumen_dividendos.py
         async function fetchResumenDividendos(company) {
             const response = await fetch(`/data/resumen_dividendos?company=${company}`);
