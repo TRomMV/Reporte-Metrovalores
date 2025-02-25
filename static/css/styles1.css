@@ -426,7 +426,7 @@ header nav ul li a {
         font-size: 12px;
     }
    
-    /* Estilos del Menú Hamburguesa */
+/* Estilos del Menú Hamburguesa */
 .hamburger-menu input[type="checkbox"] {
     display: none;
 }
@@ -488,10 +488,10 @@ header nav ul li a {
 /* Estilos para tarjetas en móviles */
 @media (max-width: 768px) {
     .tabla-container {
-        display: none;
+        display: none; /* Ocultar tablas en móviles */
     }
     .card-table {
-        display: block;
+        display: block; /* Mostrar tarjetas en móviles */
     }
     .card {
         background-color: #f2f2f2;
@@ -520,10 +520,10 @@ header nav ul li a {
 /* Ocultar elementos adicionales en escritorio */
 @media (min-width: 769px) {
     .hamburger-menu {
-        display: none; /* Ocultar en escritorio */
+        display: none; /* Ocultar menú hamburguesa en escritorio */
     }
     .card-table {
-        display: none; /* Ocultar en escritorio */
+        display: none; /* Ocultar tarjetas en escritorio */
     }
 }
 }
