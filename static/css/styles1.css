@@ -426,57 +426,104 @@ header nav ul li a {
         font-size: 12px;
     }
    
-    /*menu hamburguesa*/
-    .hamburger-menu input[type="checkbox"] {
-        display: none;
+    /* Estilos del Menú Hamburguesa */
+.hamburger-menu input[type="checkbox"] {
+    display: none;
+}
+
+.hamburger-menu .menu-icon {
+    display: none;
+    cursor: pointer;
+    color: white;  /* Cambiar el color del ícono del menú */
+    font-size: 24px;
+}
+
+.hamburger-menu .menu {
+    display: none;
+    background-color: #333; /* Fondo oscuro para mejor contraste */
+}
+
+.hamburger-menu input[type="checkbox"]:checked ~ .menu {
+    display: block;
+}
+
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger-menu li {
+    text-align: center;
+    border-bottom: 1px solid #444; /* Línea divisoria para separar los elementos */
+}
+
+.hamburger-menu li a {
+    display: block;
+    padding: 15px;
+    color: white; /* Color de texto blanco para mejor contraste */
+    text-decoration: none;
+}
+
+.hamburger-menu li a:hover {
+    background-color: #575757; /* Color de fondo al pasar el mouse */
+}
+
+/* Mostrar el menú hamburguesa solo en móviles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Mostrar en móviles */
     }
-    
+
     .hamburger-menu .menu-icon {
-        display: none;
-        cursor: pointer;
-        color: white;  /* Cambiar el color del ícono del menú */
-        font-size: 24px;
-    }
-    
-    .hamburger-menu .menu {
-        display: none;
-        background-color: #333; /* Fondo oscuro para mejor contraste */
-    }
-    
-    .hamburger-menu input[type="checkbox"]:checked ~ .menu {
         display: block;
     }
-    
+
     .hamburger-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        display: flex;
+        flex-direction: column;
     }
-    
-    .hamburger-menu li {
-        text-align: center;
-        border-bottom: 1px solid #444; /* Línea divisoria para separar los elementos */
+}
+
+/* Estilos para tarjetas en móviles */
+@media (max-width: 768px) {
+    .tabla-container {
+        display: none;
     }
-    
-    .hamburger-menu li a {
+    .card-table {
         display: block;
-        padding: 15px;
-        color: white; /* Color de texto blanco para mejor contraste */
-        text-decoration: none;
     }
-    
-    .hamburger-menu li a:hover {
-        background-color: #575757; /* Color de fondo al pasar el mouse */
+    .card {
+        background-color: #f2f2f2;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    
-    @media (max-width: 768px) {
-        .hamburger-menu .menu-icon {
-            display: block;
-        }
-    
-        .hamburger-menu ul {
-            display: flex;
-            flex-direction: column;
-        }
+    .card-header {
+        font-weight: bold;
+        margin-bottom: 8px;
     }
+    .card-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-content div {
+        flex: 1 1 50%;
+        margin-bottom: 8px;
+    }
+    .card-content div.label {
+        font-weight: bold;
+    }
+}
+
+/* Ocultar elementos adicionales en escritorio */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none; /* Ocultar en escritorio */
+    }
+    .card-table {
+        display: none; /* Ocultar en escritorio */
+    }
+}
 }
