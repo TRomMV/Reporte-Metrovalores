@@ -425,31 +425,58 @@ header nav ul li a {
     .cotizaciones td {
         font-size: 12px;
     }
-}
-.hamburger-menu input[type="checkbox"] {
-    display: none;
-}
-
-.hamburger-menu .menu-icon {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger-menu .menu {
-    display: none;
-}
-
-.hamburger-menu input[type="checkbox"]:checked ~ .menu {
-    display: block;
-}
-
-@media (max-width: 768px) {
+   
+    /*menu hamburguesa*/
+    .hamburger-menu input[type="checkbox"] {
+        display: none;
+    }
+    
     .hamburger-menu .menu-icon {
+        display: none;
+        cursor: pointer;
+        color: white;  /* Cambiar el color del ícono del menú */
+        font-size: 24px;
+    }
+    
+    .hamburger-menu .menu {
+        display: none;
+        background-color: #333; /* Fondo oscuro para mejor contraste */
+    }
+    
+    .hamburger-menu input[type="checkbox"]:checked ~ .menu {
         display: block;
     }
-
+    
     .hamburger-menu ul {
-        display: flex;
-        flex-direction: column;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .hamburger-menu li {
+        text-align: center;
+        border-bottom: 1px solid #444; /* Línea divisoria para separar los elementos */
+    }
+    
+    .hamburger-menu li a {
+        display: block;
+        padding: 15px;
+        color: white; /* Color de texto blanco para mejor contraste */
+        text-decoration: none;
+    }
+    
+    .hamburger-menu li a:hover {
+        background-color: #575757; /* Color de fondo al pasar el mouse */
+    }
+    
+    @media (max-width: 768px) {
+        .hamburger-menu .menu-icon {
+            display: block;
+        }
+    
+        .hamburger-menu ul {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
