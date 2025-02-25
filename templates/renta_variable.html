@@ -112,6 +112,54 @@
                         </table>
                     </div>
                 </section>
+                <!-- Tarjetas de empresas del sector financiero para móviles -->
+<div class="card-table">
+    {% for empresa in datos %}
+    {% if empresa.EMISOR in ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'] %}
+    <div class="card">
+        <div class="card-header">
+            <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+            </a>
+        </div>
+        <div class="card-content">
+            <div class="label">Última Transacción:</div>
+            <div>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</div>
+            <div class="label">Precio:</div>
+            <div>{{ empresa.PRECIO_FINAL }}</div>
+            <div class="label">Variación Semanal:</div>
+            <div class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</div>
+            <div class="label">Precio Cierre 2024:</div>
+            <div>{{ empresa.PRECIO_CIERRE_2024 }}</div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<!-- Tarjetas de empresas del sector real para móviles -->
+<div class="card-table">
+    {% for empresa in datos %}
+    {% if empresa.EMISOR in ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL'] %}
+    <div class="card">
+        <div class="card-header">
+            <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+            </a>
+        </div>
+        <div class="card-content">
+            <div class="label">Última Transacción:</div>
+            <div>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</div>
+            <div class="label">Precio:</div>
+            <div>{{ empresa.PRECIO_FINAL }}</div>
+            <div class="label">Variación Semanal:</div>
+            <div class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</div>
+            <div class="label">Precio Cierre 2024:</div>
+            <div>{{ empresa.PRECIO_CIERRE_2024 }}</div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
             <!-- Texto de comparación de precios al final de la página -->
 <div class="texto-comparacion">
     <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
