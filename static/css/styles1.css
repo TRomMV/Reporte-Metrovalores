@@ -426,3 +426,30 @@ header nav ul li a {
         font-size: 12px;
     }
 }
+.hamburger-menu input[type="checkbox"] {
+    display: none;
+}
+
+.hamburger-menu .menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu .menu {
+    display: none;
+}
+
+.hamburger-menu input[type="checkbox"]:checked ~ .menu {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu .menu-icon {
+        display: block;
+    }
+
+    .hamburger-menu ul {
+        display: flex;
+        flex-direction: column;
+    }
+}
