@@ -474,9 +474,9 @@ header nav ul li a {
 }
 
 /* Mostrar el menú hamburguesa solo en móviles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hamburger-menu {
-        display: block; /* Mostrar en móviles */
+        display: block; /* Mostrar en móviles y tablets */
     }
 
     .hamburger-menu .menu-icon {
@@ -490,12 +490,12 @@ header nav ul li a {
 }
 
 /* Estilos para tarjetas en móviles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .tabla-container {
-        display: none; /* Ocultar tablas en móviles */
+        display: none; /* Ocultar tablas en móviles y tablets */
     }
     .card-table {
-        display: block; /* Mostrar tarjetas en móviles */
+        display: block; /* Mostrar tarjetas en móviles y tablets */
     }
     .card {
         background-color: #f2f2f2;
@@ -522,7 +522,7 @@ header nav ul li a {
 }
 
 /* Ocultar elementos adicionales en escritorio */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
     .hamburger-menu {
         display: none; /* Ocultar menú hamburguesa en escritorio */
     }
