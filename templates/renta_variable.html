@@ -14,7 +14,7 @@
             <a href="/">
                 <img src="/static/img/Logo.png" alt="Metrovalores Logo">
             </a>
-            <nav>
+            <nav class="desktop-only">
                 <ul class="nav">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/noticias">Noticias</a></li>
@@ -23,7 +23,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu mobile-only">
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <div class="menu">
@@ -46,7 +46,7 @@
             {% for sector, empresas in {"Empresas del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'], "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL'] }.items() %}
             <section>
                 <h2>{{ sector }}</h2>
-                <div class="tabla-container centrada">
+                <div class="tabla-container centrada desktop-only">
                     <table class="tabla-renta-variable centrar-tabla">
                         <thead>
                             <tr>
