@@ -427,6 +427,10 @@ header nav ul li a {
     }
    
 /* Estilos del Menú Hamburguesa */
+.hamburger-menu {
+    display: none; /* Ocultar por defecto */
+}
+
 .hamburger-menu input[type="checkbox"] {
     display: none;
 }
@@ -519,9 +523,6 @@ header nav ul li a {
 
 /* Ocultar elementos adicionales en escritorio */
 @media (min-width: 769px) {
-    .hamburger-menu {
-        display: none; /* Ocultar menú hamburguesa en escritorio */
-    }
     .card-table {
         display: none; /* Ocultar tarjetas en escritorio */
     }

@@ -9,6 +9,7 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
+from user_agents import parse
 
 app = Flask(__name__)
 
@@ -217,6 +218,19 @@ def update_data():
     os.system('python actualizar_variacion.py') 
     return "Data updated successfully!"
 
+@app.route('/renta-variable')
+def renta_variable():
+    user_agent = parse(request.headers.get('User-Agent'))
+    datos = obtener_datos()  # Función para obtener datos
+
+    if user_agent.is_mobile:
+        return render_template('renta_variable_mobile.html', datos=datos)
+    else:
+        return render_template('renta_variable.html', datos=datos)
+
+def obtener_datos():
+    # Lógica para obtener datos
+    return []
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
