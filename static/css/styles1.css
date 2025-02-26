@@ -426,11 +426,20 @@ header nav ul li a {
         font-size: 12px;
     }
    
-/* Estilos del Menú Hamburguesa */
-.hamburger-menu {
-    display: none; /* Ocultar por defecto */
+/* Estilos generales de la tabla */
+.tabla-container {
+    display: block; /* Mostrar tabla por defecto */
 }
 
+.card-table {
+    display: none; /* Ocultar tarjetas por defecto */
+}
+
+.hamburger-menu {
+    display: none; /* Ocultar menú hamburguesa por defecto */
+}
+
+/* Estilos del Menú Hamburguesa */
 .hamburger-menu input[type="checkbox"] {
     display: none;
 }
@@ -473,10 +482,10 @@ header nav ul li a {
     background-color: #575757; /* Color de fondo al pasar el mouse */
 }
 
-/* Mostrar el menú hamburguesa solo en móviles */
+/* Mostrar el menú hamburguesa y tarjetas solo en móviles */
 @media (max-width: 768px) {
     .hamburger-menu {
-        display: block; /* Mostrar en móviles */
+        display: block; /* Mostrar menú hamburguesa en móviles */
     }
 
     .hamburger-menu .menu-icon {
@@ -487,42 +496,50 @@ header nav ul li a {
         display: flex;
         flex-direction: column;
     }
-}
 
-/* Estilos para tarjetas en móviles */
-@media (max-width: 768px) {
     .tabla-container {
-        display: none; /* Ocultar tablas en móviles */
+        display: none; /* Ocultar tabla en móviles */
     }
+
     .card-table {
         display: block; /* Mostrar tarjetas en móviles */
     }
-    .card {
-        background-color: #f2f2f2;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .card-header {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-    .card-content {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .card-content div {
-        flex: 1 1 50%;
-        margin-bottom: 8px;
-    }
-    .card-content div.label {
-        font-weight: bold;
-    }
+}
+
+/* Estilos para tarjetas en móviles */
+.card {
+    background-color: #f2f2f2;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-content div {
+    flex: 1 1 50%;
+    margin-bottom: 8px;
+}
+
+.card-content div.label {
+    font-weight: bold;
 }
 
 /* Ocultar elementos adicionales en escritorio */
 @media (min-width: 769px) {
+    .hamburger-menu {
+        display: none; /* Ocultar menú hamburguesa en escritorio */
+    }
+
     .card-table {
         display: none; /* Ocultar tarjetas en escritorio */
     }
