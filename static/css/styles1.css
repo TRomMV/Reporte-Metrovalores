@@ -535,4 +535,9 @@ header nav ul li a {
     .card-table {
         display: none; /* Ocultar tarjetas en escritorio */
     }
-}}
+}
+/* Ocultar elementos en todas las versiones */
+.hamburger-menu, .card-table {
+    display: none;
+}
+}
