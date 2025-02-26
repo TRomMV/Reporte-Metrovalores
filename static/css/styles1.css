@@ -473,7 +473,7 @@ header nav ul li a {
     background-color: #575757; /* Color de fondo al pasar el mouse */
 }
 
-/* Mostrar el menú hamburguesa solo en móviles */
+/* Mostrar el menú hamburguesa solo en móviles y tablets */
 @media (max-width: 1024px) {
     .hamburger-menu {
         display: block; /* Mostrar en móviles y tablets */
@@ -487,16 +487,16 @@ header nav ul li a {
         display: flex;
         flex-direction: column;
     }
-}
 
-/* Estilos para tarjetas en móviles */
-@media (max-width: 1024px) {
+    /* Ocultar tabla y mostrar tarjetas en móviles */
     .tabla-container {
         display: none; /* Ocultar tablas en móviles y tablets */
     }
+    
     .card-table {
         display: block; /* Mostrar tarjetas en móviles y tablets */
     }
+
     .card {
         background-color: #f2f2f2;
         margin: 10px;
@@ -504,18 +504,22 @@ header nav ul li a {
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     .card-header {
         font-weight: bold;
         margin-bottom: 8px;
     }
+
     .card-content {
         display: flex;
         flex-wrap: wrap;
     }
+
     .card-content div {
         flex: 1 1 50%;
         margin-bottom: 8px;
     }
+
     .card-content div.label {
         font-weight: bold;
     }
@@ -526,8 +530,8 @@ header nav ul li a {
     .hamburger-menu {
         display: none; /* Ocultar menú hamburguesa en escritorio */
     }
+    
     .card-table {
         display: none; /* Ocultar tarjetas en escritorio */
     }
-}
-}
+}}
