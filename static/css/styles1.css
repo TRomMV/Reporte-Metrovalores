@@ -427,120 +427,73 @@ header nav ul li a {
     }
 }
    
-/* Estilos del Menú Hamburguesa */
-.hamburger-menu {
-    display: none; /* Ocultar por defecto */
-}
-
-.hamburger-menu input[type="checkbox"] {
-    display: none;
-}
-
-.hamburger-menu .menu-icon {
-    display: none;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-}
-
-.hamburger-menu .menu {
-    display: none;
-    background-color: #333;
-}
-
-.hamburger-menu input[type="checkbox"]:checked ~ .menu {
-    display: block;
-}
-
-.hamburger-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.hamburger-menu li {
-    text-align: center;
-    border-bottom: 1px solid #444;
-}
-
-.hamburger-menu li a {
-    display: block;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-}
-
-.hamburger-menu li a:hover {
-    background-color: #575757;
-}
-
-/* ✅ Modo móvil */
-@media (max-width: 1024px) {
-    .hamburger-menu {
-        display: block !important;
+/* Estilos adicionales para pantallas móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
     }
 
-    .hamburger-menu .menu-icon {
-        display: block !important;
+    .container {
+        width: 100%;
+        padding: 10px;
     }
 
-    .hamburger-menu ul {
+    .nav {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
-    /* ❌ Ocultar tablas en móviles */
-    .tabla-container {
-        display: none !important;
+    .nav li {
+        margin-bottom: 10px;
     }
 
-    /* ✅ Mostrar tarjetas en móviles */
-    .card-table {
-        display: block !important;
+    .tabla-renta-variable {
+        width: 100%;
+        font-size: 12px;
+        overflow-x: auto;
+    }
+
+    .tabla-renta-variable th,
+    .tabla-renta-variable td {
+        padding: 8px;
+    }
+
+    .boton-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton-imagen {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .logo-empresa {
+        max-width: 80px;
+        height: auto;
     }
 
     .card {
-        background-color: #f2f2f2;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
     }
 
-    .card-header {
-        font-weight: bold;
-        margin-bottom: 8px;
+    .dividendos-content {
+        flex-direction: column;
     }
 
-    .card-content {
-        display: flex;
-        flex-wrap: wrap;
+    .dividendos-img-container,
+    .dividendos-resumen {
+        width: 100%;
+        text-align: center;
     }
 
-    .card-content div {
-        flex: 1 1 50%;
-        margin-bottom: 8px;
-    }
-
-    .card-content div.label {
-        font-weight: bold;
-    }
-}
-
-/* ✅ Modo escritorio */
-@media (min-width: 1025px) {
-    .hamburger-menu {
-        display: none !important;
-    }
-
-    /* ✅ Mostrar tablas en escritorio */
-    .tabla-container {
-        display: block !important;
-    }
-
-    /* ❌ Ocultar tarjetas en escritorio */
-    .card-table {
-        display: none !important;
+    .dividendos-img {
+        max-width: 100%;
+        height: auto;
     }
 }
 }
