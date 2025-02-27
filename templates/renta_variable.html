@@ -23,6 +23,19 @@
                 </ul>
             </nav>
         </div>
+        <!-- Menú Hamburguesa -->
+        <div class="hamburger-menu mobile-only">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <div class="menu">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/renta-variable">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
     <main>
         <div class="container">
@@ -61,6 +74,27 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                </div>
+                <div class="card-table mobile-only">
+                    {% for empresa in datos if empresa.EMISOR in empresas %}
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                                <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <div class="label">Última Transacción:</div>
+                            <div>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</div>
+                            <div class="label">Precio:</div>
+                            <div>{{ empresa.PRECIO_FINAL }}</div>
+                            <div class="label">Variación Semanal:</div>
+                            <div class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</div>
+                            <div class="label">Precio Cierre 2024:</div>
+                            <div>{{ empresa.PRECIO_CIERRE_2024 }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </section>
             {% endfor %}

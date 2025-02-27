@@ -540,4 +540,22 @@ header nav ul li a {
 .hamburger-menu, .card-table {
     display: none;
 }
+/* Estilos adicionales para pantallas móviles */
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block !important;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .hamburger-menu {
+        display: block !important;
+    }
+
+    .card-table {
+        display: block !important;
+    }
+}
 }
