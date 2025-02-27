@@ -489,13 +489,14 @@ header nav ul li a {
         flex-direction: column;
     }
 
-    /* Ocultar tabla y mostrar tarjetas en móviles */
+    /* Ocultar tablas en móviles */
     .tabla-container {
-        display: none; /* Ocultar tablas en móviles y tablets */
+        display: none;
     }
     
+    /* Mostrar tarjetas en móviles */
     .card-table {
-        display: block; /* Mostrar tarjetas en móviles y tablets */
+        display: block;
     }
 
     .card {
@@ -526,36 +527,18 @@ header nav ul li a {
     }
 }
 
-/* Ocultar elementos adicionales en escritorio */
+/* Ocultar tarjetas y menú hamburguesa en escritorio */
 @media (min-width: 1025px) {
     .hamburger-menu {
-        display: none; /* Ocultar menú hamburguesa en escritorio */
+        display: none;
     }
     
     .card-table {
         display: none; /* Ocultar tarjetas en escritorio */
     }
-}
-/* Ocultar elementos en todas las versiones */
-.hamburger-menu, .card-table {
-    display: none;
-}
-/* Estilos adicionales para pantallas móviles */
-@media (max-width: 768px) {
-    .mobile-only {
-        display: block !important;
-    }
 
-    .desktop-only {
-        display: none !important;
-    }
-
-    .hamburger-menu {
-        display: block !important;
-    }
-
-    .card-table {
-        display: block !important;
+    .tabla-container {
+        display: block; /* Asegurar que la tabla se muestre en escritorio */
     }
 }
 }
