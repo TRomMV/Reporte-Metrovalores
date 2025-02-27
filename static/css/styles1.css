@@ -496,4 +496,115 @@ header nav ul li a {
         height: auto;
     }
 }
+/* Estilos del Menú Hamburguesa */
+.hamburger-menu {
+    display: none; /* Ocultar por defecto */
 }
+
+.hamburger-menu input[type="checkbox"] {
+    display: none;
+}
+
+.hamburger-menu .menu-icon {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+.hamburger-menu .menu {
+    display: none;
+    background-color: #333;
+}
+
+.hamburger-menu input[type="checkbox"]:checked ~ .menu {
+    display: block;
+}
+
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger-menu li {
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.hamburger-menu li a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.hamburger-menu li a:hover {
+    background-color: #575757;
+}
+
+/* Modo móvil */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .hamburger-menu .menu-icon {
+        display: block;
+    }
+
+    .hamburger-menu ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tabla-container {
+        display: none; /* Ocultar tablas en móviles */
+    }
+
+    .card-table {
+        display: block; /* Mostrar tarjetas en móviles */
+    }
+
+    .card {
+        background-color: #f2f2f2;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card-content div {
+        flex: 1 1 50%;
+        margin-bottom: 8px;
+    }
+
+    .card-content div.label {
+        font-weight: bold;
+    }
+}
+
+/* Modo escritorio */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none; /* Ocultar menú hamburguesa en escritorio */
+    }
+
+    .tabla-container {
+        display: block; /* Mostrar tablas en escritorio */
+    }
+
+    .card-table {
+        display: none; /* Ocultar tarjetas en escritorio */
+    }
+}}
