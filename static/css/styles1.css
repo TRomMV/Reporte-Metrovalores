@@ -439,13 +439,13 @@ header nav ul li a {
 .hamburger-menu .menu-icon {
     display: none;
     cursor: pointer;
-    color: white;  /* Cambiar el color del ícono del menú */
+    color: white;
     font-size: 24px;
 }
 
 .hamburger-menu .menu {
     display: none;
-    background-color: #333; /* Fondo oscuro para mejor contraste */
+    background-color: #333;
 }
 
 .hamburger-menu input[type="checkbox"]:checked ~ .menu {
@@ -460,28 +460,28 @@ header nav ul li a {
 
 .hamburger-menu li {
     text-align: center;
-    border-bottom: 1px solid #444; /* Línea divisoria para separar los elementos */
+    border-bottom: 1px solid #444;
 }
 
 .hamburger-menu li a {
     display: block;
     padding: 15px;
-    color: white; /* Color de texto blanco para mejor contraste */
+    color: white;
     text-decoration: none;
 }
 
 .hamburger-menu li a:hover {
-    background-color: #575757; /* Color de fondo al pasar el mouse */
+    background-color: #575757;
 }
 
-/* Mostrar el menú hamburguesa solo en móviles y tablets */
+/* ✅ Modo móvil */
 @media (max-width: 1024px) {
     .hamburger-menu {
-        display: block; /* Mostrar en móviles y tablets */
+        display: block !important;
     }
 
     .hamburger-menu .menu-icon {
-        display: block;
+        display: block !important;
     }
 
     .hamburger-menu ul {
@@ -489,14 +489,14 @@ header nav ul li a {
         flex-direction: column;
     }
 
-    /* Ocultar tablas en móviles */
+    /* ❌ Ocultar tablas en móviles */
     .tabla-container {
-        display: none;
+        display: none !important;
     }
-    
-    /* Mostrar tarjetas en móviles */
+
+    /* ✅ Mostrar tarjetas en móviles */
     .card-table {
-        display: block;
+        display: block !important;
     }
 
     .card {
@@ -527,18 +527,20 @@ header nav ul li a {
     }
 }
 
-/* Ocultar tarjetas y menú hamburguesa en escritorio */
+/* ✅ Modo escritorio */
 @media (min-width: 1025px) {
     .hamburger-menu {
-        display: none;
-    }
-    
-    .card-table {
-        display: none; /* Ocultar tarjetas en escritorio */
+        display: none !important;
     }
 
+    /* ✅ Mostrar tablas en escritorio */
     .tabla-container {
-        display: block; /* Asegurar que la tabla se muestre en escritorio */
+        display: block !important;
+    }
+
+    /* ❌ Ocultar tarjetas en escritorio */
+    .card-table {
+        display: none !important;
     }
 }
 }

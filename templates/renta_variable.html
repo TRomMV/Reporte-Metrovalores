@@ -44,64 +44,80 @@
                 <p>{{ fecha_actual }}</p>
             </div>
 
-            {% for sector, empresas in {"Empresas del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'], "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL'] }.items() %}
-            <section>
-                <h2>{{ sector }}</h2>
-                <div class="tabla-container centrada">
-                    <table class="tabla-renta-variable centrar-tabla">
-                        <thead>
-                            <tr>
-                                <th>Emisor</th>
-                                <th>Última Transacción</th>
-                                <th>Precio</th>
-                                <th>Variación Semanal</th>
-                                <th>Precio Cierre 2024</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for empresa in datos if empresa.EMISOR in empresas %}
-                            <tr>
-                                <td>
-                                    <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
-                                        <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
-                                    </a>
-                                </td>
-                                <td>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
-                                <td>{{ empresa.PRECIO_FINAL }}</td>
-                                <td class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
-                                <td>{{ empresa.PRECIO_CIERRE_2024 }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-table mobile-only">
-                    {% for empresa in datos if empresa.EMISOR in empresas %}
-                    <div class="card">
-                        <div class="card-header">
-                            <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
-                                <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
-                            </a>
-                        </div>
-                        <div class="card-content">
-                            <div class="label">Última Transacción:</div>
-                            <div>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</div>
-                            <div class="label">Precio:</div>
-                            <div>{{ empresa.PRECIO_FINAL }}</div>
-                            <div class="label">Variación Semanal:</div>
-                            <div class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</div>
-                            <div class="label">Precio Cierre 2024:</div>
-                            <div>{{ empresa.PRECIO_CIERRE_2024 }}</div>
-                        </div>
+            {% if datos %}
+                {% for sector, empresas in {
+                    "Empresas del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'],
+                    "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL']
+                }.items() %}
+                <section>
+                    <h2>{{ sector }}</h2>
+                    <div class="tabla-container centrada">
+                        <table class="tabla-renta-variable centrar-tabla">
+                            <thead>
+                                <tr>
+                                    <th>Emisor</th>
+                                    <th>Última Transacción</th>
+                                    <th>Precio</th>
+                                    <th>Variación Semanal</th>
+                                    <th>Precio Cierre 2024</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for empresa in datos if empresa.EMISOR in empresas %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                                            <img src="/static/img/Logos_nombres/{{ empresa.EMISOR | replace(' ', '_') }}.png" 
+                                                 alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+                                        </a>
+                                    </td>
+                                    <td>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
+                                    <td>{{ empresa.PRECIO_FINAL }}</td>
+                                    <td class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">
+                                        {{ empresa.VARIACION_SEMANAL }}
+                                    </td>
+                                    <td>{{ empresa.PRECIO_CIERRE_2024 }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                    {% endfor %}
-                </div>
-            </section>
-            {% endfor %}
+                    <div class="card-table mobile-only">
+                        {% for empresa in datos if empresa.EMISOR in empresas %}
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                                    <img src="/static/img/Logos_nombres/{{ empresa.EMISOR | replace(' ', '_') }}.png" 
+                                         alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <div class="label">Última Transacción:</div>
+                                <div>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</div>
+                                <div class="label">Precio:</div>
+                                <div>{{ empresa.PRECIO_FINAL }}</div>
+                                <div class="label">Variación Semanal:</div>
+                                <div class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">
+                                    {{ empresa.VARIACION_SEMANAL }}
+                                </div>
+                                <div class="label">Precio Cierre 2024:</div>
+                                <div>{{ empresa.PRECIO_CIERRE_2024 }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+            {% else %}
+                <p class="mensaje-error">No hay datos disponibles en este momento.</p>
+            {% endif %}
+
             <!-- Texto de comparación de precios al final de la página -->
-<div class="texto-comparacion">
-    <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
-</div>
+            {% if semana_anterior_inicio and semana_actual_inicio %}
+            <div class="texto-comparacion">
+                <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
+            </div>
+            {% endif %}
         </div>
     </main>
 </body>
