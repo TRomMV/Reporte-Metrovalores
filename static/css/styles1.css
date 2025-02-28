@@ -558,4 +558,13 @@ header nav ul li a {
         max-width: 400px; /* Limitar el tamaño máximo */
         height: auto; /* Mantener la proporción */
     }
+/* Estilo para el enlace activo en móviles */
+@media (max-width: 768px) {
+    .nav li a.active {
+        background-color: white; /* Fondo blanco */
+        color: #003366; /* Texto azul */
+        font-weight: bold; /* Opcional: Dar más énfasis */
+        border: 2px solid #003366; /* Opcional: Añadir un borde azul */
+    }
+}
 }
