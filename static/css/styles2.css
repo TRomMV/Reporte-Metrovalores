@@ -341,4 +341,19 @@
     max-width: 45%; /* Ajustar al 100% del contenedor */
     height: auto;
     margin-top: 20px; /* Añadir margen superior para separación */
-}
+    @media (max-width: 768px) {
+        .tarjetas {
+            display: flex;
+            flex-direction: column; /* Cambia a columna */
+            align-items: center; /* Centra los elementos */
+        }
+    
+        .tarjeta {
+            margin: 10px; /* Espaciado entre tarjetas */
+            width: 90%; /* Ancho de tarjeta para móviles */
+        }
+    
+        button {
+            width: 100%; /* Asegura que el botón use el ancho completo */
+        }
+    }}
