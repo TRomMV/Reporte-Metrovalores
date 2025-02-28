@@ -356,6 +356,7 @@ header nav ul li a {
     .cotizaciones td {
         font-size: 12px;
     }
+}
 
 /* Estilos adicionales para pantallas móviles */
 @media (max-width: 768px) {
@@ -557,5 +558,4 @@ header nav ul li a {
         max-width: 400px; /* Limitar el tamaño máximo */
         height: auto; /* Mantener la proporción */
     }
-}
 }
