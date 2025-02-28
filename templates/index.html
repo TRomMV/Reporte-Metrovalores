@@ -3,42 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetroValores - Casa de Valores S.A.</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Metrovalores</title>
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
 </head>
-<body>
+<body class="azul-marino">
     <header>
-        <div class="logo">
-            <h1>MetroValores</h1>
-            <p>CASA DE VALORES S.A.</p>
+        <div class="container">
+            <a href="/">
+                <img src="/static/img/Logo.png" alt="Metrovalores Logo">
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/renta-variable">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#renta-variable">Renta Variable</a></li>
-                <li><a href="#renta-fija">Renta Fija</a></li>
-            </ul>
-        </nav>
     </header>
-    
     <main>
-        <section class="products">
-            <div class="product">
-                <img src="ruta/imagen-renta-variable.jpg" alt="Renta Variable">
-                <h2>RENTA VARIABLE</h2>
-                <button onclick="location.href='#renta-variable'">VER</button>
+        <div class="container">
+            <div class="boton-container">
+                <a href="/renta-variable">
+                    <img src="/static/img/botones/Renta_variable_boton.png" alt="Renta Variable" class="boton-imagen">
+                </a>
+                <a href="/renta-fija">
+                    <img src="/static/img/botones/Renta_fija_boton.png" alt="Renta Fija" class="boton-imagen">
+                </a>
             </div>
-            <div class="product">
-                <img src="ruta/imagen-renta-fija.jpg" alt="Renta Fija">
-                <h2>RENTA FIJA</h2>
-                <button onclick="location.href='#renta-fija'">VER</button>
-            </div>
-        </section>
+        </div>
     </main>
-
-    <footer>
-        <p>&copy; 2023 MetroValores. Todos los derechos reservados.</p>
-    </footer>
+    <script src="/static/js/scripts.js"></script>
 </body>
 </html>
