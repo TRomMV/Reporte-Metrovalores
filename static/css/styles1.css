@@ -496,115 +496,66 @@ header nav ul li a {
         height: auto;
     }
 }
-/* Estilos del Menú Hamburguesa */
-.hamburger-menu {
-    display: none; /* Ocultar por defecto */
-}
-
-.hamburger-menu input[type="checkbox"] {
-    display: none;
-}
-
-.hamburger-menu .menu-icon {
-    display: none;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-}
-
-.hamburger-menu .menu {
-    display: none;
-    background-color: #333;
-}
-
-.hamburger-menu input[type="checkbox"]:checked ~ .menu {
-    display: block;
-}
-
-.hamburger-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.hamburger-menu li {
-    text-align: center;
-    border-bottom: 1px solid #444;
-}
-
-.hamburger-menu li a {
-    display: block;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-}
-
-.hamburger-menu li a:hover {
-    background-color: #575757;
-}
-
-/* Modo móvil */
+/* Adaptar navegación para pantallas pequeñas */
 @media (max-width: 768px) {
-    .hamburger-menu {
-        display: block;
+    body {
+        font-size: 14px;
+        padding: 10px;
     }
 
-    .hamburger-menu .menu-icon {
-        display: block;
+    .container {
+        width: 100%;
+        padding: 10px;
     }
 
-    .hamburger-menu ul {
+    /* Ajustar el logotipo y menú de navegación */
+    header .container {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .tabla-container {
-        display: none; /* Ocultar tablas en móviles */
-    }
-
-    .card-table {
-        display: block; /* Mostrar tarjetas en móviles */
-    }
-
-    .card {
-        background-color: #f2f2f2;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-header {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    .card-content {
+    .nav {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 10px;
     }
 
-    .card-content div {
-        flex: 1 1 50%;
-        margin-bottom: 8px;
+    .nav li {
+        list-style: none;
     }
 
-    .card-content div.label {
-        font-weight: bold;
+    .nav li a {
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        display: block;
+        background-color: #003366; /* Fondo azul */
+        color: white; /* Texto blanco */
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .nav li a:hover {
+        background-color: #005599; /* Fondo azul más claro al pasar el mouse */
+    }
+
+    /* Botones principales como imágenes */
+    .boton-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .boton-imagen {
+        width: 90%; /* Escalar imágenes para adaptarlas a la pantalla */
+        max-width: 400px; /* Limitar el tamaño máximo */
+        height: auto; /* Mantener la proporción */
     }
 }
-
-/* Modo escritorio */
-@media (min-width: 769px) {
-    .hamburger-menu {
-        display: none; /* Ocultar menú hamburguesa en escritorio */
-    }
-
-    .tabla-container {
-        display: block; /* Mostrar tablas en escritorio */
-    }
-
-    .card-table {
-        display: none; /* Ocultar tarjetas en escritorio */
-    }
-}}
+}
