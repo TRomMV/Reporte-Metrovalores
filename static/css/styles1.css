@@ -647,4 +647,33 @@ header nav ul li a {
     align-items: center;
     gap: 15px; /* Espacio entre tarjetas */
 }
+/* Centrar tablas en vista de escritorio */
+@media (min-width: 769px) {
+    .tabla-container {
+        display: flex;
+        justify-content: center; /* Centrar tablas horizontalmente */
+        align-items: center; /* Centrar tablas verticalmente si es necesario */
+        width: 100%; /* Mantener el ancho del contenedor */
+    }
+
+    .tabla-renta-variable {
+        width: auto; /* Ajustar automáticamente según el contenido */
+        margin: 0 auto; /* Asegurar que la tabla esté centrada */
+    }
 }
+/* Centrar tablas en vista de escritorio */
+@media (min-width: 769px) {
+    .tabla-container {
+        display: flex;
+        justify-content: center; /* Centrar tablas horizontalmente */
+        align-items: center; /* Centrar tablas verticalmente si es necesario */
+        width: 100%; /* Mantener el ancho del contenedor */
+    }
+
+    .tabla-renta-variable {
+        width: auto; /* Ajustar automáticamente según el contenido */
+        margin: 0 auto; /* Asegurar que la tabla esté centrada */
+    }
+}
+}
+
