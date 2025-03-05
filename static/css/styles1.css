@@ -832,3 +832,13 @@ h2 {
         display: block;
     }
 }
+/* Corregir alineación y ajuste del párrafo de dividendos */
+.dividendos-resumen {
+    width: 90%; /* Ajustar el ancho al 90% del contenedor */
+    max-width: 800px; /* Limitar el tamaño máximo para pantallas grandes */
+    margin: 0 auto; /* Centrar el párrafo horizontalmente */
+    text-align: justify; /* Justificar el texto para una mejor presentación */
+    font-size: 1em; /* Tamaño de fuente consistente */
+    line-height: 1.5; /* Mejorar la legibilidad con un interlineado adecuado */
+    word-wrap: break-word; /* Evitar el desbordamiento de palabras largas */
+}
