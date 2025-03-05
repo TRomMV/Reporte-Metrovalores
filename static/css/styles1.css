@@ -567,30 +567,44 @@ header nav ul li a {
         border: 2px solid #003366; /* Opcional: Añadir un borde azul */
     }
 }
-/* Estilos específicos para tablas en móviles */
+/* Estilos para tarjetas verticales en móviles */
 @media (max-width: 768px) {
-    /* Asegurar que las tablas no se deformen en dispositivos pequeños */
     .tabla-container {
-        overflow-x: auto; /* Habilitar desplazamiento horizontal */
-        -webkit-overflow-scrolling: touch; /* Suavizar el scroll en móviles */
+        display: none; /* Ocultar las tablas en móviles */
     }
 
-    .tabla-renta-variable {
-        width: 100%; /* Mantener la tabla dentro del contenedor */
-        border-collapse: collapse; /* Compactar las celdas para mayor claridad */
+    .card-table {
+        display: block; /* Mostrar tarjetas verticales */
+        margin: 10px 0; /* Separar las tarjetas entre sí */
     }
 
-    .tabla-renta-variable th, 
-    .tabla-renta-variable td {
-        font-size: 12px; /* Reducir el tamaño de texto para ajustarlo a pantallas pequeñas */
-        padding: 8px; /* Ajustar el padding para evitar desbordamientos */
-        text-align: center; /* Centrar el texto */
-        white-space: nowrap; /* Evitar que el texto se divida en múltiples líneas */
+    .card {
+        background-color: #f2f2f2;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Opcional: Agregar un borde inferior para mejorar la legibilidad en filas */
-    .tabla-renta-variable tr {
-        border-bottom: 1px solid #ddd;
+    .card-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px; /* Espacio entre elementos de la tarjeta */
+    }
+
+    .card-content div {
+        font-size: 12px;
+    }
+
+    .card-content div.label {
+        font-weight: bold;
+        color: #003366; /* Color azul para resaltar etiquetas */
     }
 }
 }
