@@ -773,3 +773,12 @@ h2 {
     font-size: 1.5em; /* Aumenta el tamaño del subtítulo */
     color: #003366; /* Asegura que el color sea uniforme y atractivo */
 }
+/* Ajuste del gráfico en vista de escritorio */
+@media (min-width: 769px) {
+    #grafico {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: auto;
+    }
+}
