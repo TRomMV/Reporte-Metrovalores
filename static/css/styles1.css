@@ -760,7 +760,7 @@ header nav ul li a {
 /* Ajuste específico para el gráfico en vista de escritorio */
 @media (min-width: 769px) {
     #grafico {
-        width: 100%; /* Ocupa el ancho completo del contenedor */
+        width: 150%; /* Ocupa el ancho completo del contenedor */
         max-width: 1200px; /* Limita el ancho máximo en monitores grandes */
         margin: 0 auto; /* Centra el gráfico horizontalmente */
     }
@@ -775,7 +775,7 @@ header nav ul li a {
 /* Aumentar el tamaño de los cuadros (celdas y filas) */
 .tabla-renta-variable td, 
 .tabla-renta-variable th {
-    padding: 16px 10px; /* Incrementar espacio dentro de cada cuadro */
+    padding: 50px 40px; /* Incrementar espacio dentro de cada cuadro */
 }
 
 /* Centrar los subtítulos */
