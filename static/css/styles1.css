@@ -774,3 +774,39 @@ h2 {
         content: none; /* Eliminar etiquetas del logo (emisor) */
     }
 }
+/* Ajustar el estilo de las tarjetas en vista móvil */
+@media (max-width: 768px) {
+    /* Contenedor de las tarjetas */
+    .tabla-renta-variable tr {
+        display: flex;
+        flex-direction: column; /* Organización vertical */
+        gap: 15px; /* Separar elementos dentro de la tarjeta */
+        padding: 15px; /* Espaciado interno */
+        margin-bottom: 20px; /* Espaciado entre tarjetas */
+        background-color: #f2f2f2; /* Fondo similar al de las tablas */
+        border: 1px solid #ddd; /* Bordes similares */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    /* Agrandar el logo */
+    .tabla-renta-variable td:first-child img {
+        width: 80px; /* Nuevo tamaño del logo */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centrar el logo */
+    }
+
+    /* Ajustar subtítulos y contenido */
+    .tabla-renta-variable td {
+        font-size: 14px; /* Texto claro y legible */
+        padding: 8px 0; /* Espaciado entre filas */
+    }
+
+    /* Mostrar el subtítulo 'Precio Cierre 2024' en móviles */
+    .tabla-renta-variable td[data-label="Precio Cierre 2024"]::before {
+        content: "Precio Cierre 2024: ";
+        font-weight: bold;
+        color: #003366; /* Color uniforme */
+    }
+}
