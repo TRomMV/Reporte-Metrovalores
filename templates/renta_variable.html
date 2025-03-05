@@ -53,10 +53,10 @@
                                         <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
                                     </a>
                                 </td>
-                                <td>{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
-                                <td>{{ empresa.PRECIO_FINAL }}</td>
-                                <td class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
-                                <td>{{ empresa.PRECIO_CIERRE_2024 }}</td>
+                                <td data-label="Última Transacción">{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
+                                <td data-label="Precio">{{ empresa.PRECIO_FINAL }}</td>
+                                <td data-label="Variación Semanal" class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
+                                <td data-label="Precio Cierre 2024">{{ empresa.PRECIO_CIERRE_2024 }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
