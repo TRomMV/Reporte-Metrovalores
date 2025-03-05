@@ -653,7 +653,7 @@ header nav ul li a {
 
     .tabla-renta-variable {
         width: auto; /* Ajustar automáticamente según el contenido */
-        margin: 0 auto; /* Asegurar que la tabla esté centrada */
+        margin: 15 auto; /* Asegurar que la tabla esté centrada */
     }
 }
 
@@ -678,12 +678,6 @@ header nav ul li a {
 }
 /* Optimización para móviles - Página Empresa */
 @media (max-width: 768px) {
-    /* Ajustes generales del contenedor */
-    .container {
-        padding: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
 
     /* Centrar subtítulos y secciones */
     .titulo-centro, .card h2, .dividendos-section h2 {
