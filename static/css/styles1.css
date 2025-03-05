@@ -617,65 +617,8 @@ header nav ul li a {
         display: inline-block;
         width: 40%;
     }
-
-    /* Ajustar imagen de dividendos */
-    .dividendos-img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        margin: 10px 0;
-    }
-
-    .dividendos-resumen {
-        text-align: center;
-        font-size: 12px;
-        margin: 10px 0;
-    }
-
-    /* Optimizar el iframe de la calculadora */
-    iframe {
-        width: 100%;
-        max-width: 100%;
-        height: 600px; /* Ajusta la altura según necesidad */
-        border: none;
-        box-sizing: border-box;
-    }
 }
 
-/* Centrar contenido para escritorio */
-@media (min-width: 769px) {
-    .tabla-container {
-        display: flex;
-        justify-content: center; /* Centrar tablas horizontalmente */
-        align-items: center; /* Centrar tablas verticalmente */
-        width: 100%; /* Mantener el ancho del contenedor */
-    }
-
-    .tabla-renta-variable {
-        width: auto; /* Ajustar automáticamente según el contenido */
-        margin: 15 auto; /* Asegurar que la tabla esté centrada */
-    }
-}
-
-/* Centrado de contenido general */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.titulo-centro {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.card-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
 /* Optimización para móviles - Página Empresa */
 @media (max-width: 768px) {
 
@@ -776,7 +719,7 @@ h2 {
 /* Ajuste del gráfico en vista de escritorio */
 @media (min-width: 769px) {
     #grafico {
-        width: 100%;
+        width: 90%;
         max-width: 1200px;
         margin: 0 auto;
         height: auto;
