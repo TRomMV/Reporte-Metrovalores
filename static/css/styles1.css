@@ -810,12 +810,14 @@ h2 {
         color: #003366; /* Color uniforme */
     }
 }
-/* Ajustar tamaño de los logos en la vista móvil */
+/* Ajustar tamaño uniforme para los logos en móviles */
 @media (max-width: 768px) {
     .tabla-renta-variable td:first-child img {
-        width: 100px; /* Aumentar el ancho del logo en móviles */
-        height: auto; /* Mantener la proporción */
+        width: 90px; /* Ancho fijo del logo */
+        height: 90px; /* Alto fijo del logo */
+        object-fit: cover; /* Llenar el área definida */
+        border-radius: 5px; /* Bordes redondeados opcionales */
         display: block;
-        margin: 0 auto; /* Centrar el logo */
+        margin: 0 auto; /* Centrar el logo dentro de la celda */
     }
 }
