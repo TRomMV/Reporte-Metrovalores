@@ -497,6 +497,8 @@ header nav ul li a {
         height: auto;
     }
 }
+/* Optimización para pantallas móviles y ajustes generales */
+
 /* Adaptar navegación para pantallas pequeñas */
 @media (max-width: 768px) {
     body {
@@ -545,6 +547,14 @@ header nav ul li a {
         background-color: #005599; /* Fondo azul más claro al pasar el mouse */
     }
 
+    /* Estilo para el enlace activo */
+    .nav li a.active {
+        background-color: white; /* Fondo blanco */
+        color: #003366; /* Texto azul */
+        font-weight: bold; /* Dar más énfasis */
+        border: 2px solid #003366; /* Añadir un borde azul */
+    }
+
     /* Botones principales como imágenes */
     .boton-container {
         display: flex;
@@ -558,29 +568,26 @@ header nav ul li a {
         max-width: 400px; /* Limitar el tamaño máximo */
         height: auto; /* Mantener la proporción */
     }
-/* Estilo para el enlace activo en móviles */
-@media (max-width: 768px) {
-    .nav li a.active {
-        background-color: white; /* Fondo blanco */
-        color: #003366; /* Texto azul */
-        font-weight: bold; /* Opcional: Dar más énfasis */
-        border: 2px solid #003366; /* Opcional: Añadir un borde azul */
-    }
-}
-/* Tarjetas verticales para móviles */
-@media (max-width: 768px) {
-    /* Mostrar contenedor con tarjetas */
+
+    /* Ajustar tablas en diseño vertical */
     .tabla-container {
-        display: block; /* Restablecer la visibilidad */
+        width: 100%;
+        overflow-x: hidden;
+        padding: 0 10px;
+        margin-bottom: 20px;
     }
 
     .tabla-renta-variable {
         display: block; /* Transforma la tabla en un diseño de bloque */
         width: 100%;
         border-collapse: separate; /* Evitar desbordamientos */
+        margin: 0 auto 20px;
     }
 
-    /* Fila de la tabla como tarjeta */
+    .tabla-renta-variable thead {
+        display: none; /* Ocultar encabezados */
+    }
+
     .tabla-renta-variable tr {
         display: block; /* Cada fila como tarjeta */
         background-color: #f2f2f2;
@@ -590,137 +597,6 @@ header nav ul li a {
         padding: 10px;
     }
 
-    /* Celdas dentro de tarjetas */
-    .tabla-renta-variable th {
-        display: none; /* Ocultar encabezados en formato móvil */
-    }
-
-    .tabla-renta-variable td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 0;
-        font-size: 12px;
-    }
-
-    /* Etiquetas visibles dentro de cada tarjeta */
-    .tabla-renta-variable td::before {
-        content: attr(data-label); /* Agrega etiquetas automáticas */
-        font-weight: bold;
-        color: #003366;
-        margin-right: 10px;
-    }
-
-    /* Mejora del espaciado general */
-    .texto-comparacion {
-        padding: 10px;
-        font-size: 12px;
-        text-align: center;
-    }
-}
-/* Centrado de contenido en ambas vistas */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Centrar los títulos */
-.titulo-centro {
-    text-align: center;
-    margin-bottom: 20px; /* Espacio debajo del título */
-}
-
-/* Centrar las tablas (escritorio y móvil) */
-.tabla-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Ajustar al ancho disponible */
-}
-
-/* Ajustar tarjetas en móviles */
-.card-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; /* Espacio entre tarjetas */
-}
-/* Centrar tablas en vista de escritorio */
-@media (min-width: 769px) {
-    .tabla-container {
-        display: flex;
-        justify-content: center; /* Centrar tablas horizontalmente */
-        align-items: center; /* Centrar tablas verticalmente si es necesario */
-        width: 100%; /* Mantener el ancho del contenedor */
-    }
-
-    .tabla-renta-variable {
-        width: auto; /* Ajustar automáticamente según el contenido */
-        margin: 0 auto; /* Asegurar que la tabla esté centrada */
-    }
-}
-/* Centrar tablas en vista de escritorio */
-@media (min-width: 769px) {
-    .tabla-container {
-        display: flex;
-        justify-content: center; /* Centrar tablas horizontalmente */
-        align-items: center; /* Centrar tablas verticalmente si es necesario */
-        width: 100%; /* Mantener el ancho del contenedor */
-    }
-
-    .tabla-renta-variable {
-        width: auto; /* Ajustar automáticamente según el contenido */
-        margin: 0 auto; /* Asegurar que la tabla esté centrada */
-    }
-}
-/* Optimización para vista móvil en la página Renta Variable */
-@media (max-width: 768px) {
-    /* Ajustes generales del contenedor */
-    .container {
-        padding: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    /* Centrar títulos y secciones */
-    .titulo-centro {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    
-    /* Adaptar el contenedor de las tablas */
-    .tabla-container {
-        width: 100%;
-        overflow-x: hidden;
-        padding: 0 10px;
-        margin-bottom: 20px;
-    }
-    
-    /* Transformar la tabla en un diseño vertical */
-    .tabla-renta-variable {
-        width: 100%;
-        border-collapse: separate;
-        margin: 0 auto 20px;
-    }
-    
-    /* Ocultar encabezado de la tabla, ya que se reemplazará con etiquetas */
-    .tabla-renta-variable thead {
-        display: none;
-    }
-    
-    /* Cada fila se comporta como una tarjeta vertical */
-    .tabla-renta-variable tr {
-        display: block;
-        background-color: #f2f2f2;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-    }
-    
-    /* Cada celda se muestra en bloque con su respectiva etiqueta */
     .tabla-renta-variable td {
         display: block;
         text-align: left;
@@ -729,13 +605,11 @@ header nav ul li a {
         border-bottom: 1px solid #ddd;
         position: relative;
     }
-    
-    /* Quitar el borde inferior en la última celda de cada fila */
+
     .tabla-renta-variable td:last-child {
         border-bottom: none;
     }
-    
-    /* Mostrar la etiqueta mediante el atributo data-label */
+
     .tabla-renta-variable td::before {
         content: attr(data-label) ": ";
         font-weight: bold;
@@ -743,22 +617,62 @@ header nav ul li a {
         display: inline-block;
         width: 40%;
     }
-    
-    /* Ajustar el texto de comparación al final de la página */
-    .texto-comparacion {
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
+
+    /* Ajustar imagen de dividendos */
+    .dividendos-img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
     }
-    
+
+    .dividendos-resumen {
+        text-align: center;
+        font-size: 12px;
+        margin: 10px 0;
+    }
+
     /* Optimizar el iframe de la calculadora */
     iframe {
-         width: 100%;
-         max-width: 100%;
-         height: 600px; /* Ajusta la altura según necesidad */
-         border: none;
-         box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        height: 600px; /* Ajusta la altura según necesidad */
+        border: none;
+        box-sizing: border-box;
     }
 }
+
+/* Centrar contenido para escritorio */
+@media (min-width: 769px) {
+    .tabla-container {
+        display: flex;
+        justify-content: center; /* Centrar tablas horizontalmente */
+        align-items: center; /* Centrar tablas verticalmente */
+        width: 100%; /* Mantener el ancho del contenedor */
+    }
+
+    .tabla-renta-variable {
+        width: auto; /* Ajustar automáticamente según el contenido */
+        margin: 0 auto; /* Asegurar que la tabla esté centrada */
+    }
 }
 
+/* Centrado de contenido general */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-centro {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
