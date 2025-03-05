@@ -675,5 +675,90 @@ header nav ul li a {
         margin: 0 auto; /* Asegurar que la tabla esté centrada */
     }
 }
+/* Optimización para vista móvil en la página Renta Variable */
+@media (max-width: 768px) {
+    /* Ajustes generales del contenedor */
+    .container {
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Centrar títulos y secciones */
+    .titulo-centro {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    /* Adaptar el contenedor de las tablas */
+    .tabla-container {
+        width: 100%;
+        overflow-x: hidden;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Transformar la tabla en un diseño vertical */
+    .tabla-renta-variable {
+        width: 100%;
+        border-collapse: separate;
+        margin: 0 auto 20px;
+    }
+    
+    /* Ocultar encabezado de la tabla, ya que se reemplazará con etiquetas */
+    .tabla-renta-variable thead {
+        display: none;
+    }
+    
+    /* Cada fila se comporta como una tarjeta vertical */
+    .tabla-renta-variable tr {
+        display: block;
+        background-color: #f2f2f2;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+    
+    /* Cada celda se muestra en bloque con su respectiva etiqueta */
+    .tabla-renta-variable td {
+        display: block;
+        text-align: left;
+        padding: 8px 5px;
+        font-size: 12px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+    
+    /* Quitar el borde inferior en la última celda de cada fila */
+    .tabla-renta-variable td:last-child {
+        border-bottom: none;
+    }
+    
+    /* Mostrar la etiqueta mediante el atributo data-label */
+    .tabla-renta-variable td::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #003366;
+        display: inline-block;
+        width: 40%;
+    }
+    
+    /* Ajustar el texto de comparación al final de la página */
+    .texto-comparacion {
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    /* Optimizar el iframe de la calculadora */
+    iframe {
+         width: 100%;
+         max-width: 100%;
+         height: 600px; /* Ajusta la altura según necesidad */
+         border: none;
+         box-sizing: border-box;
+    }
+}
 }
 
