@@ -757,15 +757,6 @@ header nav ul li a {
         box-sizing: border-box;
     }
 }
-/* Ajuste del gráfico en vista de escritorio */
-@media (min-width: 769px) {
-    #grafico {
-        width: 100%; /* Ocupa el ancho completo del contenedor */
-        max-width: 1200px; /* Limita el tamaño máximo en monitores grandes */
-        margin: 0 auto; /* Centra el gráfico horizontalmente */
-        height: auto; /* Asegura que mantenga proporciones correctas */
-    }
-}
 
 /* Ajustar tamaño general de las tablas */
 .tabla-container {
