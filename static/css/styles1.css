@@ -567,15 +567,17 @@ header nav ul li a {
         border: 2px solid #003366; /* Opcional: Añadir un borde azul */
     }
 }
-/* Estilos para tarjetas verticales en móviles */
+/* Estilos para vista móvil */
 @media (max-width: 768px) {
+    /* Ocultar las tablas estándar en móviles */
     .tabla-container {
-        display: none; /* Ocultar las tablas en móviles */
+        display: none; /* Ocultar tablas en móviles */
     }
 
+    /* Tarjetas verticales en lugar de tablas */
     .card-table {
-        display: block; /* Mostrar tarjetas verticales */
-        margin: 10px 0; /* Separar las tarjetas entre sí */
+        display: block;
+        margin: 10px 0; /* Separación entre tarjetas */
     }
 
     .card {
@@ -583,7 +585,7 @@ header nav ul li a {
         margin: 10px;
         padding: 15px;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
     }
 
     .card-header {
@@ -595,7 +597,7 @@ header nav ul li a {
     .card-content {
         display: flex;
         flex-direction: column;
-        gap: 8px; /* Espacio entre elementos de la tarjeta */
+        gap: 8px; /* Espaciado entre etiquetas */
     }
 
     .card-content div {
@@ -604,7 +606,13 @@ header nav ul li a {
 
     .card-content div.label {
         font-weight: bold;
-        color: #003366; /* Color azul para resaltar etiquetas */
+        color: #003366; /* Azul MetroValores */
+    }
+
+    /* Ajustar texto de comparación al final */
+    .texto-comparacion {
+        padding: 10px;
+        font-size: 12px;
     }
 }
 }
