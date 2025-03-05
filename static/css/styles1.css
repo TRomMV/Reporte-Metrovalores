@@ -810,14 +810,25 @@ h2 {
         color: #003366; /* Color uniforme */
     }
 }
-/* Ajustar tamaño uniforme para los logos en móviles */
+/* Ajustar el logo en las tarjetas en vista móvil */
 @media (max-width: 768px) {
+    .tabla-renta-variable td:first-child {
+        width: 100px; /* Ancho del contenedor del logo */
+        height: 100px; /* Alto del contenedor del logo */
+        display: flex;
+        justify-content: center; /* Centrar el contenido horizontalmente */
+        align-items: center; /* Centrar el contenido verticalmente */
+        background-color: #ffffff; /* Fondo para mantener uniformidad */
+        border: 1px solid #ddd; /* Opcional: bordes para delimitar */
+        border-radius: 5px; /* Bordes redondeados */
+        overflow: hidden; /* Evita que la imagen se desborde */
+        margin: 0 auto; /* Centra el contenedor */
+    }
+
     .tabla-renta-variable td:first-child img {
-        width: 90px; /* Ancho fijo del logo */
-        height: 90px; /* Alto fijo del logo */
-        object-fit: cover; /* Llenar el área definida */
-        border-radius: 5px; /* Bordes redondeados opcionales */
+        width: 100%; /* El logo ocupa todo el ancho del contenedor */
+        height: 100%; /* El logo ocupa todo el alto del contenedor */
+        object-fit: cover; /* Llenar el área sin distorsión */
         display: block;
-        margin: 0 auto; /* Centrar el logo dentro de la celda */
     }
 }
