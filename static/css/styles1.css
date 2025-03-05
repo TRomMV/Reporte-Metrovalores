@@ -757,3 +757,29 @@ header nav ul li a {
         box-sizing: border-box;
     }
 }
+/* Ajuste específico para el gráfico en vista de escritorio */
+@media (min-width: 769px) {
+    #grafico {
+        width: 100%; /* Ocupa el ancho completo del contenedor */
+        max-width: 1200px; /* Limita el ancho máximo en monitores grandes */
+        margin: 0 auto; /* Centra el gráfico horizontalmente */
+    }
+}
+/* Ajustar tamaño general de las tablas */
+.tabla-container {
+    width: 90%; /* Incrementa el ancho de las tablas sin desbordar */
+    max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+
+/* Aumentar el tamaño de los cuadros (celdas y filas) */
+.tabla-renta-variable td, 
+.tabla-renta-variable th {
+    padding: 16px 10px; /* Incrementar espacio dentro de cada cuadro */
+}
+
+/* Centrar los subtítulos */
+h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Añade espacio debajo del subtítulo */
+}
