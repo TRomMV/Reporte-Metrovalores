@@ -618,4 +618,33 @@ header nav ul li a {
         text-align: center;
     }
 }
+/* Centrado de contenido en ambas vistas */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centrar los títulos */
+.titulo-centro {
+    text-align: center;
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Centrar las tablas (escritorio y móvil) */
+.tabla-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ajustar al ancho disponible */
+}
+
+/* Ajustar tarjetas en móviles */
+.card-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espacio entre tarjetas */
+}
 }
