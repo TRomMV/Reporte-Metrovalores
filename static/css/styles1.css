@@ -567,4 +567,30 @@ header nav ul li a {
         border: 2px solid #003366; /* Opcional: Añadir un borde azul */
     }
 }
+/* Estilos específicos para tablas en móviles */
+@media (max-width: 768px) {
+    /* Asegurar que las tablas no se deformen en dispositivos pequeños */
+    .tabla-container {
+        overflow-x: auto; /* Habilitar desplazamiento horizontal */
+        -webkit-overflow-scrolling: touch; /* Suavizar el scroll en móviles */
+    }
+
+    .tabla-renta-variable {
+        width: 100%; /* Mantener la tabla dentro del contenedor */
+        border-collapse: collapse; /* Compactar las celdas para mayor claridad */
+    }
+
+    .tabla-renta-variable th, 
+    .tabla-renta-variable td {
+        font-size: 12px; /* Reducir el tamaño de texto para ajustarlo a pantallas pequeñas */
+        padding: 8px; /* Ajustar el padding para evitar desbordamientos */
+        text-align: center; /* Centrar el texto */
+        white-space: nowrap; /* Evitar que el texto se divida en múltiples líneas */
+    }
+
+    /* Opcional: Agregar un borde inferior para mejorar la legibilidad en filas */
+    .tabla-renta-variable tr {
+        border-bottom: 1px solid #ddd;
+    }
+}
 }
