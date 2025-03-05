@@ -567,52 +567,55 @@ header nav ul li a {
         border: 2px solid #003366; /* Opcional: Añadir un borde azul */
     }
 }
-/* Estilos para vista móvil */
+/* Tarjetas verticales para móviles */
 @media (max-width: 768px) {
-    /* Ocultar las tablas estándar en móviles */
+    /* Mostrar contenedor con tarjetas */
     .tabla-container {
-        display: none; /* Ocultar tablas en móviles */
+        display: block; /* Restablecer la visibilidad */
     }
 
-    /* Tarjetas verticales en lugar de tablas */
-    .card-table {
-        display: block;
-        margin: 10px 0; /* Separación entre tarjetas */
+    .tabla-renta-variable {
+        display: block; /* Transforma la tabla en un diseño de bloque */
+        width: 100%;
+        border-collapse: separate; /* Evitar desbordamientos */
     }
 
-    .card {
+    /* Fila de la tabla como tarjeta */
+    .tabla-renta-variable tr {
+        display: block; /* Cada fila como tarjeta */
         background-color: #f2f2f2;
-        margin: 10px;
-        padding: 15px;
+        margin-bottom: 10px;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
     }
 
-    .card-header {
-        font-weight: bold;
-        margin-bottom: 8px;
-        font-size: 14px;
+    /* Celdas dentro de tarjetas */
+    .tabla-renta-variable th {
+        display: none; /* Ocultar encabezados en formato móvil */
     }
 
-    .card-content {
+    .tabla-renta-variable td {
         display: flex;
-        flex-direction: column;
-        gap: 8px; /* Espaciado entre etiquetas */
-    }
-
-    .card-content div {
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
         font-size: 12px;
     }
 
-    .card-content div.label {
+    /* Etiquetas visibles dentro de cada tarjeta */
+    .tabla-renta-variable td::before {
+        content: attr(data-label); /* Agrega etiquetas automáticas */
         font-weight: bold;
-        color: #003366; /* Azul MetroValores */
+        color: #003366;
+        margin-right: 10px;
     }
 
-    /* Ajustar texto de comparación al final */
+    /* Mejora del espaciado general */
     .texto-comparacion {
         padding: 10px;
         font-size: 12px;
+        text-align: center;
     }
 }
 }
