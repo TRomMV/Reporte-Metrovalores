@@ -725,3 +725,52 @@ h2 {
         height: auto;
     }
 }
+/* Mejorar estilo de tarjetas en vista móvil */
+@media (max-width: 768px) {
+    .tabla-container {
+        width: 100%; /* Mantener tarjetas dentro del ancho completo del contenedor */
+    }
+
+    .tabla-renta-variable tr {
+        display: flex; /* Convertir cada tarjeta en un diseño flexible */
+        flex-direction: column; /* Disposición vertical para móviles */
+        gap: 10px; /* Separar elementos dentro de la tarjeta */
+        padding: 15px; /* Espacio interno en la tarjeta */
+        margin-bottom: 15px; /* Separación entre tarjetas */
+        background-color: #f2f2f2; /* Mismo fondo que la tabla */
+        border: 1px solid #ddd; /* Bordes similares a la tabla */
+        border-radius: 8px; /* Bordes redondeados para uniformidad */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    .tabla-renta-variable td {
+        display: flex;
+        justify-content: space-between; /* Alinear datos a los extremos */
+        align-items: center; /* Centrar verticalmente los elementos */
+        font-size: 14px; /* Tamaño de letra uniforme */
+        color: #333; /* Color de texto similar a la tabla */
+        padding: 5px 0; /* Espaciado interno entre filas */
+        border: none; /* Eliminar bordes entre celdas */
+    }
+
+    .tabla-renta-variable td:first-child {
+        justify-content: center; /* Centrar el logo */
+    }
+
+    .tabla-renta-variable td img {
+        width: 50px; /* Tamaño fijo del logo */
+        height: auto;
+        margin-bottom: 10px; /* Separación del logo respecto a otros datos */
+    }
+
+    .tabla-renta-variable td::before {
+        content: attr(data-label); /* Etiquetas visibles */
+        font-weight: bold;
+        color: #003366; /* Azul para las etiquetas */
+        margin-right: 10px;
+    }
+
+    .tabla-renta-variable td:last-child::before {
+        content: none; /* Eliminar etiquetas del logo (emisor) */
+    }
+}
