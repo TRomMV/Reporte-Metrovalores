@@ -9,6 +9,7 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
+from data.obtener_dividendos import obtener_dividendos
 
 app = Flask(__name__)
 
@@ -50,6 +51,7 @@ def format_price(price):
 @app.route('/')
 def home():
     return render_template('index.html')
+    
 
 @app.route('/empresa/<company>')
 def show_company(company):
@@ -166,6 +168,19 @@ def show_company(company):
         min_quotes.append({'AÑO': f'{nombre_mes_ultimo_cerrado_es.capitalize()} {año_ultimo_mes_cerrado}', 'FECHA': format_date(min_cotizacion_mes['FECHA']), 'PRECIO': format_price(min_cotizacion_mes['PRECIO'])})
 
     return render_template('empresa.html', company=company, profile=profile, max_quotes=max_quotes, min_quotes=min_quotes, graph=graph, indices_financieros=indices_financieros, obtener_resumen_dividendos=obtener_resumen_dividendos)
+
+@app.route('/dividendos/<company>')
+def mostrar_dividendos(company):
+    # Asegurarse de que el nombre de la empresa esté en el formato correcto
+    company = company.replace('-', ' ').upper()
+    
+    # Obtener los datos de dividendos
+    dividendos = obtener_dividendos()
+
+    # Filtrar los dividendos para la empresa específica
+    dividendos_empresa = [d for d in dividendos if d['nombre_empresa'] == company]  # Asegúrate de que 'nombre_empresa' sea el campo correcto
+
+    return render_template('dividendos.html', company=company, dividendos=dividendos_empresa)
 
 @app.route('/renta-variable')
 def renta_variable_view():

@@ -144,39 +144,53 @@
                         </div>
                     </div>
                 </div>
-                <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-<div class="dashboard-section dividendos-section">
-    {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-    <h2>Dividendos Repartidos</h2>
-    <div class="dividendos-content">
-        <div class="dividendos-img-container">
-            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-        </div>
-        <div class="dividendos-resumen">
-            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
-        </div>
-    </div>
-    {% endif %}
-</div>
-<div class="card" style="text-align: center;">
-    <h2>Calculadora de rendimientos de la BVQ</h2>
-    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-</div>
-</section>
-</div>
-</main>
-<script>
-    // Incluir el resumen de dividendos desde data/resumen_dividendos.py
-    async function fetchResumenDividendos(company) {
-        const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-        const data = await response.text();
-        document.getElementById('resumen-dividendos').innerHTML = data;
-    }
-
-    fetchResumenDividendos("{{ profile.Nombre }}");
-</script>
-</body>
-</html>
-
-</body>
-</html>
+                                <!-- Sección de Dividendos y Calculadora de Rendimientos -->
+                                <div class="dashboard-section dividendos-section">
+                                    <h2>Dividendos Repartidos</h2>
+                                    <div class="dividendos-content">
+                                        {% if profile.Nombre in ["BANCO GUAYAQUIL S.A.", "BANCO PICHINCHA C.A.", "BANCO BOLIVARIANO C.A."] %}
+                                        <!-- Tabla de Dividendos -->
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Concepto</th>
+                                                    <th>2023</th>
+                                                    <th>2024</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for concepto in dividendos %}
+                                                <tr>
+                                                    <td>{{ concepto.nombre }}</td>
+                                                    <td>{{ concepto.ano_2023 }}</td>
+                                                    <td>{{ concepto.ano_2024 }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        {% else %}
+                                        <div class="dividendos-img-container">
+                                            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="card" style="text-align: center;">
+                                    <h2>Calculadora de rendimientos de la BVQ</h2>
+                                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
+                                </div>
+                            </section>
+                        </div>
+                    </main>
+                    <script>
+                        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
+                        async function fetchResumenDividendos(company) {
+                            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
+                            const data = await response.text();
+                            document.getElementById('resumen-dividendos').innerHTML = data;
+                        }
+                
+                        fetchResumenDividendos("{{ profile.Nombre }}");
+                    </script>
+                </body>
+                </html>
