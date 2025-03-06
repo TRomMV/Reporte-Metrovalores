@@ -155,41 +155,51 @@
                         </div>
                     </div>
                 </div>
-                <!-- Sección de Dividendos -->
-                <div class="dashboard-section dividendos-section">
-                    {% if dividendos %}
-                        <h2>Dividendos Repartidos</h2>
-                        <table class="tabla-dividendos">
-                            <thead>
-                                <tr>
-                                    <th>Año</th>
-                                    <th>Capital (miles)</th>
-                                    <th>Utilidad Neta (miles)</th>
-                                    <th>Dividendo en efectivo (miles)</th>
-                                    <th>Dividendo en efectivo por acción</th>
-                                    <th>Aumento capital (miles)</th>
-                                    <th>Aumento de capital por acción</th>
-                                    <th>Último precio</th>
-                                    <th>Rendimiento del dividendo (Yield)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for row in dividendos %}
-                                <tr>
-                                    <td>{{ row['Año'] }}</td>
-                                    <td>{{ row['Capital (miles)'] }}</td>
-                                    <td>{{ row['Utilidad Neta (miles)'] }}</td>
-                                    <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
-                                    <td>{{ row['Dividendo en efectivo por acción'] }}</td>
-                                    <td>{{ row['Aumento capital (miles)'] }}</td>
-                                    <td>{{ row['Aumento de capital por acción'] }}</td>
-                                    <td>{{ row['Último precio'] }}</td>
-                                    <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %}
+                                <!-- Sección de Dividendos -->
+                                <div class="dashboard-section dividendos-section">
+                                    {% if dividendos and dividendos|length > 0 %}
+                                        <h2>Dividendos Repartidos</h2>
+                                        <table class="tabla-dividendos">
+                                            <thead>
+                                                <tr>
+                                                    <th>Año</th>
+                                                    <th>Capital (miles)</th>
+                                                    <th>Utilidad Neta (miles)</th>
+                                                    <th>Dividendo en efectivo (miles)</th>
+                                                    <th>Dividendo en efectivo por accion</th>
+                                                    <th>Aumento capital (miles)</th>
+                                                    <th>Aumento de capital por accion</th>
+                                                    <th>Ultimo precio</th>
+                                                    <th>Rendimiento del dividendo (Yield)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for row in dividendos %}
+                                                <tr>
+                                                    <td>{{ row['Año'] }}</td>
+                                                    <td>{{ row['Capital (miles)'] }}</td>
+                                                    <td>{{ row['Utilidad Neta (miles)'] }}</td>
+                                                    <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
+                                                    <td>{{ row['Dividendo en efectivo por accion'] }}</td>
+                                                    <td>{{ row['Aumento capital (miles)'] }}</td>
+                                                    <td>{{ row['Aumento de capital por accion'] }}</td>
+                                                    <td>{{ row['Ultimo precio'] }}</td>
+                                                    <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>    
+                                    {% else %}
+                                        <div class="dividendos-content">
+                                            <div class="dividendos-img-container">
+                                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                                            </div>
+                                            <div class="dividendos-resumen">
+                                                <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
                         <!-- Mostrar imagen si no hay datos de dividendos -->
                         <div class="dividendos-content">
                             <div class="dividendos-img-container">
