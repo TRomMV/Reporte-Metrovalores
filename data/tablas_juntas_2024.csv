@@ -1,29 +1,7 @@
-BANCO GUAYAQUIL S.A.;2023;2024
-Capital (miles);$537.165.00;$591.943.00
-Utilidad Neta (miles);$121.718.00;$120.128.00
-Dividendo en efectivo (miles);$54.770.00;$54.000.00
-Dividendo en efectivo por accion; $.102.0 ; $.091.2 
-Aumento capital (miles);$54.776.40;$54.115.00
-Aumento de capital por accion;10.20%;9.12%
-Ultimo precio;$1.10;$1.20
-Rendimiento del dividendo (Yield)%/ $1,00;9.27%;7.60%
-;;
-BANCO PICHINCHA C.A.;2023;2024
-Capital (miles);$1.115.000.00;$1.368.043.80
-Utilidad Neta (miles);$185.205.26;$150.285.62
-Dividendo en efectivo (miles);$50.000.00;$40.577.12
-Dividendo en efectivo por accion;$4.484.00;$2.966.00
-Aumento capital (miles);$254.000.00;$94.680.00
-Aumento de capital por accion;22.69%;6.92%
-Ultimo precio;$80.00;$80.00
-Rendimiento del dividendo (Yield)%/ $1,00;5.61%;3.71%
-;;
-BANCO BOLIVARIANO;2023;2024
-Capital (miles);$360.000.00;$400.000.00
-Utilidad Neta (miles);$65.578.70;$66.093.31
-Dividendo en efectivo (miles);$17.700.00;$18.000.00
-Dividendo en efectivo por accion; $.049.2 ; $.045.0 
-Aumento capital (miles);$40.000.00;$41.483.00
-Aumento de capital por accion;11.11%;10.37%
-Ultimo precio;$1.00;$0.95
-Rendimiento del dividendo (Yield)%/ $1,00;4.92%;4.74%
+Empresa;Año;Capital (miles);Utilidad Neta (miles);Dividendo en efectivo (miles);Dividendo en efectivo por accion;Aumento capital (miles);Aumento de capital por accion;Ultimo precio;Rendimiento del dividendo (Yield)
+BANCO GUAYAQUIL S.A.;2023;537165.00;121718.00;54770.00;0.102;54776.40;10.20%;1.10;9.27%
+BANCO GUAYAQUIL S.A.;2024;591943.00;120128.00;54000.00;0.0912;54115.00;9.12%;1.20;7.60%
+BANCO PICHINCHA C.A.;2023;1115000.00;185205.26;50000.00;4484.00;254000.00;22.69%;80.00;5.61%
+BANCO PICHINCHA C.A.;2024;1368043.80;150285.62;40577.12;2966.00;94680.00;6.92%;80.00;3.71%
+BANCO BOLIVARIANO;2023;360000.00;65578.70;17700.00;0.0492;40000.00;11.11%;1.00;4.92%
+BANCO BOLIVARIANO;2024;400000.00;66093.31;18000.00;0.045;41483.00;10.37%;0.95;4.74%
