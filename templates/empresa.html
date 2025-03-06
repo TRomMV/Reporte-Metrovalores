@@ -33,12 +33,12 @@
             justify-content: space-between;
             align-items: stretch;
             width: 100%;
-            max-width: 1200px; /* Ajusta el ancho máximo */
+            max-width: 1200px;
             margin: 0 auto;
         }
         .dividendos-img, .tabla-dividendos {
             flex: 1;
-            max-width: 48%; /* Cada elemento ocupa casi la mitad */
+            max-width: 48%;
             height: auto;
             object-fit: contain;
         }
@@ -89,7 +89,6 @@
             <section id="dashboard">
                 <div class="dashboard-section">
                     <div class="card">
-                        <!-- Mostrar logo de la empresa -->
                         {% if profile.Nombre in ["BOLSA DE VALORES DE GUAYAQUIL", "BRIKAPITAL SA", "SAN CARLOS SOC. AGR. IND.", "BEVERAGE BRAND PATENTS SA"] %}
                             <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo-pequeno">
                         {% else %}
@@ -156,6 +155,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Sección de Dividendos -->
                 <div class="dashboard-section dividendos-section">
                     {% if dividendos %}
                         <h2>Dividendos Repartidos</h2>
@@ -190,38 +190,33 @@
                             </tbody>
                         </table>
                     {% else %}
+                        <!-- Mostrar imagen si no hay datos de dividendos -->
                         <div class="dividendos-content">
                             <div class="dividendos-img-container">
-                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg
-                                {% else %}
-                                <!-- Mostrar imagen si no hay datos de dividendos -->
-                                <div class="dividendos-content">
-                                    <div class="dividendos-img-container">
-                                        <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                                    </div>
-                                    <div class="dividendos-resumen">
-                                        <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
-                                    </div>
-                                </div>
-                            {% endif %}
+                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                            </div>
+                            <div class="dividendos-resumen">
+                                <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                            </div>
                         </div>
-                        <div class="card" style="text-align: center;">
-                            <h2>Calculadora de rendimientos de la BVQ</h2>
-                            <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                        </div>
-                    </section>
+                    {% endif %}
                 </div>
-            </main>
-            <script>
-                // Función para obtener dinámicamente el resumen de dividendos
-                async function fetchResumenDividendos(company) {
-                    const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-                    const data = await response.text();
-                    document.getElementById('resumen-dividendos').innerHTML = data;
-                }
-        
-                fetchResumenDividendos("{{ profile.Nombre }}");
-            </script>
-        </body>
-        </html>
-        
+                <div class="card" style="text-align: center;">
+                    <h2>Calculadora de rendimientos de la BVQ</h2>
+                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        // Función para obtener dinámicamente el resumen de dividendos
+        async function fetchResumenDividendos(company) {
+            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
+            const data = await response.text();
+            document.getElementById('resumen-dividendos').innerHTML = data;
+        }
+
+        fetchResumenDividendos("{{ profile.Nombre }}");
+    </script>
+</body>
+</html>
