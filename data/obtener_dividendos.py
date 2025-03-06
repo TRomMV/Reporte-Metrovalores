@@ -42,3 +42,5 @@ def obtener_dividendos():
     print("Datos Filtrados:", dividendos_dict)
 
     return dividendos_dict
+# Al final de obtener_dividendos.py
+print("Datos de dividendos procesados desde el CSV:", obtener_dividendos())
