@@ -47,8 +47,19 @@
             font-size: 1.1em;
             text-align: justify;
         }
-        .card h2, .dividendos-section h2 {
+        .tabla-dividendos {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
             text-align: center;
+        }
+        .tabla-dividendos th, .tabla-dividendos td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .tabla-dividendos th {
+            background-color: #f2f2f2;
+            color: #333;
         }
     </style>
 </head>
@@ -144,53 +155,66 @@
                         </div>
                     </div>
                 </div>
-                                <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-                                <div class="dashboard-section dividendos-section">
-                                    <h2>Dividendos Repartidos</h2>
-                                    <div class="dividendos-content">
-                                        {% if profile.Nombre in ["BANCO GUAYAQUIL S.A.", "BANCO PICHINCHA C.A.", "BANCO BOLIVARIANO C.A."] %}
-                                        <!-- Tabla de Dividendos -->
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Concepto</th>
-                                                    <th>2023</th>
-                                                    <th>2024</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for concepto in dividendos %}
-                                                <tr>
-                                                    <td>{{ concepto.nombre }}</td>
-                                                    <td>{{ concepto.ano_2023 }}</td>
-                                                    <td>{{ concepto.ano_2024 }}</td>
-                                                </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                        {% else %}
-                                        <div class="dividendos-img-container">
-                                            <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="card" style="text-align: center;">
-                                    <h2>Calculadora de rendimientos de la BVQ</h2>
-                                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                                </div>
-                            </section>
-                        </div>
-                    </main>
-                    <script>
-                        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
-                        async function fetchResumenDividendos(company) {
-                            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-                            const data = await response.text();
-                            document.getElementById('resumen-dividendos').innerHTML = data;
-                        }
-                
-                        fetchResumenDividendos("{{ profile.Nombre }}");
-                    </script>
-                </body>
-                </html>
+                <!-- Sección de Dividendos y Calculadora de Rendimientos -->
+                <div class="dashboard-section dividendos-section">
+                    {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
+                        <h2>Dividendos Repartidos</h2>
+                        {% if dividendos %}
+                            <!-- Mostrar tabla de dividendos si existen datos -->
+                            <table class="tabla-dividendos">
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Capital (miles)</th>
+                                        <th>Utilidad Neta (miles)</th>
+                                        <th>Dividendo en efectivo (miles)</th>
+                                        <th>Dividendo en efectivo por acción</th>
+                                        <th>Aumento capital (miles)</th>
+                                        <th>Aumento de capital por acción</th>
+                                        <th>Último precio</th>
+                                        <th>Rendimiento del dividendo (Yield)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in dividendos %}
+                                    <tr>
+                                        <td>{{ row['Año'] }}</td>
+                                        <td>{{ row['Capital (miles)'] }}</td>
+                                        <td>{{ row['Utilidad Neta (miles)'] }}</td>
+                                        <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
+                                        <td>{{ row['Dividendo en efectivo por acción'] }}</td>
+                                        <td>{{ row['Aumento capital (miles)'] }}</td>
+                                        <td>{{ row['Aumento de capital por acción'] }}</td>
+                                        <td>{{ row['Último precio'] }}</td>
+                                        <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <!-- Mostrar imagen si no existen datos en el CSV -->
+                            <div class="dividendos-img-container">
+                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h2>Calculadora de rendimientos de la BVQ</h2>
+                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
+        async function fetchResumenDividendos(company) {
+            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
+            const data = await response.text();
+            document.getElementById('resumen-dividendos').innerHTML = data;
+        }
+
+        fetchResumenDividendos("{{ profile.Nombre }}");
+    </script>
+</body>
+</html>
