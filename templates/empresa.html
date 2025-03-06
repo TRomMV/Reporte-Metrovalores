@@ -31,37 +31,21 @@
         .dividendos-content {
             display: flex;
             justify-content: space-between;
-            align-items: stretch;
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-        .dividendos-img, .tabla-dividendos {
-            flex: 1;
-            max-width: 48%;
+        .dividendos-img-container {
+            flex: 2;
+            padding-right: 20px;
+        }
+        .dividendos-img {
+            width: 100%;
             height: auto;
-            object-fit: contain;
         }
         .dividendos-resumen {
-            flex: 1;
-            padding-left: 10px;
-            padding-right: 10px;
+            flex: 3;
+            padding-left: 20px;
+            font-size: 1.1em;
             text-align: justify;
-        }
-        .tabla-dividendos {
-            width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
-            font-size: 1em;
-        }
-        .tabla-dividendos th, .tabla-dividendos td {
-            padding: 8px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        .tabla-dividendos th {
-            background-color: #f2f2f2;
-            color: #333;
         }
         .card h2, .dividendos-section h2 {
             text-align: center;
@@ -89,11 +73,13 @@
             <section id="dashboard">
                 <div class="dashboard-section">
                     <div class="card">
+                        <!-- Mostramos solo el logo de la empresa -->
                         {% if profile.Nombre in ["BOLSA DE VALORES DE GUAYAQUIL", "BRIKAPITAL SA", "SAN CARLOS SOC. AGR. IND.", "BEVERAGE BRAND PATENTS SA"] %}
                             <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo-pequeno">
                         {% else %}
                             <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo">
                         {% endif %}
+                        <!-- Subtítulo en gris -->
                         <h3 class="subtitulo">Precio y Volumen</h3>
                         <div id="grafico">
                             {{ graph|safe }}
@@ -106,127 +92,88 @@
                         <p><strong>Sector:</strong> {{ profile.Sector }}</p>
                     </div>
                 </div>
+                <!-- Índice de Cotizaciones Máximas y Mínimas -->
                 <div class="dashboard-section">
                     <div class="card">
                         <h2>Cotizaciones Máximas y Mínimas</h2>
                         <div class="cotizaciones" style="display: flex; justify-content: space-between;">
-                            <div class="cotizaciones-lista" style="flex: 1; margin-right: 10px;">
-                                <h3>Cotizaciones Máximas</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Año</th>
-                                            <th>Fecha</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for quote in max_quotes %}
-                                        <tr>
-                                            <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
-                                            <td>${{ quote.PRECIO }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="cotizaciones-lista" style="flex: 1; margin-left: 10px;">
-                                <h3>Cotizaciones Mínimas</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Año</th>
-                                            <th>Fecha</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for quote in min_quotes %}
-                                        <tr>
-                                            <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
-                                            <td>${{ quote.PRECIO }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                <!-- Sección de Dividendos -->
-                                <div class="dashboard-section dividendos-section">
-                                    {% if dividendos and dividendos|length > 0 %}
-                                        <h2>Dividendos Repartidos</h2>
-                                        <table class="tabla-dividendos">
-                                            <thead>
-                                                <tr>
-                                                    <th>Año</th>
-                                                    <th>Capital (miles)</th>
-                                                    <th>Utilidad Neta (miles)</th>
-                                                    <th>Dividendo en efectivo (miles)</th>
-                                                    <th>Dividendo en efectivo por accion</th>
-                                                    <th>Aumento capital (miles)</th>
-                                                    <th>Aumento de capital por accion</th>
-                                                    <th>Ultimo precio</th>
-                                                    <th>Rendimiento del dividendo (Yield)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for row in dividendos %}
-                                                <tr>
-                                                    <td>{{ row['Año'] }}</td>
-                                                    <td>{{ row['Capital (miles)'] }}</td>
-                                                    <td>{{ row['Utilidad Neta (miles)'] }}</td>
-                                                    <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
-                                                    <td>{{ row['Dividendo en efectivo por accion'] }}</td>
-                                                    <td>{{ row['Aumento capital (miles)'] }}</td>
-                                                    <td>{{ row['Aumento de capital por accion'] }}</td>
-                                                    <td>{{ row['Ultimo precio'] }}</td>
-                                                    <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
-                                                </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>    
-                                    {% else %}
-                                        <div class="dividendos-content">
-                                            <div class="dividendos-img-container">
-                                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                                                        <!-- Tabla de Cotizaciones Máximas -->
+                                                        <div class="cotizaciones-lista" style="flex: 1; margin-right: 10px;">
+                                                            <h3>Cotizaciones Máximas</h3>
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Año</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Valor</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for quote in max_quotes %}
+                                                                    <tr>
+                                                                        <td>{{ quote.AÑO }}</td>
+                                                                        <td>{{ quote.FECHA }}</td>
+                                                                        <td>${{ quote.PRECIO }}</td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- Tabla de Cotizaciones Mínimas -->
+                                                        <div class="cotizaciones-lista" style="flex: 1; margin-left: 10px;">
+                                                            <h3>Cotizaciones Mínimas</h3>
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Año</th>
+                                                                        <th>Fecha</th>
+                                                                        <th>Valor</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for quote in min_quotes %}
+                                                                    <tr>
+                                                                        <td>{{ quote.AÑO }}</td>
+                                                                        <td>{{ quote.FECHA }}</td>
+                                                                        <td>${{ quote.PRECIO }}</td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="dividendos-resumen">
-                                                <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                                            <!-- Sección de Dividendos y Calculadora de Rendimientos -->
+                                            <div class="dashboard-section dividendos-section">
+                                                {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
+                                                <h2>Dividendos Repartidos</h2>
+                                                <div class="dividendos-content">
+                                                    <div class="dividendos-img-container">
+                                                        <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
+                                                    </div>
+                                                    <div class="dividendos-resumen">
+                                                        <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
                                             </div>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                        <!-- Mostrar imagen si no hay datos de dividendos -->
-                        <div class="dividendos-content">
-                            <div class="dividendos-img-container">
-                                <img src="/static/img/juntas_2024/{{ profile.Nombre }}.jpg" alt="Dividendos de {{ profile.Nombre }}" class="dividendos-img">
-                            </div>
-                            <div class="dividendos-resumen">
-                                <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="card" style="text-align: center;">
-                    <h2>Calculadora de rendimientos de la BVQ</h2>
-                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                </div>
-            </section>
-        </div>
-    </main>
-    <script>
-        // Función para obtener dinámicamente el resumen de dividendos
-        async function fetchResumenDividendos(company) {
-            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-            const data = await response.text();
-            document.getElementById('resumen-dividendos').innerHTML = data;
-        }
-
-        fetchResumenDividendos("{{ profile.Nombre }}");
-    </script>
-</body>
-</html>
+                                            <div class="card" style="text-align: center;">
+                                                <h2>Calculadora de rendimientos de la BVQ</h2>
+                                                <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </main>
+                                <script>
+                                    // Incluir el resumen de dividendos desde data/resumen_dividendos.py
+                                    async function fetchResumenDividendos(company) {
+                                        const response = await fetch(`/data/resumen_dividendos?company=${company}`);
+                                        const data = await response.text();
+                                        document.getElementById('resumen-dividendos').innerHTML = data;
+                                    }
+                            
+                                    fetchResumenDividendos("{{ profile.Nombre }}");
+                                </script>
+                            </body>
+                            </html>

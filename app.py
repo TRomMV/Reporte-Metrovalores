@@ -9,7 +9,6 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
-from data.obtener_dividendos import obtener_dividendos
 
 app = Flask(__name__)
 
@@ -169,44 +168,7 @@ def show_company(company):
 
     return render_template('empresa.html', company=company, profile=profile, max_quotes=max_quotes, min_quotes=min_quotes, graph=graph, indices_financieros=indices_financieros, obtener_resumen_dividendos=obtener_resumen_dividendos)
 
-@app.route('/dividendos/<company>')
-def mostrar_dividendos(company):
-    from data.obtener_dividendos import obtener_dividendos  # Importar la función desde el archivo correspondiente
 
-    # Crear un diccionario con información básica de las empresas (asegurándonos de que se incluya "profile")
-    perfiles = {
-        "BANCO GUAYAQUIL S.A.": {"Nombre": "BANCO GUAYAQUIL S.A.", "Descripción": "Banco líder en Ecuador", "Sector": "Financiero"},
-        "BANCO PICHINCHA C.A.": {"Nombre": "BANCO PICHINCHA C.A.", "Descripción": "El banco más grande del país", "Sector": "Financiero"},
-        "BANCO BOLIVARIANO C.A.": {"Nombre": "BANCO BOLIVARIANO C.A.", "Descripción": "Banco confiable con años de experiencia", "Sector": "Financiero"}
-    }
-
-    # Asegurar que el nombre de la empresa esté en el formato correcto (coincidir con el CSV)
-    company = company.replace('-', ' ').upper()
-
-    # Buscar el perfil de la empresa en el diccionario
-    profile = perfiles.get(company)
-    if not profile:
-        return f"No se encontró información para la empresa: {company}", 404  # Mostrar un error si no hay datos del perfil
-
-    # Obtener los datos de dividendos desde el archivo CSV
-    try:
-        dividendos = obtener_dividendos()  # Llama a la función mejorada en obtener_dividendos.py
-    except Exception as e:
-        return f"Error al obtener los dividendos: {e}", 500  # Manejo de errores
-
-    # Filtrar los dividendos para la empresa específica
-    dividendos_empresa = [d for d in dividendos if d['Empresa'].upper() == company]
-
-    # Agregar un print temporal para depuración (asegúrate de eliminar esto después de depurar)
-    print(f"Datos de dividendos para {company}: {dividendos_empresa}")
-
-    # Renderizar la plantilla HTML con los datos del perfil y los dividendos
-    return render_template(
-        'empresa.html',
-        company=company,
-        profile=profile,
-        dividendos=dividendos_empresa if dividendos_empresa else None
-    )
 
 
 @app.route('/renta-variable')
