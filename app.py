@@ -221,34 +221,6 @@ def update_data():
     os.system('python actualizar_variacion.py') 
     return "Data updated successfully!"
 
-@app.route('/dividendos/<company>')
-def mostrar_dividendos(company):
-    from data.obtener_dividendos import obtener_dividendos  # Importar la función que procesamos previamente
-
-    # Formatear el nombre de la empresa para coincidir con los datos del CSV
-    company = company.replace('-', ' ').upper()
-
-    # Obtener los datos del CSV
-    try:
-        dividendos = obtener_dividendos()
-    except Exception as e:
-        print(f"Error al obtener los dividendos: {e}")
-        return f"Error al obtener los dividendos: {e}", 500
-
-    # Filtrar los dividendos de la empresa
-    dividendos_empresa = [d for d in dividendos if d['Empresa'].upper() == company]
-
-    # Si no hay datos para esa empresa, se maneja como vacío
-    if not dividendos_empresa:
-        dividendos_empresa = None
-
-    # Renderizar la plantilla correspondiente
-    return render_template(
-        'empresa.html',
-        company=company,
-        dividendos=dividendos_empresa
-    )
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
