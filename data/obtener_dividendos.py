@@ -1,36 +1,59 @@
 import pandas as pd
-import os
 
-def obtener_dividendos():
+def cargar_datos_dividendos():
     """
-    Lee y procesa el archivo CSV de dividendos, limpiando y preparando los datos
-    para ser utilizados en la aplicación.
+    Carga los datos del archivo CSV desde una ruta absoluta y realiza limpieza y validación básica.
     """
-    # Ruta relativa al archivo CSV
-    archivo_csv = os.path.join(os.path.dirname(__file__), 'tablas_juntas_2024.csv')
+    # Ruta absoluta al archivo CSV
+    ruta_csv = r'C:\Users\tomas\Desktop\MetrovaloresApp\data\tablas_juntas_2024.csv'
 
     try:
-        # Leer el CSV con configuración apropiada
-        datos = pd.read_csv(archivo_csv, sep=';', decimal=',', encoding='utf-8')
+        # Leer el archivo CSV con las configuraciones adecuadas
+        datos = pd.read_csv(ruta_csv, sep=';', decimal=',', encoding='utf-8', header=1)
+
+        # Validar y normalizar columnas necesarias
+        columnas_necesarias = [
+            'Año', 'Capital (miles)', 'Utilidad Neta (miles)', 
+            'Dividendo en efectivo (miles)', 'Dividendo en efectivo por accion', 
+            'Aumento capital (miles)', 'Aumento de capital por accion', 
+            'Ultimo precio', 'Rendimiento del dividendo (Yield)', 'Empresa'
+        ]
+        
+        for columna in columnas_necesarias:
+            if columna not in datos.columns:
+                datos[columna] = "N/A"  # Completar columnas faltantes con valores predeterminados
+
+        # Normalizar encabezados y datos en 'Empresa'
+        datos.columns = datos.columns.str.strip()  # Limpiar espacios en los encabezados
+        datos['Empresa'] = datos['Empresa'].str.upper().str.strip()  # Normalizar nombres de empresas
+
+        # Convertir valores a cadenas para evitar problemas de representación
+        for columna in columnas_necesarias:
+            if columna in datos.columns:
+                datos[columna] = datos[columna].astype(str)
+
+        return datos
     except Exception as e:
+        # Manejo de errores al leer el CSV
         raise ValueError(f"Error al leer el archivo CSV: {e}")
 
-    # Limpiar encabezados y valores
-    datos.columns = datos.columns.str.strip()  # Limpiar espacios en los nombres de las columnas
-    datos['Empresa'] = datos['Empresa'].str.strip()  # Limpiar espacios en los nombres de las empresas
+def obtener_datos_emisor(emisor, datos):
+    """
+    Filtra los datos para obtener solo los registros del emisor especificado.
+    """
+    # Asegurarse de que el emisor esté en mayúsculas y limpio
+    datos_emisor = datos[datos['Empresa'] == emisor.upper()]
+    return datos_emisor
 
-    # Reemplazar celdas vacías o nulas con un símbolo "-"
-    datos.fillna('-', inplace=True)
+def procesar_dividendos_emisor(emisor):
+    """
+    Carga y procesa los datos para un emisor específico.
+    """
+    # Cargar los datos desde el CSV
+    datos = cargar_datos_dividendos()
 
-    # Asegurarse de que valores numéricos estén formateados adecuadamente
-    for columna in ['Capital (miles)', 'Utilidad Neta (miles)', 'Dividendo en efectivo (miles)',
-                    'Dividendo en efectivo por accion', 'Aumento capital (miles)',
-                    'Aumento de capital por accion', 'Ultimo precio', 'Rendimiento del dividendo (Yield)']:
-        if columna in datos.columns:
-            datos[columna] = datos[columna].astype(str).str.replace(' ', '').str.replace('$', '').str.replace('%', '').str.replace(',', '.')
-            datos[columna] = pd.to_numeric(datos[columna], errors='coerce').fillna('-')
+    # Filtrar por el emisor solicitado
+    dividendos_emisor = obtener_datos_emisor(emisor, datos)
 
-    # Convertir a una lista de diccionarios para uso en Flask
-    dividendos = datos.to_dict(orient='records')
-
-    return dividendos
+    # Convertir a lista de diccionarios para facilitar su uso en la plantilla HTML
+    return dividendos_emisor.to_dict(orient='records')

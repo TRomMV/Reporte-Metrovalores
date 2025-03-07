@@ -9,7 +9,7 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
-from data.obtener_dividendos import obtener_dividendos
+from data.obtener_dividendos import procesar_dividendos_emisor
 
 
 app = Flask(__name__)
@@ -223,38 +223,25 @@ def update_data():
     os.system('python actualizar_variacion.py') 
     return "Data updated successfully!"
 
+from data.obtener_dividendos import procesar_dividendos_emisor
+
 @app.route('/dividendos/<company>')
 def dividendos_view(company):
-    import pandas as pd
-    import os
+    # Ruta absoluta al archivo CSV
+    archivo_csv = r'C:\Users\tomas\Desktop\MetrovaloresApp\data\tablas_juntas_2024.csv'
 
-    # Ruta relativa al archivo CSV
-    archivo_csv = os.path.join(os.path.dirname(__file__), 'data', 'tablas_juntas_2024.csv')
-
-    # Leer y procesar el CSV
+    # Procesar los datos para la empresa
     try:
-        datos = pd.read_csv(archivo_csv, sep=';', decimal=',', encoding='utf-8')
+        dividendos_emisor = procesar_dividendos_emisor(archivo_csv, company)
     except Exception as e:
-        print(f"Error al leer el archivo CSV: {e}")
-        return f"Error al leer el archivo CSV: {e}", 500
+        print(f"Error al procesar datos para la empresa: {e}")
+        return f"Error al procesar datos: {e}", 500
 
-    # Limpiar y preparar los datos
-    datos.columns = datos.columns.str.strip()  # Limpiar encabezados
-    datos['Empresa'] = datos['Empresa'].str.strip()  # Limpiar nombres de empresas
-
-    # Filtrar solo los datos para la empresa solicitada
-    dividendos_empresa = datos[datos['Empresa'].str.upper() == company.upper()].to_dict(orient='records')
-
-    # Verificar si hay datos para la empresa
-    if not dividendos_empresa:
-        print(f"No se encontraron dividendos para la empresa: {company}")
-        dividendos_empresa = None
-
-    # Enviar los datos a la plantilla
+    # Enviar datos al frontend
     return render_template(
         'empresa.html',
-        company=company,
-        dividendos=dividendos_empresa
+        profile={"Nombre": company},  # Ajusta según tu estructura
+        dividendos=dividendos_emisor
     )
 
 
