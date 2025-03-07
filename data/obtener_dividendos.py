@@ -2,37 +2,25 @@ import pandas as pd
 import os
 
 def obtener_dividendos():
-    # Usar una ruta relativa al archivo actual
+    # Ruta del archivo CSV (relativa al archivo actual)
     archivo_csv = os.path.join(os.path.dirname(__file__), 'tablas_juntas_2024.csv')
 
     # Verificar si el archivo existe
     if not os.path.exists(archivo_csv):
         raise FileNotFoundError(f"El archivo {archivo_csv} no existe. Verifica la ruta y el archivo.")
-
-    # Leer el archivo CSV
+    # Leer el archivo CSV y procesar los datos
     try:
-        df = pd.read_csv(archivo_csv, sep=';', encoding='utf-8')  # Ajusta el separador y codificación si es necesario
-    except pd.errors.EmptyDataError:
-        raise ValueError(f"El archivo {archivo_csv} está vacío.")
-    except pd.errors.ParserError:
-        raise ValueError(f"Error al analizar el archivo {archivo_csv}. Verifica el formato.")
+        df = pd.read_csv(archivo_csv, sep=';', decimal=',', encoding='utf-8')
     except Exception as e:
-        raise ValueError(f"Error desconocido al leer el archivo CSV: {e}")
-    
-    # Limpieza y procesamiento de los datos
-    df.columns = df.columns.str.strip()  # Eliminar espacios adicionales en encabezados
-    df['Empresa'] = df['Empresa'].str.strip()  # Eliminar espacios en nombres de empresas
+        raise ValueError(f"Error al leer el archivo CSV: {e}")
 
-    # Filtrar las empresas de interés
-    empresas = ['BANCO GUAYAQUIL S.A.', 'BANCO PICHINCHA C.A.']
-    df_filtrado = df[df['Empresa'].isin(empresas)]
+    # Reemplazar valores vacíos o nulos con el símbolo "-"
+    df.fillna('-', inplace=True)
 
-    # Verificar si hay datos después del filtrado
-    if df_filtrado.empty:
-        print("No se encontraron datos para las empresas especificadas.")
-        return []
+    # Limpiar columnas de posibles espacios en los encabezados
+    df.columns = df.columns.str.strip()
 
-    # Convertir a diccionario para facilitar su uso
-    dividendos_dict = df_filtrado.to_dict(orient='records')
-    print("Datos de dividendos procesados:", dividendos_dict)  # Debug para logs
-    return dividendos_dict
+    # Convertir a una lista de diccionarios para que sea más fácil de manejar en la aplicación
+    dividendos = df.to_dict(orient='records')
+
+    return dividendos
