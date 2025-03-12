@@ -138,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                                           <!-- Sección de Dividendos y Calculadora de Rendimientos -->
+                                                            <!-- Sección de Dividendos y Calculadora de Rendimientos -->
                 <div class="dashboard-section dividendos-section">
                     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
                     <h2>Dividendos Repartidos</h2>
@@ -166,11 +166,15 @@
                                         <td>{{ row['Capital (miles)'] }}</td>
                                         <td>{{ row['Utilidad Neta (miles)'] }}</td>
                                         <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
-                                        <td>{{ row['Dividendo en efectivo por acción'] }}</td>
+                                        <td>{{ row['Dividendo en efectivo por accion'] }}</td>
                                         <td>{{ row['Aumento capital (miles)'] }}</td>
-                                        <td>{{ row['Aumento de capital por acción'] }}</td>
-                                        <td>{{ row['Último precio'] }}</td>
+                                        <td>{{ row['Aumento de capital por accion'] }}</td>
+                                        <td>{{ row['Ultimo precio'] }}</td>
                                         <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="9" style="text-align:center;">No se encontraron dividendos para esta empresa.</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -191,15 +195,5 @@
             </section>
         </div>
     </main>
-    <script>
-        // Incluir el resumen de dividendos desde data/resumen_dividendos.py
-        async function fetchResumenDividendos(company) {
-            const response = await fetch(`/data/resumen_dividendos?company=${company}`);
-            const data = await response.text();
-            document.getElementById('resumen-dividendos').innerHTML = data;
-        }
-
-        fetchResumenDividendos("{{ profile.Nombre }}");
-    </script>
 </body>
 </html>
