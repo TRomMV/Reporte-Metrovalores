@@ -357,3 +357,29 @@
             width: 100%; /* Asegura que el botón use el ancho completo */
         }
     }}
+    
+    .dividendos-section {
+        margin: 50px 0;
+    }
+    
+    .dividendos-cuadros {
+        text-align: center;
+    }
+    
+    .dividendos-cuadros img {
+        width: 80%; /* Incrementar el ancho al 90% del contenedor */
+        max-width: 900px; /* Tamaño máximo para pantallas grandes */
+        height: auto; /* Mantener la proporción */
+        border: 4px solid black; /* Borde negro alrededor de la imagen */
+        border-radius: 5px; /* Esquinas ligeramente redondeadas */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para un efecto visual agradable */
+    }
+    .imagen-dividendo {
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+        border: 4px solid black; /* Borde negro */
+        border-radius: 5px; /* Esquinas redondeadas opcionales */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para mejorar el diseño visual */
+    }
+    

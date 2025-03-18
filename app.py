@@ -22,6 +22,7 @@ else:
 datos_actualizados_path = 'data/datos_actualizados.csv'
 datos_actualizados_lunes_path = 'data/datos_actualizados_lunes.csv'
 acciones_combinadas_path = 'data/acciones_combinadas.csv'  # Archivo de datos de empresas
+rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero.csv'  # Archivo de rendimiento sector financiero
 
 # Verifica si el archivo existe
 if not os.path.exists(acciones_combinadas_path):
@@ -40,6 +41,16 @@ df_empresas = df_empresas.dropna(subset=['FECHA'])
 
 # Filtrar por precio de cierre y tipo de acción
 df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
+
+# Leer los datos del archivo de rendimiento sector financiero
+df_rendimiento = pd.read_csv(rendimiento_sector_financiero_path)
+
+# Convertir la columna 'RENDIMIENTO' a valores numéricos (eliminar el símbolo % y convertir a flotante)
+df_rendimiento.columns = df_rendimiento.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
+if 'AÑO' not in df_rendimiento.columns or 'EMISOR' not in df_rendimiento.columns or 'RENDIMIENTO' not in df_rendimiento.columns:
+    raise KeyError("Las columnas 'AÑO', 'EMISOR' o 'RENDIMIENTO' no se encuentran en los datos de rendimiento. Verifique que los datos estén en el formato correcto.")
+
+df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
 
 def format_date(date_obj):
     return date_obj.strftime('%d/%m/%Y')
@@ -200,7 +211,117 @@ def renta_variable_view():
         semana_anterior_inicio = semana_anterior_inicio.replace(mes_ing, mes_esp)
         fecha_actual = fecha_actual.replace(mes_ing, mes_esp)
 
-    return render_template('renta_variable.html', datos=datos.to_dict(orient='records'), semana_actual_inicio=semana_actual_inicio, semana_anterior_inicio=semana_anterior_inicio, fecha_actual=fecha_actual)
+    # Generar el gráfico de las tres empresas
+    grafico_tres_empresas_html = grafico_tres_empresas()
+
+    # Renderizar el template con todos los datos necesarios
+    return render_template(
+        'renta_variable.html',
+        datos=datos.to_dict(orient='records'),
+        semana_actual_inicio=semana_actual_inicio,
+        semana_anterior_inicio=semana_anterior_inicio,
+        fecha_actual=fecha_actual,
+        grafico_tres_empresas=grafico_tres_empresas_html
+    )
+
+
+# Llamar al script de actualización de variación semanal
+if os.path.exists("actualizar_variacion.py"):
+    subprocess.run(["python", "actualizar_variacion.py"])
+else:
+    print("El archivo 'actualizar_variacion.py' no se encuentra.")
+
+# Ruta de los archivos CSV
+datos_actualizados_path = 'data/datos_actualizados.csv'
+datos_actualizados_lunes_path = 'data/datos_actualizados_lunes.csv'
+acciones_combinadas_path = 'data/acciones_combinadas.csv'  # Archivo de datos de empresas
+rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero.csv'  # Archivo de rendimiento sector financiero
+
+# Verifica si el archivo existe
+if not os.path.exists(acciones_combinadas_path):
+    raise FileNotFoundError(f"El archivo {acciones_combinadas_path} no se encuentra. Verifica que los datos están combinados correctamente.")
+
+# Leer los datos desde el archivo combinado
+df_empresas = pd.read_csv(acciones_combinadas_path)
+
+# Limpiar los datos de empresas
+df_empresas.columns = df_empresas.columns.str.strip().str.upper()  # Asegurarse de que las columnas estén en mayúsculas
+if 'FECHA' not in df_empresas.columns or 'EMISOR' not in df_empresas.columns or 'VALOR' not in df_empresas.columns:
+    raise KeyError("Las columnas 'FECHA', 'EMISOR' o 'VALOR' no se encuentran en los datos. Verifique que los datos estén en el formato correcto.")
+
+df_empresas['FECHA'] = pd.to_datetime(df_empresas['FECHA'], errors='coerce')
+df_empresas = df_empresas.dropna(subset=['FECHA'])
+
+# Filtrar por precio de cierre y tipo de acción
+df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
+
+# Leer los datos del archivo de rendimiento sector financiero
+df_rendimiento = pd.read_csv(rendimiento_sector_financiero_path)
+
+# Convertir la columna 'RENDIMIENTO' a valores numéricos (eliminar el símbolo % y convertir a flotante)
+df_rendimiento.columns = df_rendimiento.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
+if 'AÑO' not in df_rendimiento.columns or 'EMISOR' not in df_rendimiento.columns or 'RENDIMIENTO' not in df_rendimiento.columns:
+    raise KeyError("Las columnas 'AÑO', 'EMISOR' o 'RENDIMIENTO' no se encuentran en los datos de rendimiento. Verifique que los datos estén en el formato correcto.")
+
+df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
+
+
+@app.route('/grafico-tres-empresas')
+def grafico_tres_empresas():
+    # Filtrar datos para las tres empresas
+    empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.']
+    colores = {
+        'BANCO PICHINCHA C.A.': '#F7B600',  # Amarillo
+        'BANCO BOLIVARIANO C.A.': '#004B87',  # Azul
+        'BANCO GUAYAQUIL S.A.': '#E12D84'  # Magenta
+    }
+    
+    fig = go.Figure()
+
+    for empresa in empresas:
+        datos_empresa = df_rendimiento[df_rendimiento['EMISOR'] == empresa]
+        
+        # Añadir la línea de rendimiento para cada empresa
+        fig.add_trace(go.Scatter(
+            x=datos_empresa['AÑO'],
+            y=datos_empresa['RENDIMIENTO'],
+            mode='lines+markers',
+            name=empresa,
+            line=dict(color=colores[empresa])
+        ))
+
+    # Configuración del gráfico
+    fig.update_layout(
+        title='Tendencias de Rendimiento: Pichincha, Bolivariano y Guayaquil',
+        xaxis_title='Año',
+        yaxis_title='Rendimiento (%)',
+        hovermode='x unified',
+        legend=dict(x=0, y=1.2),
+        xaxis=dict(
+            title='Año',
+            tickmode='array',  # Mostrar solo valores específicos en el eje X
+            tickvals=[2022, 2023, 2024],  # Limitar los años visibles
+            ticktext=['2022', '2023', '2024']  # Etiquetas para los años
+        ),
+        yaxis=dict(
+            title='Rendimiento (%)',
+            tickformat=".1%"  # Formato de porcentaje
+        ),
+        dragmode='pan'  # Permitir arrastrar el gráfico
+    )
+
+    # Configuración para habilitar el zoom con el scroll del mouse
+    config = dict(
+        scrollZoom=True,  # Zoom con el scroll del mouse
+        displayModeBar=True,  # Mostrar la barra de herramientas
+        modeBarButtonsToRemove=['zoom2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d'],
+        displaylogo=False  # Ocultar el logo de Plotly
+    )
+
+    # Generar el gráfico en formato HTML
+    return fig.to_html(full_html=False, config=config)
+
+
 
 @app.route('/data/<path:filename>')
 def serve_data_file(filename):
