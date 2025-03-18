@@ -138,62 +138,34 @@
                         </div>
                     </div>
                 </div>
-                                                            <!-- Sección de Dividendos y Calculadora de Rendimientos -->
-                <div class="dashboard-section dividendos-section">
-                    {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
-                    <h2>Dividendos Repartidos</h2>
-                    <div class="dividendos-content">
-                        <!-- Tabla de Dividendos -->
-                        <div class="dividendos-table">
-                            <table class="tabla-dividendos">
-                                <thead>
-                                    <tr>
-                                        <th>Año</th>
-                                        <th>Capital (miles)</th>
-                                        <th>Utilidad Neta (miles)</th>
-                                        <th>Dividendo en efectivo (miles)</th>
-                                        <th>Dividendo en efectivo por acción</th>
-                                        <th>Aumento capital (miles)</th>
-                                        <th>Aumento de capital por acción</th>
-                                        <th>Último precio</th>
-                                        <th>Yield (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for row in dividendos %}
-                                    <tr>
-                                        <td>{{ row['Año'] }}</td>
-                                        <td>{{ row['Capital (miles)'] }}</td>
-                                        <td>{{ row['Utilidad Neta (miles)'] }}</td>
-                                        <td>{{ row['Dividendo en efectivo (miles)'] }}</td>
-                                        <td>{{ row['Dividendo en efectivo por accion'] }}</td>
-                                        <td>{{ row['Aumento capital (miles)'] }}</td>
-                                        <td>{{ row['Aumento de capital por accion'] }}</td>
-                                        <td>{{ row['Ultimo precio'] }}</td>
-                                        <td>{{ row['Rendimiento del dividendo (Yield)'] }}</td>
-                                    </tr>
-                                    {% else %}
-                                    <tr>
-                                        <td colspan="9" style="text-align:center;">No se encontraron dividendos para esta empresa.</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Resumen de Dividendos -->
-                        <div class="dividendos-resumen">
-                            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-                <!-- Calculadora de rendimientos -->
-                <div class="card" style="text-align: center;">
-                    <h2>Calculadora de rendimientos de la BVQ</h2>
-                    <iframe id="calculator" src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" style="width:80%; height:600px; border:none;"></iframe>
-                </div>
-            </section>
+                  <!-- Sección de Dividendos y Calculadora de Rendimientos -->
+<div class="dashboard-section dividendos-section">
+    {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
+    <h2>Dividendos Repartidos</h2>
+    <div class="dividendos-content">
+        <!-- Imagen de las Juntas -->
+        <div class="dividendos-imagen">
+            <img 
+            src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
+            alt="Junta de Dividendos {{ profile.Nombre }}" 
+                style="width:100%; height:auto; max-width:600px;">
         </div>
-    </main>
-</body>
-</html>
+        <!-- Resumen de Dividendos -->
+        <div class="dividendos-resumen">
+            <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<h2>Calculadora de rendimientos de la BVQ</h2>
+<iframe id="calculator" 
+src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" 
+style="width:80%; height:600px; border:none;"></iframe>
+
+                        </div> 
+                    </section> 
+                </div> 
+            </main> 
+        </body> 
+        </html>
+            

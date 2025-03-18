@@ -9,8 +9,6 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
-from data.obtener_dividendos import procesar_dividendos_emisor
-
 
 app = Flask(__name__)
 
@@ -222,32 +220,6 @@ def update_data():
     os.system('python combine_data.py') 
     os.system('python actualizar_variacion.py') 
     return "Data updated successfully!"
-
-@app.route('/dividendos/<company>')
-def dividendos_view(company):
-    # Ruta absoluta al archivo CSV
-    archivo_csv = r'C:\Users\tomas\Desktop\MetrovaloresApp\data\tablas_juntas_2024.csv'
-
-    try:
-        # Procesar los datos para la empresa
-        dividendos_emisor = procesar_dividendos_emisor(archivo_csv, company)
-
-        # Depuración: imprime los datos filtrados
-        print(f"Datos enviados para {company}: {dividendos_emisor}")
-
-        if not dividendos_emisor:
-            print(f"No se encontraron dividendos para la empresa: {company}")
-
-    except Exception as e:
-        print(f"Error al procesar datos para la empresa: {e}")
-        return f"Error al procesar datos: {e}", 500
-
-    # Enviar datos al frontend
-    return render_template(
-        'empresa.html',
-        profile={"Nombre": company},
-        dividendos=dividendos_emisor
-    )
 
 
 if __name__ == "__main__":
