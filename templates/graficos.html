@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos - Metrovalores</title>
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png"> <!-- Añadir esta línea -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/">
+                <img src="/static/img/Logo.png" alt="Metrovalores Logo">
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/renta-variable">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1>Gráficos Generales</h1>
+    </header>
+    <main>
+        <section id="graficos">
+            <h2>Gráficos de Índices del Mercado</h2>
+            <div id="grafico-indice-bvq">
+                {{ graph_bvq|safe }}
+            </div>
+            <div id="grafico-indice-bvl">
+                {{ graph_bvl|safe }}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

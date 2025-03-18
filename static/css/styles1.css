@@ -1,0 +1,844 @@
+/* Estilos generales y de cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Fondo azul claro para la página */
+    color: #040042; /* Texto color azul oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #004080; /* Azul marino */
+    color: #000; /* Color del texto negro */
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff; /* Espacio blanco dentro del encabezado */
+    padding: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: #000; /* Texto negro en los enlaces */
+    text-decoration: none;
+    font-size: 1em; /* Ajustar el tamaño según lo necesitado */
+    text-transform: capitalize; /* Convertir solo la primera letra a mayúscula */
+}
+
+/* Estilos para el contenedor */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el contenedor de los enlaces */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; /* Color de texto negro dentro del contenedor principal */
+}
+
+/* Estilos para las noticias */
+#noticias {
+    margin-bottom: 20px;
+}
+
+.noticia-principal img {
+    width: 100%;
+    height: auto;
+}
+
+.otras-noticias {
+    display: flex;
+    justify-content: space-between;
+}
+
+.noticia-horizontal .noticia {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.noticia-horizontal .noticia:last-child {
+    margin-right: 0;
+}
+
+.noticia h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.noticia p {
+    font-size: 0.9em;
+}
+
+/* Estilos para el análisis de mercado */
+#analisis-mercado {
+    margin-top: 20px;
+}
+
+#tabla-tops-flops {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las tablas */
+}
+
+.tabla {
+    flex: 1;
+    height: auto;
+    min-height: 400px; /* Aumentar altura mínima */
+    margin-bottom: 20px;
+}
+
+.tabla h3 {
+    text-align: center;
+}
+
+.tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Asegurar tamaño fijo */
+}
+
+.tabla table, .tabla th, .tabla td {
+    border: 1px solid #ddd;
+}
+
+.tabla th, .tabla td {
+    padding: 15px; /* Aumentar padding */
+    text-align: center; /* Centrar el texto */
+    font-size: 14px; /* Aumentar tamaño de fuente */
+}
+
+.tabla th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.tabla .verde {
+    color: green;
+}
+
+.tabla .rojo {
+    color: red;
+}
+
+.tabla td:last-child {
+    text-align: center; /* Centrar el contenido de la última columna */
+}
+
+/* Estilos para los botones de las empresas */
+.empresa-boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.empresa-boton:hover {
+    background-color: #f0f0f0;
+}
+
+.empresa-boton img {
+    width: auto;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+/* Estilos específicos para la página de noticias */
+.noticias-header {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000; /* Color negro */
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logos a {
+    margin: 20px;
+}
+
+.logos img {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.logos img:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para los subtítulos de empresas */
+#empresas-del-sector-financiero h2,
+#empresas-sector-real h2 {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000; /* Color negro */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para el botón de reporte */
+.boton-reporte, .boton-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #004080; /* Azul marino */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.boton-reporte:hover, .boton-volver:hover {
+    background-color: #003366; /* Oscurecer el color al pasar el mouse */
+}
+
+/* Estilos para los títulos de Empresas y Noticias */
+.titulo-principal {
+    font-family: 'Times New Roman', Times, serif; /* Fuente específica */
+    font-size: 2.5em; /* Ajustar el tamaño según lo necesitado */
+    color: #000; /* Color negro */
+    text-align: center;
+    margin: 30px 0;
+    font-weight: bold;
+    text-transform: uppercase; /* Convertir a mayúsculas */
+}
+
+/* Estilos para los logos de las empresas en la página Empresa */
+.logo {
+    width: 300px; /* Ajusta el tamaño para que sean más grandes */
+    height: auto;
+    margin-left: 20px; /* Espacio entre el título y el logo */
+}
+
+/* Estilos específicos para logos más pequeños */
+.logo-pequeno {
+    width: 150px; /* Ajusta el tamaño para que sean más pequeños */
+    height: auto;
+    margin-left: 20px; /* Espacio entre el título y el logo */
+}
+/* Estilos para el título del índice de cotizaciones */
+.cotizaciones {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cotizaciones h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #040042; /* Texto color azul oscuro */
+}
+
+.cotizaciones-lista {
+    margin-bottom: 20px;
+}
+
+.cotizaciones-lista h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #040042; /* Texto color azul oscuro */
+}
+
+.cotizaciones-lista ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cotizaciones-lista li {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+/* Estilo para los títulos de empresas */
+#empresas-del-sector-financiero h2,
+#empresas-sector-real h2 {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000; /* Color negro */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos para la tabla de renta variable */
+.tabla-container {
+    overflow-x: auto; /* Permitir el desplazamiento horizontal si la tabla es demasiado grande */
+}
+
+.tabla-renta-variable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabla-renta-variable th, .tabla-renta-variable td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Aumentar padding */
+    text-align: center; /* Centrar el texto */
+}
+
+.tabla-renta-variable th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.tabla-renta-variable td.alza {
+    color: green;
+}
+
+.tabla-renta-variable td.baja {
+    color: red;
+}
+
+.tabla-renta-variable td.neutro {
+    color: gray;
+}
+
+/* Estilos para los logos de las empresas */
+.logo-empresa {
+    max-width: 150px;
+    max-height: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}
+/* Estilos para centrar las tablas específicas de renta_variable.html */
+#empresas-del-sector-financiero .centrar-tabla,
+#empresas-sector-real .centrar-tabla {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Ajustes para las tablas de cotizaciones máximas y mínimas */
+    .cotizaciones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cotizaciones-lista {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cotizaciones th, 
+    .cotizaciones td {
+        font-size: 12px;
+    }
+}
+
+/* Estilos adicionales para pantallas móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav li {
+        margin-bottom: 10px;
+    }
+
+    .tabla-renta-variable {
+        width: 100%;
+        font-size: 12px;
+        overflow-x: auto;
+    }
+
+    .tabla-renta-variable th,
+    .tabla-renta-variable td {
+        padding: 8px;
+    }
+
+    .boton-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton-imagen {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .logo-empresa {
+        max-width: 80px;
+        height: auto;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .dividendos-content {
+        flex-direction: column;
+    }
+
+    .dividendos-img-container,
+    .dividendos-resumen {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dividendos-img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+   
+/* Estilos adicionales para pantallas móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav li {
+        margin-bottom: 10px;
+    }
+
+    .tabla-renta-variable {
+        width: 100%;
+        font-size: 12px;
+        overflow-x: auto;
+    }
+
+    .tabla-renta-variable th,
+    .tabla-renta-variable td {
+        padding: 8px;
+    }
+
+    .boton-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton-imagen {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .logo-empresa {
+        max-width: 80px;
+        height: auto;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .dividendos-content {
+        flex-direction: column;
+    }
+
+    .dividendos-img-container,
+    .dividendos-resumen {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dividendos-img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+/* Optimización para pantallas móviles y ajustes generales */
+
+/* Adaptar navegación para pantallas pequeñas */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Ajustar el logotipo y menú de navegación */
+    header .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        gap: 10px;
+    }
+
+    .nav li {
+        list-style: none;
+    }
+
+    .nav li a {
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        display: block;
+        background-color: #003366; /* Fondo azul */
+        color: white; /* Texto blanco */
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .nav li a:hover {
+        background-color: #005599; /* Fondo azul más claro al pasar el mouse */
+    }
+
+    /* Estilo para el enlace activo */
+    .nav li a.active {
+        background-color: white; /* Fondo blanco */
+        color: #003366; /* Texto azul */
+        font-weight: bold; /* Dar más énfasis */
+        border: 2px solid #003366; /* Añadir un borde azul */
+    }
+
+    /* Botones principales como imágenes */
+    .boton-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .boton-imagen {
+        width: 90%; /* Escalar imágenes para adaptarlas a la pantalla */
+        max-width: 400px; /* Limitar el tamaño máximo */
+        height: auto; /* Mantener la proporción */
+    }
+
+    /* Ajustar tablas en diseño vertical */
+    .tabla-container {
+        width: 100%;
+        overflow-x: hidden;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .tabla-renta-variable {
+        display: block; /* Transforma la tabla en un diseño de bloque */
+        width: 100%;
+        border-collapse: separate; /* Evitar desbordamientos */
+        margin: 0 auto 20px;
+    }
+
+    .tabla-renta-variable thead {
+        display: none; /* Ocultar encabezados */
+    }
+
+    .tabla-renta-variable tr {
+        display: block; /* Cada fila como tarjeta */
+        background-color: #f2f2f2;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .tabla-renta-variable td {
+        display: block;
+        text-align: left;
+        padding: 8px 5px;
+        font-size: 12px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    .tabla-renta-variable td:last-child {
+        border-bottom: none;
+    }
+
+    .tabla-renta-variable td::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #003366;
+        display: inline-block;
+        width: 40%;
+    }
+}
+
+/* Optimización para móviles - Página Empresa */
+@media (max-width: 768px) {
+
+    /* Centrar subtítulos y secciones */
+    .titulo-centro, .card h2, .dividendos-section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustar tablas de cotizaciones */
+    .cotizaciones {
+        display: flex;
+        flex-direction: column; /* Cambiar a disposición vertical en móviles */
+        gap: 20px; /* Espacio entre tablas */
+    }
+
+    .cotizaciones table {
+        width: 100%; /* Ajustar tablas al ancho completo */
+        font-size: 1em; /* Reducir ligeramente el tamaño del texto */
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    .cotizaciones th, .cotizaciones td {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .cotizaciones th {
+        background-color: #f2f2f2;
+        color: black;
+    }
+
+    /* Ajustar imagen y resumen en Dividendos */
+    .dividendos-content {
+        display: flex;
+        flex-direction: column; /* Disposición vertical */
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dividendos-img {
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .dividendos-resumen {
+        width: 100%;
+        text-align: justify;
+        font-size: 1em;
+    }
+
+    /* Optimizar el iframe de la calculadora */
+    iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 600px; /* Ajusta la altura según necesidad */
+        border: none;
+        box-sizing: border-box;
+    }
+
+    /* Ajustar las tarjetas (Perfil de la Empresa) */
+    .dashboard-section .card {
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Ajustar tamaño general de las tablas */
+.tabla-container {
+    width: 95%; /* Incrementa el ancho de las tablas para una mayor visibilidad */
+    max-width: 1400px; /* Aumenta el límite del tamaño máximo */
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+
+/* Aumentar tamaño de cuadros (celdas y filas) */
+.tabla-renta-variable td, 
+.tabla-renta-variable th {
+    padding: 20px 15px; /* Ajustar padding para que las celdas sean más grandes */
+    font-size: 16px; /* Incrementa ligeramente el tamaño del texto */
+}
+
+/* Centrar subtítulos en la vista de tablas */
+h2 {
+    text-align: center;
+    margin-bottom: 25px; /* Espaciado adicional debajo del subtítulo */
+    font-size: 1.5em; /* Aumenta el tamaño del subtítulo */
+    color: #003366; /* Asegura que el color sea uniforme y atractivo */
+}
+/* Ajuste del gráfico en vista de escritorio */
+@media (min-width: 769px) {
+    #grafico {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: auto;
+    }
+}
+/* Mejorar estilo de tarjetas en vista móvil */
+@media (max-width: 768px) {
+    .tabla-container {
+        width: 100%; /* Mantener tarjetas dentro del ancho completo del contenedor */
+    }
+
+    .tabla-renta-variable tr {
+        display: flex; /* Convertir cada tarjeta en un diseño flexible */
+        flex-direction: column; /* Disposición vertical para móviles */
+        gap: 10px; /* Separar elementos dentro de la tarjeta */
+        padding: 15px; /* Espacio interno en la tarjeta */
+        margin-bottom: 15px; /* Separación entre tarjetas */
+        background-color: #f2f2f2; /* Mismo fondo que la tabla */
+        border: 1px solid #ddd; /* Bordes similares a la tabla */
+        border-radius: 8px; /* Bordes redondeados para uniformidad */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    .tabla-renta-variable td {
+        display: flex;
+        justify-content: space-between; /* Alinear datos a los extremos */
+        align-items: center; /* Centrar verticalmente los elementos */
+        font-size: 14px; /* Tamaño de letra uniforme */
+        color: #333; /* Color de texto similar a la tabla */
+        padding: 5px 0; /* Espaciado interno entre filas */
+        border: none; /* Eliminar bordes entre celdas */
+    }
+
+    .tabla-renta-variable td:first-child {
+        justify-content: center; /* Centrar el logo */
+    }
+
+    .tabla-renta-variable td img {
+        width: 50px; /* Tamaño fijo del logo */
+        height: auto;
+        margin-bottom: 10px; /* Separación del logo respecto a otros datos */
+    }
+
+    .tabla-renta-variable td::before {
+        content: attr(data-label); /* Etiquetas visibles */
+        font-weight: bold;
+        color: #003366; /* Azul para las etiquetas */
+        margin-right: 10px;
+    }
+
+    .tabla-renta-variable td:last-child::before {
+        content: none; /* Eliminar etiquetas del logo (emisor) */
+    }
+}
+/* Ajustar el estilo de las tarjetas en vista móvil */
+@media (max-width: 768px) {
+    /* Contenedor de las tarjetas */
+    .tabla-renta-variable tr {
+        display: flex;
+        flex-direction: column; /* Organización vertical */
+        gap: 15px; /* Separar elementos dentro de la tarjeta */
+        padding: 15px; /* Espaciado interno */
+        margin-bottom: 20px; /* Espaciado entre tarjetas */
+        background-color: #f2f2f2; /* Fondo similar al de las tablas */
+        border: 1px solid #ddd; /* Bordes similares */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    /* Agrandar el logo */
+    .tabla-renta-variable td:first-child img {
+        width: 80px; /* Nuevo tamaño del logo */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centrar el logo */
+    }
+
+    /* Ajustar subtítulos y contenido */
+    .tabla-renta-variable td {
+        font-size: 14px; /* Texto claro y legible */
+        padding: 8px 0; /* Espaciado entre filas */
+    }
+
+    /* Mostrar el subtítulo 'Precio Cierre 2024' en móviles */
+    .tabla-renta-variable td[data-label="Precio Cierre 2024"]::before {
+        content: "Precio Cierre 2024: ";
+        font-weight: bold;
+        color: #003366; /* Color uniforme */
+    }
+}
+/* Ajustar el logo en las tarjetas en vista móvil */
+@media (max-width: 768px) {
+    .tabla-renta-variable td:first-child {
+        width: 100px; /* Ancho del contenedor del logo */
+        height: 100px; /* Alto del contenedor del logo */
+        display: flex;
+        justify-content: center; /* Centrar el contenido horizontalmente */
+        align-items: center; /* Centrar el contenido verticalmente */
+        background-color: #ffffff; /* Fondo para mantener uniformidad */
+        border: 1px solid #ddd; /* Opcional: bordes para delimitar */
+        border-radius: 5px; /* Bordes redondeados */
+        overflow: hidden; /* Evita que la imagen se desborde */
+        margin: 0 auto; /* Centra el contenedor */
+    }
+
+    .tabla-renta-variable td:first-child img {
+        width: 100%; /* El logo ocupa todo el ancho del contenedor */
+        height: 100%; /* El logo ocupa todo el alto del contenedor */
+        object-fit: cover; /* Llenar el área sin distorsión */
+        display: block;
+    }
+}
+/* Corregir alineación y ajuste del párrafo de dividendos */
+.dividendos-resumen {
+    width: 90%; /* Ajustar el ancho al 90% del contenedor */
+    max-width: 800px; /* Limitar el tamaño máximo para pantallas grandes */
+    margin: 0 auto; /* Centrar el párrafo horizontalmente */
+    text-align: justify; /* Justificar el texto para una mejor presentación */
+    font-size: 1em; /* Tamaño de fuente consistente */
+    line-height: 1.5; /* Mejorar la legibilidad con un interlineado adecuado */
+    word-wrap: break-word; /* Evitar el desbordamiento de palabras largas */
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acciones - Metrovalores</title>
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
+</head>
+<body class="azul-marino">
+    <header>
+        <div class="container">
+            <a href="/">
+                <img src="/static/img/Logo.png" alt="Metrovalores Logo">
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/renta-variable" class="active">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="titulo-centro">
+                <h1 class="titulo-profesional">Acciones</h1>
+                <p>{{ fecha_actual }}</p>
+            </div>
+
+            {% for sector, empresas in {"Instituciones del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'], "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A CIA CONJU CLINICO NACIONAL'] }.items() %}
+<section>
+    <h2>{{ sector }}</h2>
+    <div class="tabla-container centrada" style="display: flex; justify-content: center;">
+        <table class="tabla-renta-variable centrar-tabla">
+            <thead>
+                <tr>
+                    <th>Emisor</th>
+                    <th>Última Transacción</th>
+                    <th>Precio</th>
+                    <th>Variación Semanal</th>
+                    <th>Precio Cierre 2024</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empresa in datos if empresa.EMISOR in empresas %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                            <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+                        </a>
+                    </td>
+                    <td data-label="Última Transacción">{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
+                    <td data-label="Precio">{{ empresa.PRECIO_FINAL }}</td>
+                    <td data-label="Variación Semanal" class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
+                    <td data-label="Precio Cierre 2024">{{ empresa.PRECIO_CIERRE_2024 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% if sector == "Instituciones del Sector Financiero" %}
+<!-- Nueva Sección: Dividendos -->
+<section class="dividendos-section">
+    <h2>Resultados Juntas de Accionistas-Dividendos 2024</h2>
+    <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+        <!-- Imagen base de la tabla -->
+        <img src="{{ url_for('static', filename='img/juntas_sector_financiero/juntas_sector_financiero.jpg') }}" 
+             alt="Juntas del Sector Financiero" 
+             style="max-width: 100%; height: auto; border: 2px solid black; border-radius: 2.5px;">
+    </div>
+</section>
+    <!-- Gráfico de precios de las tres empresas -->
+    <div id="grafico-tendencias" style="margin-top: 50px; text-align: center;">
+        <h2>Rendimientos por dividendo</h2>
+        <div>
+            {{ grafico_tres_empresas|safe }}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+<!-- Texto de comparación de precios al final de la página -->
+<div class="texto-comparacion">
+    <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
+</div>

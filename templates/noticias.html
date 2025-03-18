@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Metrovalores</title>
+    <link rel="stylesheet" href="/static/css/styles1.css">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png"> <!-- Añadir esta línea -->
+    <style>
+        .noticias-header {
+            font-family: 'Georgia', serif;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #000; /* Color negro */
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logos a {
+            margin: 20px;
+        }
+
+        .logos img {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .logos img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="azul-marino">
+    <header>
+        <div class="container">
+            <!-- Enlace al logo para que redirija a la página de inicio -->
+            <a href="/">
+                <img src="/static/img/Logo.png" alt="Metrovalores Logo">
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/noticias" class="active">Noticias</a></li>
+                    <li><a href="/renta-variable">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1 class="titulo-principal">Noticias</h1>
+            <section id="noticias-mercado-nacional">
+                <h2 class="noticias-header">Noticias del mercado nacional</h2>
+                <div class="logos noticias-grid"> <!-- Añadir la clase noticias-grid aquí -->
+                    <a href="https://www.eluniverso.com/temas/empresas/" target="_blank">
+                        <img src="/static/img/Logos_noticias/el_universo.png" alt="El Universo Logo">
+                    </a>
+                    <a href="https://www.primicias.ec/tag/empresas/" target="_blank">
+                        <img src="/static/img/Logos_noticias/primicias.png" alt="Primicias Ec Logo">
+                    </a>
+                    <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
+                        <img src="/static/img/Logos_noticias/BVQ.png" alt="Bolsa de Quito Logo">
+                    </a>
+                    <a href="https://bvgnoticias.com/" target="_blank">
+                        <img src="/static/img/Logos_noticias/BVG.png" alt="Bolsa de Guayaquil Logo">
+                    </a>
+                </div>
+            </section>
+            <section id="noticias-mercado-internacional">
+                <h2 class="noticias-header">Noticias del mercado internacional</h2>
+                <div class="logos">
+                    <a href="https://finance.yahoo.com/topic/stock-market-news/" target="_blank">
+                        <img src="/static/img/Logos_noticias/yahoo_finance.png" alt="Yahoo Finance Logo">
+                    </a>
+                    <a href="https://www.bloomberg.com/industries" target="_blank">
+                        <img src="/static/img/Logos_noticias/bloomberg.png" alt="Bloomberg Logo">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <!-- Pie de página -->
+    </footer>
+</body>
+</html>

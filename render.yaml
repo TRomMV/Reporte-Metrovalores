@@ -1,0 +1,10 @@
+services:
+- type: web
+  name: metrovaloresapp
+  env: python
+  buildCommand: |
+    pip install -r requirements.txt
+    python update_data.py
+    python combine_data.py
+    python actualizar_variacion.py
+  startCommand: flask run --host=0.0.0.0 --port=5000

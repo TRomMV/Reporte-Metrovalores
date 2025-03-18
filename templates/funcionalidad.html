@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendencias con Gráficos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://d3js.org/d3.v7.min.js"></script> <!-- Enlace a D3.js -->
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png"> <!-- Añadir esta línea -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/">
+                <img src="/static/img/Logo.png" alt="Metrovalores Logo">
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="{{ url_for('home') }}" class="active">Inicio</a></li>
+                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/renta-variable">Renta Variable</a></li>
+                    <li><a href="/renta-fija">Renta Fija</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1>Tendencias con Gráficos</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Empresas Disponibles</h2>
+            <ul>
+                {% for company in companies %}
+                    <li><a href="{{ url_for('show_company', company=company) }}">{{ company }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
