@@ -157,43 +157,47 @@
     </div>
     {% endif %}
 
-    <!-- Nueva Sección: Balances -->
-{% if profile.Nombre == "CORPORACION FAVORITA C.A." %}
+ <!-- Nueva Sección: Balances -->
+{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" %}
 <div class="balances-section">
     <h2 style="text-align: center;">Estados Financieros</h2>
     <!-- Imagen: Activos -->
     <h2 style="text-align: center;">Estado de situación financiera</h2>
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/CORPORACION_FAVORITA_C.A/activos.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre }}/activos.jpeg" 
              alt="Activos" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
     <!-- Imagen: Activos Gráfico -->
-         <div style="text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/CORPORACION_FAVORITA_C.A/activos_grafico.jpeg" 
+    <div style="text-align: center; margin-bottom: 40px;">
+        <img src="/static/img/Balances/{{ profile.Nombre }}/activos_grafico.jpeg" 
              alt="Activos Gráfico" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
     <!-- Imagen: Ingresos -->
-    <h2 style="text-align: center;" >Estado de resultados integral</h2>
+    <h2 style="text-align: center;">Estado de resultados integral</h2>
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/CORPORACION_FAVORITA_C.A/ingresos.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre }}/ingresos.jpeg" 
              alt="Ingresos" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
-
     <!-- Imagen: Liquidez -->
-    <h2 style="text-align: center;" >Principales indicadores</h2>
-    <div style="text-align: center;">
-        <img src="/static/img/Balances/CORPORACION_FAVORITA_C.A/liquidez.jpeg" 
+    <h2 style="text-align: center;">Principales indicadores</h2>
+    <div style="text-align: center; margin-bottom: 40px;">
+        <img src="/static/img/Balances/{{ profile.Nombre }}/liquidez.jpeg" 
              alt="Liquidez" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
 </div>
 {% endif %}
 
-</div> <h2 style="text-align: center;">Calculadora de rendimientos de la BVQ</h2>
- <div style="display: flex; justify-content: center; margin-top: 20px;"> 
+<!-- Espacio adicional entre balances y calculadora -->
+<div style="margin-top: 50px;"></div>
+
+<!-- Calculadora de Rendimientos -->
+</div> 
+<h2 style="text-align: center;">Calculadora de rendimientos de la BVQ</h2> 
+<div style="display: flex; justify-content: center; margin-top: 20px;"> 
     <iframe id="calculator" 
     src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" 
     style="width:80%; height:600px; border:none;"></iframe> 
