@@ -164,33 +164,32 @@
     <!-- Imagen: Activos -->
     <h2 style="text-align: center;">Estado de situación financiera</h2>
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre }}/activos.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre.replace('.', '') }}/activos.jpeg" 
              alt="Activos" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
     <!-- Imagen: Activos Gráfico -->
     <div style="text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre }}/activos_grafico.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre.replace('.', '') }}/activos_grafico.jpeg" 
              alt="Activos Gráfico" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
     <!-- Imagen: Ingresos -->
     <h2 style="text-align: center;">Estado de resultados integral</h2>
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre }}/ingresos.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre.replace('.', '') }}/ingresos.jpeg" 
              alt="Ingresos" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
     <!-- Imagen: Liquidez -->
     <h2 style="text-align: center;">Principales indicadores</h2>
     <div style="text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre }}/liquidez.jpeg" 
+        <img src="/static/img/Balances/{{ profile.Nombre.replace('.', '') }}/liquidez.jpeg" 
              alt="Liquidez" 
              style="max-width: 100%; height: auto; border: 1.5px solid black;">
     </div>
 </div>
 {% endif %}
-
 <!-- Espacio adicional entre balances y calculadora -->
 <div style="margin-top: 50px;"></div>
 
