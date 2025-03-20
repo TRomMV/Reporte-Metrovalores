@@ -143,16 +143,17 @@
     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
     <h2>Dividendos Repartidos</h2>
     <div class="dividendos-content">
-   <!-- Imagen de las Juntas -->
-<div class="dividendos-imagen" style="position: relative; margin-bottom: 20px;">
-    <img 
-    src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
-    alt="Junta de Dividendos {{ profile.Nombre }}" 
-    class="imagen-dividendo">
-    <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: gray; margin: 0;">
-        Fuente: Superintendencia de Compañías e instituciones emisoras
-    </p>
-</div>
+        <!-- Imagen de las Juntas -->
+        <div class="dividendos-imagen" style="position: relative; margin-bottom: 20px;">
+            <img 
+            src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
+            alt="Junta de Dividendos {{ profile.Nombre }}" 
+            class="imagen-dividendo" 
+            style="max-width: 100%; height: auto;">
+            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+                Fuente: Superintendencia de Compañías e instituciones emisoras
+            </p>
+        </div>
         <!-- Resumen de Dividendos -->
         <div class="dividendos-resumen">
             <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
@@ -160,57 +161,70 @@
     </div>
     {% endif %}
 
-<!-- Nueva Sección: Balances -->
-{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" %}
-<div class="balances-section">
-    <h2 style="text-align: center;">Estados Financieros</h2>
-    <!-- Imagen: Activos -->
-    <h2 style="text-align: center;">Estado de situación financiera</h2>
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos.jpeg" 
-             alt="Activos" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-    </div>
-    <!-- Imagen: Activos Gráfico -->
-    <div style="position: relative; text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos_grafico.jpeg" 
-             alt="Activos Gráfico" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: gray; margin: 0;">
-            Fuente: Superintendencia de Compañías e instituciones emisoras
-        </p>
-    </div>
-    <!-- Imagen: Ingresos -->
-    <h2 style="text-align: center;">Estado de resultados integral</h2>
-    <div style="position: relative; text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
-             alt="Ingresos" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: gray; margin: 0;">
-            Fuente: Superintendencia de Compañías e instituciones emisoras
-        </p>
-    </div>
-    <!-- Imagen: Liquidez -->
-    <h2 style="text-align: center;">Principales indicadores</h2>
-    <div style="position: relative; text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
-             alt="Liquidez" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: gray; margin: 0;">
-            Fuente: Superintendencia de Compañías e instituciones emisoras
-        </p>
-    </div>
-</div>
-{% endif %}
+    <!-- Espacio adicional entre Dividendos y Estados Financieros -->
+    <div style="margin-top: 20px;"></div>
 
-<!-- Espacio adicional entre balances y calculadora -->
-<div style="margin-top: 50px;"></div>
+    <!-- Nueva Sección: Balances -->
+    {% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" %}
+    <div class="balances-section">
+        <h2 style="text-align: center;">Estados Financieros</h2>
 
-<!-- Calculadora de Rendimientos -->
-</div> 
-<h2 style="text-align: center;">Calculadora de rendimientos de la BVQ</h2> 
-<div style="display: flex; justify-content: center; margin-top: 20px;"> 
-    <iframe id="calculator" 
-    src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" 
-    style="width:80%; height:600px; border:none;"></iframe> 
+        <!-- Imagen: Activos -->
+        <h2 style="text-align: center;">Estado de situación financiera</h2>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos.jpeg" 
+                 alt="Activos" 
+                 style="max-width: 100%; height: auto; border: 1.5px solid black;">
+        </div>
+        <!-- Imagen: Activos Gráfico -->
+        <div style="position: relative; text-align: center; margin-bottom: 20px;">
+            <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos_grafico.jpeg" 
+                 alt="Activos Gráfico" 
+                 style="max-width: 100%; height: auto; border: 1.5px solid black;">
+            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+                Fuente: Superintendencia de Compañías e instituciones emisoras
+            </p>
+        </div>
+
+        <!-- Espacio entre Estado de situación financiera y Estado de resultados integral -->
+        <div style="margin-top: 20px;"></div>
+
+        <!-- Imagen: Ingresos -->
+        <h2 style="text-align: center;">Estado de resultados integral</h2>
+        <div style="position: relative; text-align: center; margin-bottom: 20px;">
+            <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
+                 alt="Ingresos" 
+                 style="max-width: 100%; height: auto; border: 1.5px solid black;">
+            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+                Fuente: Superintendencia de Compañías e instituciones emisoras
+            </p>
+        </div>
+
+        <!-- Espacio entre Estado de resultados integral y Principales indicadores -->
+        <div style="margin-top: 20px;"></div>
+
+        <!-- Imagen: Liquidez -->
+        <h2 style="text-align: center;">Principales indicadores</h2>
+        <div style="position: relative; text-align: center; margin-bottom: 40px;">
+            <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
+                 alt="Liquidez" 
+                 style="max-width: 100%; height: auto; border: 1.5px solid black;">
+            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+                Fuente: Superintendencia de Compañías e instituciones emisoras
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Espacio adicional entre balances y calculadora -->
+    <div style="margin-top: 30px;"></div>
+
+    <!-- Calculadora de Rendimientos -->
+    </div> 
+    <h2 style="text-align: center;">Calculadora de rendimientos de la BVQ</h2> 
+    <div style="display: flex; justify-content: center; margin-top: 20px;"> 
+        <iframe id="calculator" 
+        src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" 
+        style="width:80%; height:600px; border:none;"></iframe> 
+    </div>
 </div>
