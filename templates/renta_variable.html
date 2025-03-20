@@ -32,67 +32,69 @@
             </div>
 
             {% for sector, empresas in {"Instituciones del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'], "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A CIA CONJU CLINICO NACIONAL'] }.items() %}
-<section>
-    <h2>{{ sector }}</h2>
-    <div class="tabla-container centrada" style="display: flex; justify-content: center;">
-        <table class="tabla-renta-variable centrar-tabla">
-            <thead>
-                <tr>
-                    <th>Emisor</th>
-                    <th>Última Transacción</th>
-                    <th>Precio</th>
-                    <th>Variación Semanal</th>
-                    <th>Precio Cierre 2024</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for empresa in datos if empresa.EMISOR in empresas %}
-                <tr>
-                    <td>
-                        <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
-                            <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
-                        </a>
-                    </td>
-                    <td data-label="Última Transacción">{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
-                    <td data-label="Precio">{{ empresa.PRECIO_FINAL }}</td>
-                    <td data-label="Variación Semanal" class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
-                    <td data-label="Precio Cierre 2024">{{ empresa.PRECIO_CIERRE_2024 }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
-{% if sector == "Instituciones del Sector Financiero" %}
-<!-- Nueva Sección: Dividendos -->
-<section class="dividendos-section">
-    <h2>Resultados Juntas de Accionistas-Dividendos 2024</h2>
-    <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
-        <!-- Imagen base de la tabla -->
-        <img src="{{ url_for('static', filename='img/juntas_sector_financiero/juntas_sector_financiero.jpg') }}" 
-             alt="Juntas del Sector Financiero" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black; border-radius: 2px;">
-        <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
-            Fuente: Superintendencia de Compañías e instituciones emisoras
-        </p>
-    </div>
-</section>
-    <!-- Gráfico de precios de las tres empresas -->
-    <div id="grafico-tendencias" style="position: relative; margin-top: 50px; text-align: center;">
-        <h2>Rendimientos por dividendo</h2>
-        <div>
-            {{ grafico_tres_empresas|safe }}
+            <section>
+                <h2>{{ sector }}</h2>
+                <div class="tabla-container centrada" style="display: flex; justify-content: center;">
+                    <table class="tabla-renta-variable centrar-tabla">
+                        <thead>
+                            <tr>
+                                <th>Emisor</th>
+                                <th>Última Transacción</th>
+                                <th>Precio</th>
+                                <th>Variación Semanal</th>
+                                <th>Precio Cierre 2024</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for empresa in datos if empresa.EMISOR in empresas %}
+                            <tr>
+                                <td>
+                                    <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
+                                        <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
+                                    </a>
+                                </td>
+                                <td data-label="Última Transacción">{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
+                                <td data-label="Precio">{{ empresa.PRECIO_FINAL }}</td>
+                                <td data-label="Variación Semanal" class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
+                                <td data-label="Precio Cierre 2024">{{ empresa.PRECIO_CIERRE_2024 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            {% if sector == "Instituciones del Sector Financiero" %}
+            <!-- Nueva Sección: Dividendos -->
+            <section class="dividendos-section">
+                <h2>Resultados Juntas de Accionistas-Dividendos 2024</h2>
+                <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                    <!-- Imagen base de la tabla -->
+                    <img src="{{ url_for('static', filename='img/juntas_sector_financiero/juntas_sector_financiero.jpg') }}" 
+                         alt="Juntas del Sector Financiero" 
+                         style="max-width: 100%; height: auto; border: 1.5px solid black; border-radius: 2px;">
+                    <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
+                        Fuente: Superintendencia de Compañías e instituciones emisoras
+                    </p>
+                </div>
+            </section>
+            <!-- Gráfico de precios de las tres empresas -->
+            <div id="grafico-tendencias" style="position: relative; margin-top: 50px; text-align: center;">
+                <h2>Rendimientos por dividendo</h2>
+                <div>
+                    {{ grafico_tres_empresas|safe }}
+                </div>
+                <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
+                    Fuente: Superintendencia de Compañías e instituciones emisoras
+                </p>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- Texto de comparación de precios al final de la página -->
+            <div class="texto-comparacion">
+                <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
+            </div>
         </div>
-        <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
-            Fuente: Superintendencia de Compañías e instituciones emisoras
-        </p>
-    </div>
-</section>
-<!-- Espacio adicional entre "Rendimientos por dividendo" y la siguiente sección -->
-<div style="margin-top: 30px;"></div>
-{% endif %}
-{% endfor %}
-<!-- Texto de comparación de precios al final de la página -->
-<div class="texto-comparacion">
-    <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
-</div>
+    </main>
+</body>
+</html>
+

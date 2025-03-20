@@ -138,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                                    <!-- Sección de Dividendos y Balances -->
+                                  <!-- Sección de Dividendos y Balances -->
 <div class="dashboard-section dividendos-section">
     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
     <h2>Dividendos Repartidos</h2>
@@ -150,7 +150,7 @@
             alt="Junta de Dividendos {{ profile.Nombre }}" 
             class="imagen-dividendo" 
             style="max-width: 100%; height: auto;">
-            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
                 Fuente: Superintendencia de Compañías e instituciones emisoras
             </p>
         </div>
@@ -177,11 +177,11 @@
                  style="max-width: 100%; height: auto; border: 1.5px solid black;">
         </div>
         <!-- Imagen: Activos Gráfico -->
-        <div style="position: relative; text-align: center; margin-bottom: 20px;">
+        <div style="position: relative; text-align: center; margin-bottom: 40px;">
             <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos_grafico.jpeg" 
                  alt="Activos Gráfico" 
                  style="max-width: 100%; height: auto; border: 1.5px solid black;">
-            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
                 Fuente: Superintendencia de Compañías e instituciones emisoras
             </p>
         </div>
@@ -195,7 +195,7 @@
             <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
                  alt="Ingresos" 
                  style="max-width: 100%; height: auto; border: 1.5px solid black;">
-            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
                 Fuente: Superintendencia de Compañías e instituciones emisoras
             </p>
         </div>
@@ -209,7 +209,7 @@
             <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
                  alt="Liquidez" 
                  style="max-width: 100%; height: auto; border: 1.5px solid black;">
-            <p style="position: absolute; bottom: 0; left: 0; font-size: 0.9em; color: black; margin: 5px;">
+            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
                 Fuente: Superintendencia de Compañías e instituciones emisoras
             </p>
         </div>
@@ -217,7 +217,7 @@
     {% endif %}
 
     <!-- Espacio adicional entre balances y calculadora -->
-    <div style="margin-top: 30px;"></div>
+    <div style="margin-top: 50px;"></div>
 
     <!-- Calculadora de Rendimientos -->
     </div> 
