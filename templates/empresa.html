@@ -142,17 +142,14 @@
 <div class="dashboard-section dividendos-section">
     {% if profile.Nombre not in ["BRIKAPITAL SA", "CONTINENTAL TIRE ANDINA S A", "INVERSANCARLOS"] %}
     <h2>Dividendos Repartidos</h2>
-    <div class="dividendos-content">
+    <div class="dividendos-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
         <!-- Imagen de las Juntas -->
-        <div class="dividendos-imagen" style="position: relative; margin-bottom: 20px;">
+        <div class="dividendos-imagen" style="margin-bottom: 20px;">
             <img 
             src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
             alt="Junta de Dividendos {{ profile.Nombre }}" 
             class="imagen-dividendo" 
             style="max-width: 100%; height: auto;">
-            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-                Fuente: Superintendencia de Compañías e instituciones emisoras
-            </p>
         </div>
         <!-- Resumen de Dividendos -->
         <div class="dividendos-resumen">
@@ -160,6 +157,7 @@
         </div>
     </div>
     {% endif %}
+</div>
 
     <!-- Espacio adicional entre Dividendos y Estados Financieros -->
     <div style="margin-top: 30px;"></div>
