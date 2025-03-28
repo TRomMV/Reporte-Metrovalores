@@ -210,21 +210,6 @@ def renta_variable_view():
         semana_actual_inicio = semana_actual_inicio.replace(mes_ing, mes_esp)
         semana_anterior_inicio = semana_anterior_inicio.replace(mes_ing, mes_esp)
         fecha_actual = fecha_actual.replace(mes_ing, mes_esp)
-
-    # Generar el gráfico de las tres empresas
-    grafico_tres_empresas_html = grafico_tres_empresas()
-
-    # Renderizar el template con todos los datos necesarios
-    return render_template(
-        'renta_variable.html',
-        datos=datos.to_dict(orient='records'),
-        semana_actual_inicio=semana_actual_inicio,
-        semana_anterior_inicio=semana_anterior_inicio,
-        fecha_actual=fecha_actual,
-        grafico_tres_empresas=grafico_tres_empresas_html
-    )
-
-
 # Llamar al script de actualización de variación semanal
 if os.path.exists("actualizar_variacion.py"):
     subprocess.run(["python", "actualizar_variacion.py"])
@@ -329,9 +314,35 @@ def grafico_tres_empresas():
 def serve_data_file(filename):
     return send_from_directory('data', filename)
 
-@app.route('/noticias')
-def noticias():
-    return render_template('noticias.html')
+@app.route('/juntas-de-accionistas')
+def juntas_de_accionistas():
+    # Leer los datos desde el archivo combinado
+    df_empresas = pd.read_csv(acciones_combinadas_path)
+
+    # Limpiar los datos de empresas
+    df_empresas.columns = df_empresas.columns.str.strip().str.upper()  # Asegurarse de que las columnas estén en mayúsculas
+    if 'FECHA' not in df_empresas.columns or 'EMISOR' not in df_empresas.columns or 'VALOR' not in df_empresas.columns:
+        raise KeyError("Las columnas 'FECHA', 'EMISOR' o 'VALOR' no se encuentran en los datos. Verifique que los datos estén en el formato correcto.")
+
+    df_empresas['FECHA'] = pd.to_datetime(df_empresas['FECHA'], errors='coerce')
+    df_empresas = df_empresas.dropna(subset=['FECHA'])
+
+    # Filtrar por precio de cierre y tipo de acción
+    df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
+
+    # Leer los datos del archivo de rendimiento sector financiero
+    df_rendimiento = pd.read_csv(rendimiento_sector_financiero_path)
+
+    # Convertir la columna 'RENDIMIENTO' a valores numéricos (eliminar el símbolo % y convertir a flotante)
+    df_rendimiento.columns = df_rendimiento.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
+    if 'AÑO' not in df_rendimiento.columns or 'EMISOR' not in df_rendimiento.columns or 'RENDIMIENTO' not in df_rendimiento.columns:
+        raise KeyError("Las columnas 'AÑO', 'EMISOR' o 'RENDIMIENTO' no se encuentran en los datos de rendimiento. Verifique que los datos estén en el formato correcto.")
+
+    df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
+
+    # Renderizar el template para Juntas de Accionistas
+    return render_template('juntas_de_accionistas.html')
+
 
 @app.route('/renta-fija')
 def renta_fija():
