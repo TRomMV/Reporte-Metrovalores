@@ -17,7 +17,7 @@
             <nav>
                 <ul class="nav">
                     <li><a href="/">Inicio</a></li>
-                    <li><a href="/noticias">Juntas de accionistas</a></li>
+                    <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
                     <li><a href="/renta-variable" class="active">Renta Variable</a></li>
                     <li><a href="/renta-fija">Renta Fija</a></li>
                 </ul>
@@ -64,26 +64,6 @@
                 </div>
             </section>
             {% if sector == "Instituciones del Sector Financiero" %}
-            <!-- Nueva Sección: Dividendos -->
-            <section class="dividendos-section">
-                <h2>Resultados Juntas de Accionistas-Dividendos 2024</h2>
-                <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
-                    <!-- Imagen base de la tabla -->
-                    <img src="{{ url_for('static', filename='img/juntas_sector_financiero/juntas_sector_financiero.jpg') }}" 
-                         alt="Juntas del Sector Financiero" 
-                         style="max-width: 100%; height: auto; border: 1.5px solid black; border-radius: 2px;">
-                    <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-                        Fuente: Superintendencia de Bancos e Instituciones Emisoras
-                    </p>
-                </div>
-            </section>
-            <!-- Gráfico de precios de las tres empresas -->
-            <div id="grafico-tendencias" style="position: relative; margin-top: 50px; text-align: center;">
-                <h2>Rendimientos por Dividendo</h2>
-                <div>
-                    {{ grafico_tres_empresas|safe }}
-                </div>
-            </div>
             {% endif %}
             {% endfor %}
             <!-- Texto de comparación de precios al final de la página -->
@@ -94,7 +74,6 @@
     </main>
 </body>
 </html>
-<footer class="pie-de-pagina">
     <!-- Información General y Redes Sociales -->
     <div class="pie-informacion-redes">
         <div class="pie-informacion">

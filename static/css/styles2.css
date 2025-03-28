@@ -490,3 +490,16 @@
         flex-direction: column; /* Cambiar las noticias a vertical para pantallas pequeñas */
     }
 }
+/* Fondo blanco para toda la página */
+body.azul-marino {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333333; /* Color de texto oscuro para buen contraste */
+}
+
+/* Opcional: Ajustar contenedores para mayor consistencia */
+.container {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves para efecto elegante */
+}
