@@ -222,12 +222,14 @@ def renta_variable_view():
     )
 @app.route('/grafico-tres-empresas')
 def grafico_tres_empresas():
-    empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.']
+    empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO']
     colores = {
-        'BANCO PICHINCHA C.A.': '#F7B600',
-        'BANCO BOLIVARIANO C.A.': '#004B87',
-        'BANCO GUAYAQUIL S.A.': '#E12D84'
-    }
+    'BANCO PICHINCHA C.A.': '#F7B600',  # Amarillo
+    'BANCO BOLIVARIANO C.A.': '#004B87',  # Azul
+    'BANCO GUAYAQUIL S.A.': '#E12D84',   # Magenta
+    'BANCO DE LA PRODUCCION S.A . PRODUBANCO': '#006B3F'  # Verde
+}
+
 
     fig = go.Figure()
 
