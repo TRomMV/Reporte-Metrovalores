@@ -93,7 +93,7 @@ def show_company(company):
         fig.add_trace(go.Bar(x=company_data_volumen['FECHA'], y=company_data_volumen['ACCIONES'], name='Volumen', yaxis='y2', marker=dict(color='rgba(255, 99, 71, 0.6)')))  # Color más suave
 
     # Configuración de la escala de tiempo
-    fecha_inicio_auto = datetime(2024, 1, 1)
+    fecha_inicio_auto = datetime(2020, 1, 1)
     fecha_fin = company_data_precio['FECHA'].max()
 
     fig.update_layout(
@@ -141,7 +141,7 @@ def show_company(company):
         indices_financieros = {}  # Manejar el caso donde no hay datos para procesar índices
 
     # Obtener las cotizaciones máximas y mínimas por año desde 2019 hasta 2024
-    años = list(range(2019, 2025))
+    años = list(range(2020, 2025))
     max_quotes = []
     min_quotes = []
 
@@ -269,12 +269,14 @@ df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '
 @app.route('/grafico-tres-empresas')
 def grafico_tres_empresas():
     # Filtrar datos para las tres empresas
-    empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.']
+    empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO']
     colores = {
-        'BANCO PICHINCHA C.A.': '#F7B600',  # Amarillo
-        'BANCO BOLIVARIANO C.A.': '#004B87',  # Azul
-        'BANCO GUAYAQUIL S.A.': '#E12D84'  # Magenta
-    }
+    'BANCO PICHINCHA C.A.': '#F7B600',  # Amarillo
+    'BANCO BOLIVARIANO C.A.': '#004B87',  # Azul
+    'BANCO GUAYAQUIL S.A.': '#E12D84',   # Magenta
+    'BANCO DE LA PRODUCCION S.A . PRODUBANCO': '#006B3F'  # Verde
+}
+
     
     fig = go.Figure()
 

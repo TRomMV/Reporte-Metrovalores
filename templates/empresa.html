@@ -57,7 +57,7 @@
             <nav>
                 <ul class="nav">
                     <li><a href="/">Inicio</a></li>
-                    <li><a href="/noticias">Noticias</a></li>
+                    <li><a href="/noticias">Juntas de accionistas</a></li>
                     <li><a href="/renta-variable" class="active">Renta Variable</a></li>
                     <li><a href="/renta-fija">Renta Fija</a></li>
                 </ul>
@@ -160,7 +160,7 @@
 </div>
 
 <!-- Nueva Sección: Balances -->
-{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" or profile.Nombre == "BEVERAGE BRAND PATENTS SA" %}
+{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" or profile.Nombre == "BEVERAGE BRAND PATENTS SA" or profile.Nombre == "BOLSA DE VALORES DE GUAYAQUIL" or profile.Nombre == "BANCO GUAYAQUIL S.A." or profile.Nombre == "BANCO DE LA PRODUCCION S.A . PRODUBANCO" %}
 <div class="balances-section" style="background-color: white; padding-bottom: 35px;">
     <h2 style="text-align: center;">Estados Financieros</h2>
 
@@ -223,3 +223,41 @@
         style="width:80%; height:600px; border:none;"></iframe> 
     </div>
 </div>
+<footer class="pie-de-pagina">
+    <!-- Información General y Redes Sociales -->
+    <div class="pie-informacion-redes">
+        <div class="pie-informacion">
+            <p>
+                Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
+                Ed. San Salvador, Piso 7. Quito, Ecuador.
+            </p>
+            <p>info@metrovalores.com.ec | (593 2) 2266 400</p>
+        </div>
+        <div class="pie-redes">
+            <a href="https://www.instagram.com/metrovalores/" target="_blank">
+                <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/metrovalores/" target="_blank">
+                <img src="/static/img/pie_de_pagina/facebook.jpg" alt="Facebook">
+            </a>
+            <a href="https://es.linkedin.com/company/metrovalores-casa-de-valores-s.a." target="_blank">
+                <img src="/static/img/pie_de_pagina/linkedin.jpg" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    <!-- Línea divisora -->
+    <hr class="linea-separadora">
+
+    <!-- Noticias -->
+    <div class="pie-noticias">
+        <h3 class="titulo-noticias">NOTICIAS</h3>
+        <div class="noticias-enlaces">
+            <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
+                <img src="/static/img/pie_de_pagina/BVQ.jpg" alt="BVQ Noticias">
+            </a>
+            <a href="https://bvgnoticias.com/" target="_blank">
+                <img src="/static/img/pie_de_pagina/BVG.jpg" alt="BVG Noticias">
+            </a>
+        </div>
+    </div>
+</footer>

@@ -383,3 +383,110 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para mejorar el diseño visual */
     }
     
+    /* Estilo General del Pie de Página */
+.pie-de-pagina {
+    background-color: #f4f4f4;
+    padding: 20px 10px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Información General y Redes Sociales */
+.pie-informacion-redes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.pie-informacion {
+    flex: 1;
+    min-width: 300px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+.pie-informacion p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.pie-redes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.pie-redes a img {
+    width: 40px; /* Tamaño ajustado */
+    height: 40px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.pie-redes a img:hover {
+    transform: scale(1.2);
+}
+
+/* Línea Separadora */
+.linea-separadora {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+/* Noticias */
+.pie-noticias {
+    text-align: center;
+    width: 100%;
+}
+
+.titulo-noticias {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.noticias-enlaces {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Espacio entre las imágenes */
+}
+
+.noticias-enlaces a img {
+    width: 120px; /* Tamaño ajustado */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.noticias-enlaces a img:hover {
+    transform: scale(1.1);
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .pie-informacion-redes {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pie-redes {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .noticias-enlaces {
+        flex-direction: column; /* Cambiar las noticias a vertical para pantallas pequeñas */
+    }
+}
