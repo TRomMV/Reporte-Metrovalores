@@ -187,28 +187,27 @@ or profile.Nombre == "BANCO PICHINCHA C.A." or profile.Nombre == "BANCO BOLIVARI
 
     <!-- Imagen: Ingresos -->
     <h2 style="text-align: center;">Estado de Resultados Integral</h2>
-    <div style="position: relative; text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
-             alt="Ingresos" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-            Fuente: Superintendencia de Compañías e Instituciones Emisoras
-        </p>
-    </div>
+<div style="text-align: center; margin-bottom: 20px;">
+    <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
+         alt="Ingresos" 
+         style="max-width: 100%; height: auto; border: 1.5px solid black;">
+    <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+    </p>
+</div>
 
-    <!-- Espacio entre Estado de resultados integral y Principales indicadores -->
-    <div style="margin-top: 30px;"></div>
+<!-- Espacio entre Estado de resultados integral y Principales indicadores -->
+<div style="margin-top: 30px;"></div>
 
-    <!-- Imagen: Liquidez -->
-    <h2 style="text-align: center;">Principales Indicadores</h2>
-    <div style="position: relative; text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
-             alt="Liquidez" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-            Fuente: Superintendencia de Compañías e Instituciones Emisoras
-        </p>
-    </div>
+<!-- Imagen: Liquidez -->
+<h2 style="text-align: center;">Principales Indicadores</h2>
+<div style="text-align: center; margin-bottom: 40px;">
+    <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
+         alt="Liquidez" 
+         style="max-width: 100%; height: auto; border: 1.5px solid black;">
+    <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+    </p>
 </div>
 {% endif %}
 
