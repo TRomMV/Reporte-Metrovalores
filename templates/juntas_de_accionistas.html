@@ -6,12 +6,11 @@
     <title>Juntas de accionistas - Metrovalores</title>
     <link rel="stylesheet" href="/static/css/styles1.css">
     <link rel="stylesheet" href="/static/css/styles2.css">
-    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png"> <!-- Añadir esta línea -->
+    <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
 </head>
 <body class="azul-marino">
     <header>
         <div class="container">
-            <!-- Enlace al logo para que redirija a la página de inicio -->
             <a href="/">
                 <img src="/static/img/Logo.png" alt="Metrovalores Logo">
             </a>
@@ -26,63 +25,98 @@
         </div>
     </header>
     <main>
-       <!-- Nueva Sección: Dividendos -->
-       <section class="dividendos-section">
-        <h2>Resultados Juntas de Accionistas-Dividendos 2024</h2>
-        <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
-            <!-- Imagen base de la tabla -->
-            <img src="{{ url_for('static', filename='img/juntas_sector_financiero/juntas_sector_financiero.jpg') }}" 
-                 alt="Juntas del Sector Financiero" 
-                 style="max-width: 100%; height: auto; border: 1.5px solid black; border-radius: 2px;">
-            <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-                Fuente: Superintendencia de Compañías e Instituciones Emisoras
-            </p>
-        </div>
-    </section>
-    <!-- Gráfico de precios de las tres empresas -->
-    <div id="grafico-tendencias" style="position: relative; margin-top: 50px; text-align: center;">
-        <h2>Rendimientos por Dividendo</h2>
-        <div>
-            {{ grafico_tres_empresas|safe }}
-        </div>
-    </div>
-    </main>
-        <footer class="pie-de-pagina">
-            <!-- Información General y Redes Sociales -->
-            <div class="pie-informacion-redes">
-                <div class="pie-informacion">
-                    <p>
-                        Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
-                        Ed. San Salvador, Piso 7. Quito, Ecuador.
+        <!-- Sección 1: Sector Financiero -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Sector Financiero</h2>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_sector_financiero/juntas_sector_financiero.jpg" 
+                     alt="Juntas del Sector Financiero" 
+                     style="max-width: 110%; height: auto; border: 1.5px solid black; border-radius: 2px;">
+                <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                    <em>*Nota: Banco Internacional no cotiza en bolsa.</em><br>
+                    Fuente: Superintendencia de Bancos e Instituciones Emisoras
+                </p>
+            </div>
+            <div id="grafico-financiero" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos del Sector Financiero</h2>
+                <div>
+                    {{ grafico_tres_empresas|safe }}
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Sección 2: Bolsas de Valores -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Bolsas de Valores</h2>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_bolsas/juntas_bolsas.jpg" 
+                     alt="Juntas de las Bolsas de Valores" 
+                     style="max-width: 50%; height: auto; border: 1.5px solid black; border-radius: 2px;">
+                     <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                        Fuente: Superintendencia de Compañías e Instituciones Emisoras
                     </p>
-                    <p>info@metrovalores.com.ec | (593 2) 2266 400</p>
                 </div>
-                <div class="pie-redes">
-                    <a href="https://www.instagram.com/metrovalores/" target="_blank">
-                        <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
-                    </a>
-                    <a href="https://www.facebook.com/metrovalores/" target="_blank">
-                        <img src="/static/img/pie_de_pagina/facebook.jpg" alt="Facebook">
-                    </a>
-                    <a href="https://es.linkedin.com/company/metrovalores-casa-de-valores-s.a." target="_blank">
-                        <img src="/static/img/pie_de_pagina/linkedin.jpg" alt="LinkedIn">
-                    </a>
+            <div id="grafico-bolsas" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos de las Bolsas de Valores</h2>
+                <div>
+                    {{ grafico_bolsas|safe }}
                 </div>
             </div>
-            <!-- Línea divisora -->
-            <hr class="linea-separadora">
-        
-            <!-- Noticias -->
-            <div class="pie-noticias">
-                <h3 class="titulo-noticias">NOTICIAS</h3>
-                <div class="noticias-enlaces">
-                    <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
-                        <img src="/static/img/pie_de_pagina/BVQ.jpg" alt="BVQ Noticias">
-                    </a>
-                    <a href="https://bvgnoticias.com/" target="_blank">
-                        <img src="/static/img/pie_de_pagina/BVG.jpg" alt="BVG Noticias">
-                    </a>
+        </section>
+
+        <!-- Sección 3: Sector Real -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Sector Real</h2>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_sector_real/juntas_sector_real.jpg" 
+                     alt="Juntas del Sector Real" 
+                     style="max-width: 110%; height: auto; border: 1.5px solid black; border-radius: 2px;">
+                     <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+                    </p>
+                </div>
+            <div id="grafico-sector-real" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos del Sector Real</h2>
+                <div>
+                    {{ grafico_sector_real|safe }}
                 </div>
             </div>
-        </footer>
-        
+        </section>
+    </main>
+    <footer class="pie-de-pagina">
+        <div class="pie-informacion-redes">
+            <div class="pie-informacion">
+                <p>
+                    Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
+                    Ed. San Salvador, Piso 7. Quito, Ecuador.
+                </p>
+                <p>info@metrovalores.com.ec | (593 2) 2266 400</p>
+            </div>
+            <div class="pie-redes">
+                <a href="https://www.instagram.com/metrovalores/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/metrovalores/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/facebook.jpg" alt="Facebook">
+                </a>
+                <a href="https://es.linkedin.com/company/metrovalores-casa-de-valores-s.a." target="_blank">
+                    <img src="/static/img/pie_de_pagina/linkedin.jpg" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+        <hr class="linea-separadora">
+        <div class="pie-noticias">
+            <h3 class="titulo-noticias">NOTICIAS</h3>
+            <div class="noticias-enlaces">
+                <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
+                    <img src="/static/img/pie_de_pagina/BVQ.jpg" alt="BVQ Noticias">
+                </a>
+                <a href="https://bvgnoticias.com/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/BVG.jpg" alt="BVG Noticias">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

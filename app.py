@@ -22,7 +22,10 @@ else:
 datos_actualizados_path = 'data/datos_actualizados.csv'
 datos_actualizados_lunes_path = 'data/datos_actualizados_lunes.csv'
 acciones_combinadas_path = 'data/acciones_combinadas.csv'  # Archivo de datos de empresas
-rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero.csv'  # Archivo de rendimiento sector financiero
+rendimiento_sector_financiero_path = pd.read_csv('data/rendimiento_sector_financiero.csv')
+rendimiento_sector_real_path = pd.read_csv('data/rendimiento_bolsas.csv')
+rendimiento_bolsas_path = pd.read_csv('data/rendimiento_sector_real.csv')
+
 
 # Verifica si el archivo existe
 if not os.path.exists(acciones_combinadas_path):
@@ -42,15 +45,32 @@ df_empresas = df_empresas.dropna(subset=['FECHA'])
 # Filtrar por precio de cierre y tipo de acción
 df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
 
-# Leer los datos del archivo de rendimiento sector financiero
-df_rendimiento = pd.read_csv(rendimiento_sector_financiero_path)
+# Definir las rutas a los archivos de datos
+rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero.csv'
+rendimiento_bolsas_path = 'data/rendimiento_bolsas.csv'
+rendimiento_sector_real_path = 'data/rendimiento_sector_real.csv'
+
+# Leer los datos de los archivos de rendimiento
+df_financiero = pd.read_csv(rendimiento_sector_financiero_path)
+df_bolsas = pd.read_csv(rendimiento_bolsas_path)
+df_real = pd.read_csv(rendimiento_sector_real_path)
 
 # Convertir la columna 'RENDIMIENTO' a valores numéricos (eliminar el símbolo % y convertir a flotante)
-df_rendimiento.columns = df_rendimiento.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
-if 'AÑO' not in df_rendimiento.columns or 'EMISOR' not in df_rendimiento.columns or 'RENDIMIENTO' not in df_rendimiento.columns:
-    raise KeyError("Las columnas 'AÑO', 'EMISOR' o 'RENDIMIENTO' no se encuentran en los datos de rendimiento. Verifique que los datos estén en el formato correcto.")
+df_financiero.columns = df_financiero.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
+df_bolsas.columns = df_bolsas.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
+df_real.columns = df_real.columns.str.strip().str.upper()  # Normalizar las columnas a mayúsculas
 
-df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
+# Verificar que las columnas requeridas existan en cada DataFrame
+required_columns = ['AÑO', 'EMISOR', 'RENDIMIENTO']
+
+for df_name, df in [('Financiero', df_financiero), ('Bolsas', df_bolsas), ('Real', df_real)]:
+    if not all(column in df.columns for column in required_columns):
+        raise KeyError(f"Las columnas 'AÑO', 'EMISOR' o 'RENDIMIENTO' no se encuentran en los datos de {df_name}. Verifique que los datos estén en el formato correcto.")
+
+# Limpiar y convertir la columna 'RENDIMIENTO' a valores numéricos
+df_financiero['RENDIMIENTO'] = df_financiero['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
+df_bolsas['RENDIMIENTO'] = df_bolsas['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
+df_real['RENDIMIENTO'] = df_real['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
 
 def format_date(date_obj):
     return date_obj.strftime('%d/%m/%Y')
@@ -220,21 +240,26 @@ def renta_variable_view():
         semana_anterior_inicio=semana_anterior_inicio,
         fecha_actual=fecha_actual
     )
+colores = {
+    'BANCO PICHINCHA C.A.': '#F7B600',
+    'BANCO BOLIVARIANO C.A.': '#004B87',
+    'BANCO GUAYAQUIL S.A.': '#E12D84',
+    'BANCO DE LA PRODUCCION S.A . PRODUBANCO': '#006B3F',
+    'HOLCIM ECUADOR S.A.': '#0072C6',
+    'SAN CARLOS SOC. AGR. IND.': '#006B3F',
+    'CERVECERIA NACIONAL CN S A': '#E12D39',
+    'BEVERAGE BRAND PATENTS SA': '#9E9E9E',
+    'BOLSA DE VALORES DE QUITO': '#E12D2D',
+    'BOLSA DE VALORES DE GUAYAQUIL': '#6EC2E8'
+}
+
 @app.route('/grafico-tres-empresas')
 def grafico_tres_empresas():
     empresas = ['BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO']
-    colores = {
-    'BANCO PICHINCHA C.A.': '#F7B600',  # Amarillo
-    'BANCO BOLIVARIANO C.A.': '#004B87',  # Azul
-    'BANCO GUAYAQUIL S.A.': '#E12D84',   # Magenta
-    'BANCO DE LA PRODUCCION S.A . PRODUBANCO': '#006B3F'  # Verde
-}
-
-
     fig = go.Figure()
 
     for empresa in empresas:
-        datos_empresa = df_rendimiento[df_rendimiento['EMISOR'] == empresa]
+        datos_empresa = df_financiero[df_financiero['EMISOR'] == empresa]
         fig.add_trace(go.Scatter(
             x=datos_empresa['AÑO'],
             y=datos_empresa['RENDIMIENTO'],
@@ -265,6 +290,83 @@ def grafico_tres_empresas():
     )
 
     return fig.to_html(full_html=False, config=config)
+
+@app.route('/grafico-bolsas')
+def grafico_bolsas():
+    empresas = ['BOLSA DE VALORES DE QUITO', 'BOLSA DE VALORES DE GUAYAQUIL']
+    fig = go.Figure()
+
+    for empresa in empresas:
+        datos_empresa = df_bolsas[df_bolsas['EMISOR'] == empresa]
+        fig.add_trace(go.Scatter(
+            x=datos_empresa['AÑO'],
+            y=datos_empresa['RENDIMIENTO'],
+            mode='lines+markers',
+            name=empresa,
+            line=dict(color=colores[empresa])
+        ))
+
+    fig.update_layout(
+        title='Tendencias de Rendimiento: Bolsas de Quito y Guayaquil',
+        xaxis_title='Año',
+        yaxis_title='Rendimiento (%)',
+        hovermode='x unified',
+        legend=dict(x=0, y=1.2),
+        xaxis=dict(
+            tickmode='array',
+            tickvals=[2022, 2023, 2024],
+            ticktext=['2022', '2023', '2024']
+        ),
+        yaxis=dict(tickformat=".1%")
+    )
+
+    config = dict(
+        scrollZoom=True,
+        displayModeBar=True,
+        modeBarButtonsToRemove=['zoom2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d'],
+        displaylogo=False
+    )
+
+    return fig.to_html(full_html=False, config=config)
+
+@app.route('/grafico-sector-real')
+def grafico_sector_real():
+    empresas = ['HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'CERVECERIA NACIONAL CN S A', 'BEVERAGE BRAND PATENTS SA']
+    fig = go.Figure()
+
+    for empresa in empresas:
+        datos_empresa = df_real[df_real['EMISOR'] == empresa]
+        fig.add_trace(go.Scatter(
+            x=datos_empresa['AÑO'],
+            y=datos_empresa['RENDIMIENTO'],
+            mode='lines+markers',
+            name=empresa,
+            line=dict(color=colores[empresa])
+        ))
+
+    fig.update_layout(
+        title='Tendencias de Rendimiento: Sector Real',
+        xaxis_title='Año',
+        yaxis_title='Rendimiento (%)',
+        hovermode='x unified',
+        legend=dict(x=0, y=1.2),
+        xaxis=dict(
+            tickmode='array',
+            tickvals=[2022, 2023, 2024],
+            ticktext=['2022', '2023', '2024']
+        ),
+        yaxis=dict(tickformat=".1%")
+    )
+
+    config = dict(
+        scrollZoom=True,
+        displayModeBar=True,
+        modeBarButtonsToRemove=['zoom2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d'],
+        displaylogo=False
+    )
+
+    return fig.to_html(full_html=False, config=config)
+
 @app.route('/juntas-de-accionistas')
 def juntas_de_accionistas():
     # Leer los datos desde el archivo combinado
@@ -279,17 +381,24 @@ def juntas_de_accionistas():
 
     df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
 
+    # Leer los datos de rendimiento para el sector financiero
     df_rendimiento = pd.read_csv(rendimiento_sector_financiero_path)
     df_rendimiento.columns = df_rendimiento.columns.str.strip().str.upper()
     df_rendimiento['RENDIMIENTO'] = df_rendimiento['RENDIMIENTO'].str.replace('%', '', regex=False).astype(float) / 100
 
+    # Generar los gráficos para cada sector
     grafico_tres_empresas_html = grafico_tres_empresas()
+    grafico_bolsas_html = grafico_bolsas()
+    grafico_sector_real_html = grafico_sector_real()
 
     # Renderizar el template de Juntas de Accionistas
     return render_template(
         'juntas_de_accionistas.html',
-        grafico_tres_empresas=grafico_tres_empresas_html
+        grafico_tres_empresas=grafico_tres_empresas_html,
+        grafico_bolsas=grafico_bolsas_html,
+        grafico_sector_real=grafico_sector_real_html
     )
+
 
 
 @app.route('/data/<path:filename>')
