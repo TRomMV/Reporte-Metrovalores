@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory
+import pickle
 import pandas as pd
 import plotly.graph_objs as go
 import os
@@ -17,6 +18,9 @@ if os.path.exists("actualizar_variacion.py"):
     subprocess.run(["python", "actualizar_variacion.py"])
 else:
     print("El archivo 'actualizar_variacion.py' no se encuentra.")
+
+model = pickle.load(open("data/Modelo_NC.pkl", "rb"))
+
 
 # Ruta de los archivos CSV
 datos_actualizados_path = 'data/datos_actualizados.csv'
@@ -405,9 +409,17 @@ def juntas_de_accionistas():
 def serve_data_file(filename):
     return send_from_directory('data', filename)
 
-@app.route('/renta-fija')
-def renta_fija():
-    return render_template('renta_fija.html')
+@app.route("/notas-de-credito")
+def notas_de_credito():
+    return render_template("notas_de_credito.html")  # Asegúrate de que el archivo HTML está en la carpeta `templates`
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    valor_nominal = float(request.form["Valor_Nominal"])
+    prediction = model.predict([[valor_nominal]])[0]
+    prediction_text = f"El precio estimado para una nota de crédito con valor nominal de ${valor_nominal:,.2f} es: {prediction:,.2f}"
+    return render_template("notas_de_credito.html", prediction_text=prediction_text)
+
 
 @app.route('/update-data') 
 def update_data(): 
