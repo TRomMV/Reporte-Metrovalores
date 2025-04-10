@@ -58,7 +58,7 @@
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
                     <li><a href="/renta-variable">Renta Variable</a></li>
-                    <li><a href="/notas-de-credito"class="active">Notas de Crédito</a></li> <!-- Aquí añadimos la clase active -->
+                    <li><a href="/notas-de-credito"class="active"   >Notas de Crédito</a></li> <!-- Aquí añadimos la clase active -->
                 </ul>
             </nav>
         </div>
@@ -66,116 +66,116 @@
     <main>
         <h1>Estimación del Precio de una Nota de Crédito</h1>
 
-        <form action="/predict" method="POST">
-            <label for="Valor_Nominal">Valor Nominal (utilizar punto como separador de decimales):</label>
-            <input type="number" name="Valor_Nominal" id="Valor_Nominal" step="any" required>
-            <br>
-            <button type="submit">Estimar Precio</button>
-        </form>
-
+    <form action="/predict" method="POST">
+        <label for="Valor_Nominal">Valor Nominal(utilizar punto como separador de decimales):</label>
+        <input type="number" name="Valor_Nominal" id="Valor_Nominal" step="any" required>
         <br>
-        <!-- Mostrar el resultado de la predicción -->
-        {% if prediction_text %}
-            <p>{{ prediction_text }}</p>
-        {% endif %}
+        <button type="submit">Estimar Precio</button>
+    </form>
 
-        <table>
-            <thead>
-              <tr>
-                <th>Desde</th>
-                <th>Hasta</th>
-                <th>Precio Promedio</th>
-                <th># de Transacciones</th>
-                <th>%</th>
-                <th>Valor Nominal Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$-</td>
-                <td>$5.000,00</td>
-                <td>98,68</td>
-                <td>1581</td>
-                <td>42,14%</td>
-                <td>$2.746.099,01</td>
-              </tr>
-              <tr>
-                <td>$5.000,01</td>
-                <td>$10.000,00</td>
-                <td>99,31</td>
-                <td>381</td>
-                <td>10,15%</td>
-                <td>$2.787.263,98</td>
-              </tr>
-              <tr>
-                <td>$10.000,01</td>
-                <td>$20.000,00</td>
-                <td>99,39</td>
-                <td>410</td>
-                <td>10,93%</td>
-                <td>$5.922.363,60</td>
-              </tr>
-              <tr>
-                <td>$20.000,01</td>
-                <td>$40.000,00</td>
-                <td>99,47</td>
-                <td>351</td>
-                <td>9,36%</td>
-                <td>$9.832.058,86</td>
-              </tr>
-              <tr>
-                <td>$40.000,01</td>
-                <td>$80.000,00</td>
-                <td>99,61</td>
-                <td>301</td>
-                <td>8,02%</td>
-                <td>$16.806.741,15</td>
-              </tr>
-              <tr>
-                <td>$80.000,01</td>
-                <td>$160.000,00</td>
-                <td>99,72</td>
-                <td>228</td>
-                <td>6,08%</td>
-                <td>$26.191.619,35</td>
-              </tr>
-              <tr>
-                <td>$160.000,01</td>
-                <td>$320.000,00</td>
-                <td>99,75</td>
-                <td>191</td>
-                <td>5,09%</td>
-                <td>$44.032.839,66</td>
-              </tr>
-              <tr>
-                <td>$320.000,01</td>
-                <td>$640.000,00</td>
-                <td>99,77</td>
-                <td>181</td>
-                <td>4,82%</td>
-                <td>$81.552.630,41</td>
-              </tr>
-              <tr>
-                <td>$640.000,01</td>
-                <td>$1.280.000,00</td>
-                <td>99,79</td>
-                <td>82</td>
-                <td>2,19%</td>
-                <td>$73.312.605,34</td>
-              </tr>
-              <tr>
-                <td>$1.280.000,01</td>
-                <td>$20.000.000,00</td>
-                <td>99,82</td>
-                <td>46</td>
-                <td>1,23%</td>
-                <td>$107.307.914,34</td>
-              </tr>
-            </tbody>
-          </table>
+    <br>
+    <!-- Display the prediction result -->
+    {% if prediction_text %}
+        <p>{{ prediction_text }}</p>
+    {% endif %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Desde</th>
+      <th>Hasta</th>
+      <th>Precio Promedio</th>
+      <th># de Transacciones</th>
+      <th>%</th>
+      <th>Valor Nominal Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$-</td>
+      <td>$5.000,00</td>
+      <td>98,76</td>
+      <td>503</td>
+      <td>44,40%</td>
+      <td>$836.928,21</td>
+    </tr>
+    <tr>
+      <td>$5.000,01</td>
+      <td>$10.000,00</td>
+      <td>99,38</td>
+      <td>128</td>
+      <td>11,30%</td>
+      <td>$940.041,54</td>
+    </tr>
+    <tr>
+      <td>$10.000,01</td>
+      <td>$20.000,00</td>
+      <td>99,44</td>
+      <td>127</td>
+      <td>11,21%</td>
+      <td>$1.835.298,52</td>
+    </tr>
+    <tr>
+      <td>$20.000,01</td>
+      <td>$40.000,00</td>
+      <td>99,52</td>
+      <td>102</td>
+      <td>9,00%</td>
+      <td>$2.882.506,55</td>
+    </tr>
+    <tr>
+      <td>$40.000,01</td>
+      <td>$80.000,00</td>
+      <td>99,63</td>
+      <td>101</td>
+      <td>8,91%</td>
+      <td>$5.589.607,03</td>
+    </tr>
+    <tr>
+      <td>$80.000,01</td>
+      <td>$160.000,00</td>
+      <td>99,73</td>
+      <td>82</td>
+      <td>7,24%</td>
+      <td>$9.687.465,68</td>
+    </tr>
+    <tr>
+      <td>$160.000,01</td>
+      <td>$320.000,00</td>
+      <td>99,77</td>
+      <td>44</td>
+      <td>3,88%</td>
+      <td>$9.729.236,38</td>
+    </tr>
+    <tr>
+      <td>$320.000,01</td>
+      <td>$640.000,00</td>
+      <td>99,79</td>
+      <td>31</td>
+      <td>2,74%</td>
+      <td>$14.290.949,88</td>
+    </tr>
+    <tr>
+      <td>$640.000,01</td>
+      <td>$1.280.000,00</td>
+      <td>99,82</td>
+      <td>11</td>
+      <td>0,97%</td>
+      <td>$9.767.041,52</td>
+    </tr>
+    <tr>
+      <td>$1.280.000,01</td>
+      <td>$20.000.000,00</td>
+      <td>99,83</td>
+      <td>4</td>
+      <td>0,35%</td>
+      <td>$6.650.145,11</td>
+    </tr>
+  </tbody>
+</table>
 
         <footer>
-            <p>(Datos del 01/01/2025 al 04/04/25)</p>
+            <p>(Datos del 05/03/2025 al 04/04/25)</p>
         </footer>
     </main>
     <footer class="pie-de-pagina">
