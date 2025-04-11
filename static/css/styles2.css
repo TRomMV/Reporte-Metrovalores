@@ -503,3 +503,50 @@ body.azul-marino {
     border-radius: 5px; /* Bordes ligeramente redondeados */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves para efecto elegante */
 }
+/* Estilo para la tabla con líneas horizontales y filas alternadas */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Eliminación de bordes dobles */
+    margin: 20px auto; /* Centrar la tabla */
+    font-size: 16px;
+    text-align: center;
+}
+
+th {
+    background-color: #f5f5f5; /* Gris claro para la cabecera */
+    color: #333; /* Texto oscuro */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd; /* Línea horizontal que separa la cabecera de los datos */
+}
+
+td {
+    padding: 12px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #eee; /* Líneas horizontales muy finas */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gris muy claro para filas pares */
+}
+
+tr:nth-child(odd) {
+    background-color: white; /* Fondo blanco para filas impares */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Efecto hover al pasar el cursor */
+}
+
+/* Para eliminar las líneas verticales y los bordes externos */
+table {
+    border: none;
+}
+/* Eliminar líneas exteriores y líneas verticales */
+table {
+    border: none; /* Quitar las líneas exteriores del cuadro */
+}
+
+th, td {
+    border: none; /* Quitar las líneas verticales dentro del cuadro */
+    border-bottom: 1px solid #eee; /* Mantener solo las líneas horizontales finas */
+}
