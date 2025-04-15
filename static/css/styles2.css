@@ -512,7 +512,7 @@ body.azul-marino {
 /* Compactar tabla ajustando celdas */
 .tabla-renta-variable th, 
 .tabla-renta-variable td {
-    padding: 8px 25px; /* Reducir padding vertical a 8px, mantener ancho horizontal amplio */
+    padding: 5px 20px; /* Reducir padding vertical a 8px, mantener ancho horizontal amplio */
     font-size: 16px; /* Tamaño del texto se mantiene */
     vertical-align: middle; /* Centrar contenido verticalmente */
 }
@@ -528,4 +528,8 @@ body.azul-marino {
 
 .tabla-renta-variable tr:hover {
     background-color: #f1f1f1; /* Efecto hover en filas activas */
+}
+/* Aumentar el tamaño de la fuente en los datos */
+.tabla-renta-variable td {
+    font-size: 18px; /* Ajustar tamaño de la fuente para los datos */
 }
