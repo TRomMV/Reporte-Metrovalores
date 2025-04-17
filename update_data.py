@@ -56,7 +56,7 @@ else:
     empresas_interes = []
 
 # Asegurarse de que INDUSTRIAS ALES está incluida en empresas de interés
-if 'CONTINENTAL TIRE ANDINA S A' not in empresas_interes:
+if 'CONTINENTAL TIRE ANDINA S.A.' not in empresas_interes:
     empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
 
 # Filtrar los datos para incluir solo las empresas de interés

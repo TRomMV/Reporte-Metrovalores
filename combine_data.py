@@ -59,9 +59,9 @@ df_2025 = df_2025[common_columns]
 # Filtrar empresas de interés para 2019 a 2023
 empresas_interes_2019_2023 = df_2019_2023['EMISOR'].unique()
 
-# Filtrar empresas de interés para 2024 y 2025, incluyendo INDUSTRIAS ALES
+# Filtrar empresas de interés para 2024 y 2025, incluyendo INDUSTRIAS CONTINENTAL TIRE ANDINA S.A.
 empresas_interes = list(empresas_interes_2019_2023)
-if 'CONTINENTAL TIRE ANDINA S A' not in empresas_interes:
+if 'CONTINENTAL TIRE ANDINA S.A.' not in empresas_interes:
     empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
 
 df_2024 = df_2024[df_2024['EMISOR'].isin(empresas_interes)]

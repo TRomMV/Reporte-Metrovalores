@@ -21,7 +21,7 @@ sector_financiero = [
 ]
 sector_real = [
     'CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A',
-    'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'CONCLINA C A CIA CONJU CLINICO NACIONAL'
+    'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'CONCLINA C A CIA CONJU CLINICO NACIONAL', 'CONTINENTAL TIRE ANDINA S A'
 ]
 
 # Añadir la columna de sector
@@ -95,4 +95,3 @@ def actualizar_variacion_semanal():
     print("Actualización completada: Los datos se han guardado correctamente en 'data/datos_actualizados.csv'.")
 
 actualizar_variacion_semanal()
-

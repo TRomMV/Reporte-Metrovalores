@@ -13,6 +13,8 @@ def obtener_resumen_dividendos(empresa):
         "BOLSA DE VALORES DE QUITO": "La Bolsa de Valores de Quito presentó un capital constante de $5,393.00 tanto en 2023 como en 2024. La utilidad neta tuvo un ligero descenso, pasando de $1,824.00 en 2023 a $1,682.00 en 2024. Asimismo, el dividendo en efectivo disminuyó de $1,642.00 a $1,513.00, mientras que el dividendo por acción se redujo de $0.30 a $0.28. A pesar de estas reducciones, el último precio de la acción aumentó de $2.35 en 2023 a $2.90 en 2024, reflejando un incremento en la valoración de las acciones. Esto resultó en una disminución del rendimiento del dividendo, que pasó de 12.96% a 9.67%, señalando un ajuste en el retorno relativo para los inversionistas.",
         "CONCLINA C A  CIA CONJU CLINICO NACIONAL": "CONCLINA C.A. mantuvo un capital constante de $22,985.00 en 2023 y 2024, mientras que la utilidad neta registró una disminución, pasando de $5,531.00 en 2023 a $4,754.00 en 2024. El último precio de la acción mostró una notable revalorización, aumentando de $1.08 en 2023 a $1.33 en 2024, lo que refleja un fortalecimiento en la percepción del mercado hacia las acciones de la empresa. Actualmente, no se dispone de información adicional sobre dividendos, rendimientos u otros indicadores financieros relacionados, ya que se espera que estos datos sean proporcionados tras la junta de accionistas programada para el próximo 22 de abril de 2025.",
         
+    
     }
+
 
     return resúmenes.get(empresa, "Resumen de dividendos no disponible para esta empresa.")
