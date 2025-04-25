@@ -280,8 +280,8 @@ def grafico_tres_empresas():
         legend=dict(x=0, y=1.2),
         xaxis=dict(
             tickmode='array',
-            tickvals=[2022, 2023, 2024],
-            ticktext=['2022', '2023', '2024']
+            tickvals=[2020, 2021, 2022, 2023, 2024],
+            ticktext=['2020', '2021', '2022', '2023', '2024']
         ),
         yaxis=dict(tickformat=".1%")
     )
@@ -318,8 +318,8 @@ def grafico_bolsas():
         legend=dict(x=0, y=1.2),
         xaxis=dict(
             tickmode='array',
-            tickvals=[2022, 2023, 2024],
-            ticktext=['2022', '2023', '2024']
+            tickvals=[2020, 2021, 2022, 2023, 2024],
+            ticktext=['2020', '2021', '2022', '2023', '2024']
         ),
         yaxis=dict(tickformat=".1%")
     )
@@ -332,6 +332,7 @@ def grafico_bolsas():
     )
 
     return fig.to_html(full_html=False, config=config)
+
 
 @app.route('/grafico-sector-real')
 def grafico_sector_real():
@@ -356,8 +357,8 @@ def grafico_sector_real():
         legend=dict(x=0, y=1.2),
         xaxis=dict(
             tickmode='array',
-            tickvals=[2022, 2023, 2024],
-            ticktext=['2022', '2023', '2024']
+            tickvals=[2020, 2021, 2022, 2023, 2024],
+            ticktext=['2020', '2021', '2022', '2023', '2024']
         ),
         yaxis=dict(tickformat=".1%")
     )
@@ -370,6 +371,7 @@ def grafico_sector_real():
     )
 
     return fig.to_html(full_html=False, config=config)
+
 
 @app.route('/juntas-de-accionistas')
 def juntas_de_accionistas():
