@@ -534,3 +534,34 @@ body.azul-marino {
     font-size: 18px; /* Ajustar tamaño de la fuente para los datos */
 }
 
+/* Mantener ancho original */
+.tabla-renta-variable {
+    width: 100%; /* No reducir horizontalmente */
+    margin: 5px auto;
+}
+
+/* Compactar filas verticalmente al máximo sin modificar números */
+.tabla-renta-variable th,
+.tabla-renta-variable td {
+    padding: 0px 8px; /* El espacio mínimo absoluto */
+    line-height: 0.8; /* Reducir separación entre líneas */
+}
+
+/* Reducir altura de filas al extremo */
+.tabla-renta-variable tr {
+    height: 10px; /* Altura mínima para la tabla */
+}
+
+/* Mantener diseño visual y legibilidad */
+.tabla-renta-variable th {
+    background-color: #e0e0e0;
+    border-bottom: 1px solid #999;
+}
+
+.tabla-renta-variable tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.tabla-renta-variable tr:hover {
+    background-color: #dcdcdc;
+}

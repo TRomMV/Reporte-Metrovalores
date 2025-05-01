@@ -336,7 +336,23 @@ def grafico_bolsas():
 
 @app.route('/grafico-sector-real')
 def grafico_sector_real():
-    empresas = ['HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'CERVECERIA NACIONAL CN S A', 'BEVERAGE BRAND PATENTS SA']
+    empresas = [
+        'HOLCIM ECUADOR S.A.', 
+        'SAN CARLOS SOC. AGR. IND.', 
+        'CERVECERIA NACIONAL CN S A', 
+        'BEVERAGE BRAND PATENTS SA',
+        'CORPORACION FAVORITA C.A.'  # Se incluye Corporación Favorita
+    ]
+
+    # Colores actualizados para cada empresa
+    colores = {
+        'HOLCIM ECUADOR S.A.': '#5BC0EB',  # Azul claro
+        'SAN CARLOS SOC. AGR. IND.': '#00A859',  # Verde
+        'CERVECERIA NACIONAL CN S A': '#FFD700',  # Amarillo
+        'BEVERAGE BRAND PATENTS SA': '#A9A9A9',  # Gris
+        'CORPORACION FAVORITA C.A.': '#FF0000'  # Rojo
+    }
+
     fig = go.Figure()
 
     for empresa in empresas:
@@ -346,7 +362,8 @@ def grafico_sector_real():
             y=datos_empresa['RENDIMIENTO'],
             mode='lines+markers',
             name=empresa,
-            line=dict(color=colores[empresa])
+            line=dict(color=colores[empresa], width=2),
+            marker=dict(color=colores[empresa], size=6)
         ))
 
     fig.update_layout(
@@ -371,6 +388,7 @@ def grafico_sector_real():
     )
 
     return fig.to_html(full_html=False, config=config)
+
 
 
 @app.route('/juntas-de-accionistas')
