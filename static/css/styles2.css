@@ -613,7 +613,7 @@ body.azul-marino {
     }
 
     thead {
-        display: none; /* Ocultar encabezados para un diseño compacto */
+        display: none; /* Ocultar encabezados en móviles */
     }
 
     tbody,
@@ -635,10 +635,17 @@ body.azul-marino {
     }
 
     td::before {
-        content: attr(data-label); /* Mostrar etiquetas de las columnas */
         font-weight: bold;
         display: block;
         text-transform: uppercase;
         padding-bottom: 4px;
     }
+
+    /* Asignar nombres a cada columna */
+    td:nth-child(1)::before { content: "Desde"; }
+    td:nth-child(2)::before { content: "Hasta"; }
+    td:nth-child(3)::before { content: "Precio Promedio"; }
+    td:nth-child(4)::before { content: "# de transacciones"; }
+    td:nth-child(5)::before { content: "%"; }
+    td:nth-child(6)::before { content: "Valor Nominal Total"; }
 }
