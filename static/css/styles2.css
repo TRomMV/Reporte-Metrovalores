@@ -1,4 +1,4 @@
-/* Estilos para los botones de inicio */
+
 .botones-inicio {
     display: flex;
     justify-content: center;
@@ -596,4 +596,49 @@ body.azul-marino {
 
 .tabla-renta-variable tr:hover {
     background-color: #dcdcdc;
+}
+
+/* Contenedor de la tabla con desplazamiento en móviles */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
+}
+
+/* Ajuste en pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%;
+        display: block;
+        border-collapse: collapse;
+    }
+
+    thead {
+        display: none; /* Ocultar encabezados para un diseño compacto */
+    }
+
+    tbody,
+    tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 6px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label); /* Mostrar etiquetas de las columnas */
+        font-weight: bold;
+        display: block;
+        text-transform: uppercase;
+        padding-bottom: 4px;
+    }
 }
