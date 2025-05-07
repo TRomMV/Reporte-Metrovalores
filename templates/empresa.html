@@ -9,43 +9,52 @@
     <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
     <style>
         .cotizaciones table {
-            width: 100%;
-            font-size: 1.2em;
-            margin: 0 auto;
-            text-align: center;
-            border-collapse: collapse;
-        }
-        .cotizaciones th, .cotizaciones td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        .cotizaciones th {
-            background-color: #f2f2f2;
-            color: black;
-        }
-        .dividendos-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .dividendos-content {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .dividendos-table {
-            flex: 2;
-            margin-right: 20px;
-        }
-        .dividendos-resumen {
-            flex: 3;
-            padding-left: 20px;
-            font-size: 1.1em;
-            text-align: justify;
-        }
-        .card h2, .dividendos-section h2 {
-            text-align: center;
-        }
+    width: 100%;
+    font-size: 1.2em;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.cotizaciones th, .cotizaciones td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.cotizaciones th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+/* Ajuste de la sección de Dividendos */
+.dividendos-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dividendos-content {
+    display: flex;
+    flex-direction: row; /* Organizar los elementos en línea */
+    align-items: flex-start;
+    width: 100%;
+}
+
+.dividendos-resumen {
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1.1em;
+    text-align: justify;
+    width: 100%;
+}
+
+
+.card h2, .dividendos-section h2 {
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
