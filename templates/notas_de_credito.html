@@ -49,6 +49,25 @@
             padding: 8px;
             text-align: center;
         }
+        .aviso-importante {
+            margin-top: 15px;
+            font-size: 1.1em;
+            text-align: justify;
+            font-weight: bold;
+            color: #00000000; /* Rojo oscuro para destacar */
+        }
+        .aviso-importante {
+    margin-top: 15px;
+    font-size: 1.1em;
+    text-align: justify;
+    color: black; /* Texto en negro */
+    font-weight: normal; /* Asegurar que el resto del texto NO esté en negrita */
+}
+
+.aviso-importante strong {
+    font-weight: bold; /* Solo "Aviso Importante" en negrita */
+}
+
     </style>
 </head>
 <body>
@@ -180,8 +199,14 @@
       <footer>
           <p>(Datos del 01/04/2025 al 30/04/25)</p>
       </footer>
-  </main>
-
+      
+      <p class="aviso-importante">
+        <strong>Aviso Importante:</strong> Este simulador proporciona una estimación del precio de las notas de crédito transadas en el mercado de valores ecuatoriano. 
+        La información mostrada se fundamenta en el registro histórico de las últimas cuatro semanas. 
+        Si requiere datos más precisos o los precios de negociación de días recientes, le invitamos a contactarnos por nuestros canales virtuales 
+        o al número telefónico 096 260 3638 o a info@metrovalores.com.ec.
+    </p>  
+</main>
   <footer class="pie-de-pagina">
     <!-- Información General y Redes Sociales -->
     <div class="pie-informacion-redes">
@@ -219,7 +244,4 @@
             </a>
         </div>
     </div>
-</footer>
-
-
- 
+</footer> 
