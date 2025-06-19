@@ -63,6 +63,11 @@ empresas_interes_2019_2023 = df_2019_2023['EMISOR'].unique()
 empresas_interes = list(empresas_interes_2019_2023)
 if 'CONTINENTAL TIRE ANDINA S.A.' not in empresas_interes:
     empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
+if 'INDUSTRIAS ALES C.A.' not in empresas_interes:
+    empresas_interes.append('INDUSTRIAS ALES')
+if 'INVERSANCARLOS S.A.' not in empresas_interes:
+    empresas_interes.append('INVERSANCARLOS')
+
 
 df_2024 = df_2024[df_2024['EMISOR'].isin(empresas_interes)]
 df_2025 = df_2025[df_2025['EMISOR'].isin(empresas_interes)]

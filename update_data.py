@@ -55,9 +55,14 @@ if os.path.exists(acciones_combinadas_path):
 else:
     empresas_interes = []
 
-# Asegurarse de que INDUSTRIAS ALES está incluida en empresas de interés
+# Asegurarse de que INDUSTRIAS ALES, CONTINENTAL e INVERSANCARLOS estaN incluidas en empresas de interés
 if 'CONTINENTAL TIRE ANDINA S.A.' not in empresas_interes:
     empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
+if 'INDUSTRIAS ALES C.A.' not in empresas_interes:
+    empresas_interes.append('INDUSTRIAS ALES')
+if 'INVERSANCARLOS S.A.' not in empresas_interes:
+    empresas_interes.append('INVERSANCARLOS')
+
 
 # Filtrar los datos para incluir solo las empresas de interés
 df_2024 = df_2024[df_2024['EMISOR'].isin(empresas_interes)]
