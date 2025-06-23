@@ -8,7 +8,7 @@ escalas_volumen = {
     "HOLCIM ECUADOR S.A.": 2300,  # Aumentado desde 2100
     "BRIKAPITAL SA": 28,  # Aumentado desde 25
     "BANCO PICHINCHA C.A.": 950,  # Aumentado desde 860
-    "INVERSANCARLOS": 400000,  # Aumentado desde 370000
+    "INVERSANCARLOS": 200000,  # Aumentado desde 370000
     "SAN CARLOS SOC. AGR. IND.": 120000,  # Aumentado desde 65000
     "BANCO BOLIVARIANO C.A.": 130000,  # Aumentado desde 120000
     "BOLSA DE VALORES DE GUAYAQUIL": 70000,  # Aumentado desde 65000
