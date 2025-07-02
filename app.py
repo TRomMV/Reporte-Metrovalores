@@ -13,18 +13,13 @@ from data.resumen_dividendos import obtener_resumen_dividendos
 
 app = Flask(__name__)
 
-# Llamar al script de actualización de variación semanal
-if os.path.exists("actualizar_variacion.py"):
-    subprocess.run(["python", "actualizar_variacion.py"])
-else:
-    print("El archivo 'actualizar_variacion.py' no se encuentra.")
+
 
 model = pickle.load(open("data/Modelo_NC.pkl", "rb"))
 
 
 # Ruta de los archivos CSV
 datos_actualizados_path = 'data/datos_actualizados.csv'
-datos_actualizados_lunes_path = 'data/datos_actualizados_lunes.csv'
 acciones_combinadas_path = 'data/acciones_combinadas.csv'  # Archivo de datos de empresas
 rendimiento_sector_financiero_path = pd.read_csv('data/rendimiento_sector_financiero.csv')
 rendimiento_sector_real_path = pd.read_csv('data/rendimiento_bolsas.csv')
