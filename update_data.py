@@ -62,7 +62,10 @@ if 'INDUSTRIAS ALES C.A.' not in empresas_interes:
     empresas_interes.append('INDUSTRIAS ALES')
 if 'INVERSANCARLOS S.A.' not in empresas_interes:
     empresas_interes.append('INVERSANCARLOS')
-
+if 'BANCO DEL AUSTRO' not in empresas_interes:
+    empresas_interes.append('BANCO DEL AUSTRO')
+if 'BRIKAPITAL SA' not in empresas_interes:
+    empresas_interes.append('BRIKAPITAL SA')
 
 # Filtrar los datos para incluir solo las empresas de interés
 df_2024 = df_2024[df_2024['EMISOR'].isin(empresas_interes)]

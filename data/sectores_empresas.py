@@ -16,8 +16,11 @@ sectores_empresas = {
     "CONTINENTAL TIRE ANDINA S A": "Automotriz",
     "BEVERAGE BRAND PATENTS SA": "Propiedad intelectual/Bebidas",
     "INDUSTRIAS ALES": "Consumo masivo",
-    "CONCLINA C A  CIA CONJU CLINICO NACIONAL": "Salud"
+    "CONCLINA C A  CIA CONJU CLINICO NACIONAL": "Salud",
+    "BANCO DEL AUSTRO": "Financiero"
+
 }
+
 
 
 def obtener_sector_empresa(nombre_empresa):
