@@ -199,6 +199,11 @@ def show_company(company):
 
     return render_template('empresa.html', company=company, profile=profile, max_quotes=max_quotes, min_quotes=min_quotes, graph=graph, indices_financieros=indices_financieros, obtener_resumen_dividendos=obtener_resumen_dividendos)
 
+from flask import send_from_directory
+
+@app.route('/js/scripts.js')
+def servir_scripts_js():
+    return send_from_directory('static/js', 'scripts.js')
 
 
 from flask import render_template
