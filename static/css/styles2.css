@@ -649,3 +649,41 @@ body.azul-marino {
     td:nth-child(5)::before { content: "%"; }
     td:nth-child(6)::before { content: "Valor Nominal Total"; }
 }
+.nav li.submenu {
+    position: relative;
+}
+
+.nav li.submenu .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 240px;
+    border: 1px solid black;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.nav li.submenu:hover .dropdown {
+    display: block;
+}
+
+.nav li.submenu .dropdown li {
+    margin: 6px 0;
+}
+
+.nav li.submenu .dropdown a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 8px 14px;
+    border-radius: 3px;
+}
+
+.nav li.submenu .dropdown a:hover {
+    background-color: #eaeaea;
+}

@@ -10,6 +10,7 @@ from data.escalas_volumen import obtener_escala_volumen
 import subprocess
 from data_processing import procesar_datos_empresa
 from data.resumen_dividendos import obtener_resumen_dividendos
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -200,45 +201,22 @@ def show_company(company):
 
 
 
+from flask import send_file, render_template
+from datetime import datetime
 
 @app.route('/renta-variable')
-def renta_variable_view():
-    # Leer los datos desde el archivo actualizado
-    datos = pd.read_csv(datos_actualizados_path)
+def renta_variable():
+    return render_template('renta_variable.html', fecha_actual=datetime.now().strftime("%d/%m/%Y"))
 
-    # Limpiar y preparar los datos si es necesario
-    datos = datos[datos['PRECIO_FINAL'].notnull()]
+@app.route('/mostrar-imagen')
+def mostrar_imagen():
+    return send_file('data/renta_variable.JPG', mimetype='image/jpeg')
 
-    hoy = datetime.now()
-    fecha_actual = hoy.strftime('%d de %B de %Y')
+@app.route('/informacion-individual-por-empresa')
+def informacion_individual_por_empresa():
+    return render_template('Informacion_individual_por_empresa.html')
 
-    lunes_actual = hoy - timedelta(days=hoy.weekday())
-    lunes_anterior = lunes_actual - timedelta(days=7)
 
-    semana_actual_inicio = lunes_actual.strftime('%d de %B')
-    semana_anterior_inicio = lunes_anterior.strftime('%d de %B')
-
-    # Mapeo de los meses en inglés a español
-    meses = {
-        'January': 'enero', 'February': 'febrero', 'March': 'marzo',
-        'April': 'abril', 'May': 'mayo', 'June': 'junio',
-        'July': 'julio', 'August': 'agosto', 'September': 'septiembre',
-        'October': 'octubre', 'November': 'noviembre', 'December': 'diciembre'
-    }
-
-    for mes_ing, mes_esp in meses.items():
-        semana_actual_inicio = semana_actual_inicio.replace(mes_ing, mes_esp)
-        semana_anterior_inicio = semana_anterior_inicio.replace(mes_ing, mes_esp)
-        fecha_actual = fecha_actual.replace(mes_ing, mes_esp)
-
-    # Renderizar el template con los datos necesarios
-    return render_template(
-        'renta_variable.html',
-        datos=datos.to_dict(orient='records'),
-        semana_actual_inicio=semana_actual_inicio,
-        semana_anterior_inicio=semana_anterior_inicio,
-        fecha_actual=fecha_actual
-    )
 colores = {
     'BANCO PICHINCHA C.A.': '#F7B600',
     'BANCO BOLIVARIANO C.A.': '#004B87',

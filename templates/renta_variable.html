@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acciones - Metrovalores</title>
+    <title>Informe Semanal - Metrovalores</title>
     <link rel="stylesheet" href="/static/css/styles1.css">
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+        .contenedor-imagen {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .contenedor-imagen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .volver-inicio {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .volver-inicio button {
+            background-color: #005A9E;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="azul-marino">
     <header>
@@ -15,73 +45,40 @@
                 <img src="/static/img/Logo.png" alt="Metrovalores Logo">
             </a>
             <nav>
-                <ul class="nav">
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
-                    <li><a href="/renta-variable" class="active">Renta Variable</a></li>
-                    <li><a href="/notas-de-credito">Notas de Crédito</a></li>
-                </ul>
+<ul class="nav">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
+    <li class="submenu">
+        <a href="javascript:void(0);">Renta Variable ▾</a>
+        <ul class="dropdown">
+            <li><a href="/renta-variable">Reporte semanal de renta variable</a></li>
+            <li><a href="/informacion-individual-por-empresa">Información individual por empresa</a></li>
+        </ul>
+    </li>
+    <li><a href="/notas-de-credito">Notas de Crédito</a></li>
+</ul>
             </nav>
         </div>
     </header>
+
     <main>
         <div class="container">
             <div class="titulo-centro">
-                <h1 class="titulo-profesional">Acciones</h1>
+                <h1 class="titulo-profesional">Reporte Semanal de Renta Variable</h1>
                 <p>{{ fecha_actual }}</p>
             </div>
 
-            {% for sector, empresas in {"Instituciones del Sector Financiero": ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'], "Empresas del Sector Real": ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', "CONCLINA C A  CIA CONJU CLINICO NACIONAL", "CONTINENTAL TIRE ANDINA S A", "INDUSTRIAS ALES", "INVERSANCARLOS", "BRIKAPITAL SA"] }.items() %}
-            <section>
-                <h2>{{ sector }}</h2>
-                <div class="tabla-container centrada" style="display: flex; justify-content: center;">
-                    <table class="tabla-renta-variable centrar-tabla">
-                        <thead>
-                            <tr>
-                                <th>Emisor</th>
-                                <th>Última Transacción</th>
-                                <th>Precio</th>
-                                <th>Variación Semanal</th>
-                                <th>Precio Cierre 2024</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for empresa in datos if empresa.EMISOR in empresas %}
-                            <tr>
-                                <td>
-                                    <a href="{{ url_for('show_company', company=empresa.EMISOR) }}">
-                                        <img src="/static/img/Logos_nombres/{{ empresa.EMISOR }}.png" alt="{{ empresa.EMISOR }} Logo" class="logo-empresa">
-                                    </a>
-                                </td>
-                                <td data-label="Última Transacción">{{ empresa.FECHA_ULTIMA_TRANSACCION }}</td>
-                                <td data-label="Precio">{{ empresa.PRECIO_FINAL }}</td>
-                                <td data-label="Variación Semanal" class="{% if empresa.VARIACION_SEMANAL.startswith('-') %}variacion negativa{% elif empresa.VARIACION_SEMANAL == '0.00%' %}variacion cero{% else %}variacion positiva{% endif %}">{{ empresa.VARIACION_SEMANAL }}</td>
-                                <td data-label="Precio Cierre 2024">{{ empresa.PRECIO_CIERRE_2024 }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            {% if sector == "Instituciones del Sector Financiero" %}
-            {% endif %}
-            {% endfor %}
-            <!-- Texto de comparación de precios al final de la página -->
-            <div class="texto-comparacion">
-                <p>Comparación del precio de cierre de la semana del {{ semana_anterior_inicio }} con el último precio de la semana del {{ semana_actual_inicio }}.</p>
+            <div class="contenedor-imagen">
+                <img src="/mostrar-imagen" alt="Informe Renta Variable">
             </div>
         </div>
     </main>
 </body>
 </html>
 <footer class="pie-de-pagina">
-    <!-- Información General y Redes Sociales -->
     <div class="pie-informacion-redes">
         <div class="pie-informacion">
-            <p>
-                Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
-                Ed. San Salvador, Piso 7. Quito, Ecuador.
-            </p>
+            <p>Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, Ed. San Salvador, Piso 7. Quito, Ecuador.</p>
             <p>info@metrovalores.com.ec | (593 2) 2266 400 | (593) 96 260 3638</p>
         </div>
         <div class="pie-redes">
@@ -96,10 +93,7 @@
             </a>
         </div>
     </div>
-    <!-- Línea divisora -->
     <hr class="linea-separadora">
-
-    <!-- Noticias -->
     <div class="pie-noticias">
         <h3 class="titulo-noticias">NOTICIAS</h3>
         <div class="noticias-enlaces">
@@ -112,3 +106,5 @@
         </div>
     </div>
 </footer>
+
+
