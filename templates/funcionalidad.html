@@ -16,11 +16,17 @@
             </a>
             <nav>
                 <ul class="nav">
-                    <li><a href="{{ url_for('home') }}" class="active">Inicio</a></li>
-                    <li><a href="/noticias">Noticias</a></li>
-                    <li><a href="/renta-variable">Renta Variable</a></li>
-                    <li><a href="/notas-de-credito">Notas de Crédito</a></li>
-                </ul>
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
+    <li class="submenu">
+        <a href="javascript:void(0);">Renta Variable ▾</a>
+        <ul class="dropdown">
+            <li><a href="/renta-variable">Reporte semanal de renta variable</a></li>
+            <li><a href="/informacion-individual-por-empresa">Información individual por empresa</a></li>
+        </ul>
+    </li>
+    <li><a href="/notas-de-credito">Notas de Crédito</a></li>
+</ul>
             </nav>
         </div>
         <h1>Tendencias con Gráficos</h1>
