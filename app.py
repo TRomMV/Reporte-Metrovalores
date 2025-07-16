@@ -201,16 +201,13 @@ def show_company(company):
 
 
 
-from flask import send_file, render_template
+from flask import render_template
 from datetime import datetime
 
 @app.route('/renta-variable')
 def renta_variable():
     return render_template('renta_variable.html', fecha_actual=datetime.now().strftime("%d/%m/%Y"))
 
-@app.route('/mostrar-imagen')
-def mostrar_imagen():
-    return send_file('data/renta_variable.JPG', mimetype='image/jpeg')
 
 @app.route('/informacion-individual-por-empresa')
 def informacion_individual_por_empresa():
