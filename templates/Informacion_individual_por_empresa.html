@@ -79,7 +79,7 @@
             <section class="seccion-empresas">
                 <h2>Instituciones del Sector Financiero</h2>
                 <div class="grid-empresas">
-                    {% for nombre in ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO'] %}
+                    {% for nombre in ['BANCO GUAYAQUIL S.A.', 'BANCO DE LA PRODUCCION S.A . PRODUBANCO', 'BANCO PICHINCHA C.A.', 'BANCO BOLIVARIANO C.A.', 'BOLSA DE VALORES DE GUAYAQUIL', 'BOLSA DE VALORES DE QUITO', 'BANCO DEL AUSTRO'] %}
                         <a href="{{ url_for('show_company', company=nombre) }}" class="empresa-logo">
                             <img src="/static/img/Logos_nombres/{{ nombre }}.png" alt="{{ nombre }}">
                         </a>
