@@ -19,6 +19,7 @@ escalas_volumen = {
     "CONCLINA C A  CIA CONJU CLINICO NACIONAL": 30000,
     "CONTINENTAL TIRE ANDINA S A": 22500,
     "BANCO DEL AUSTRO": 650, 
+    "CRIDESA": 10000,
 }
 
 def obtener_escala_volumen(nombre_empresa):

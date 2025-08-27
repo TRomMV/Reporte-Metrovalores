@@ -17,7 +17,8 @@ sectores_empresas = {
     "BEVERAGE BRAND PATENTS SA": "Propiedad intelectual/Bebidas",
     "INDUSTRIAS ALES": "Consumo masivo",
     "CONCLINA C A  CIA CONJU CLINICO NACIONAL": "Salud",
-    "BANCO DEL AUSTRO": "Financiero"
+    "BANCO DEL AUSTRO": "Financiero",
+    "CRIDESA": "Fabricación de productos de vidrio"
 
 }
 

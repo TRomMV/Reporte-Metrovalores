@@ -91,7 +91,7 @@
             <section class="seccion-empresas">
                 <h2>Empresas del Sector Real</h2>
                 <div class="grid-empresas">
-                    {% for nombre in ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL', 'CONTINENTAL TIRE ANDINA S A', 'INDUSTRIAS ALES', 'INVERSANCARLOS', 'BRIKAPITAL SA'] %}
+                    {% for nombre in ['CORPORACION FAVORITA C.A.', 'CERVECERIA NACIONAL CN S A', 'HOLCIM ECUADOR S.A.', 'SAN CARLOS SOC. AGR. IND.', 'BEVERAGE BRAND PATENTS SA', 'CONCLINA C A  CIA CONJU CLINICO NACIONAL', 'CONTINENTAL TIRE ANDINA S A', 'INDUSTRIAS ALES', 'INVERSANCARLOS', 'BRIKAPITAL SA', 'CRIDESA'] %}
                         <a href="{{ url_for('show_company', company=nombre) }}" class="empresa-logo">
                             <img src="/static/img/Logos_nombres/{{ nombre }}.png" alt="{{ nombre }}">
                         </a>
