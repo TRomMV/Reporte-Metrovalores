@@ -173,6 +173,20 @@
 </div>
 {% endif %}
 
+{% if profile.Nombre == "CORPORACION FAVORITA C.A." %}
+    <div class="dividendos-imagen" style="margin-bottom: 20px; text-align: center;">
+        <h2 style="font-size: 1.5em; margin-bottom: 10px;">
+            INFORMACIÓN DEL PRIMER SEMESTRE DEL 2025 - CORPORACIÓN FAVORITA
+        </h2>
+        <img 
+            src="/static/img/juntas_2024/semestral_favorita.jpg"
+            alt="INFORMACIÓN DEL PRIMER SEMESTRE DEL 2025 - CORPORACIÓN FAVORITA"
+            class="imagen-dividendo"
+            style="width: 100%; max-width: 1200px; height: auto;">
+    </div>
+{% endif %}
+
+
 <!-- Mostrar imágenes adicionales solo si el emisor es CONCLINA -->
 <!-- Mostrar las dos imágenes nuevas solo si es CONCLINA -->
 {% if profile.Nombre == "CONCLINA C A  CIA CONJU CLINICO NACIONAL" %}
