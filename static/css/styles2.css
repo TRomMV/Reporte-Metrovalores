@@ -687,3 +687,47 @@ body.azul-marino {
 .nav li.submenu .dropdown a:hover {
     background-color: #eaeaea;
 }
+.pie-de-pagina {
+  background-color: #f8f9fa;
+  padding: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.pie-informacion-redes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pie-informacion p {
+  margin: 0;
+}
+
+.pie-redes a {
+  margin-left: 10px;
+}
+
+.pie-redes img,
+.noticias-enlaces img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.linea-separadora {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.pie-noticias {
+  text-align: center;
+}
+
+.pie-noticias .noticias-enlaces {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 10px;
+}
