@@ -6,7 +6,7 @@ escalas_volumen = {
     "BANCO DE LA PRODUCCION S.A . PRODUBANCO": 220000,  # Aumentado desde 200000
     "CERVECERIA NACIONAL CN S A": 660,  # Aumentado desde 600
     "HOLCIM ECUADOR S.A.": 2300,  # Aumentado desde 2100
-    "BRIKAPITAL SA": 28,  # Aumentado desde 25
+    "BRIKAPITAL SA": 250,  # Aumentado desde 25
     "BANCO PICHINCHA C.A.": 950,  # Aumentado desde 860
     "INVERSANCARLOS": 60000,  # Aumentado desde 370000
     "SAN CARLOS SOC. AGR. IND.": 120000,  # Aumentado desde 65000
