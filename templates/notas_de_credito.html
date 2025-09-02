@@ -93,6 +93,22 @@
         </div>
     </header>
 
+    <main>
+        <h1>Estimación del Precio de una Nota de Crédito</h1>
+
+    <form action="/predict" method="POST">
+        <label for="Valor_Nominal">Valor Nominal(utilizar punto como separador de decimales):</label>
+        <input type="number" name="Valor_Nominal" id="Valor_Nominal" step="any" required>
+        <br>
+        <button type="submit">Estimar Precio</button>
+    </form>
+
+    <br>
+    <!-- Display the prediction result -->
+    {% if prediction_text %}
+        <p>{{ prediction_text }}</p>
+    {% endif %}
+    
     <table>
   <thead>
     <tr>
