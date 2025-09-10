@@ -173,14 +173,15 @@
 </div>
 {% endif %}
 
-{% if profile.Nombre == "CORPORACION FAVORITA C.A." %}
+{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" or profile.Nombre == "BEVERAGE BRAND PATENTS SA" or profile.Nombre == "BOLSA DE VALORES DE GUAYAQUIL" or profile.Nombre == "BANCO GUAYAQUIL S.A." or profile.Nombre == "BANCO DE LA PRODUCCION S.A . PRODUBANCO"  or profile.Nombre == "HOLCIM ECUADOR S.A." or profile.Nombre == "CONCLINA C A  CIA CONJU CLINICO NACIONAL" or profile.Nombre == "BOLSA DE VALORES DE QUITO"
+or profile.Nombre == "BANCO PICHINCHA C.A." or profile.Nombre == "BANCO BOLIVARIANO C.A." or profile.Nombre == "SAN CARLOS SOC. AGR. IND." or profile.Nombre == "CONTINENTAL TIRE ANDINA S A" or profile.Nombre == "BRIKAPITAL SA" or profile.Nombre == "INVERSANCARLOS" or profile.Nombre == "INDUSTRIAS ALES" or profile.Nombre == "CRIDESA" %}
     <div class="dividendos-imagen" style="margin-bottom: 20px; text-align: center;">
         <h2 style="font-size: 1.5em; margin-bottom: 10px;">
-            INFORMACIÓN DEL PRIMER SEMESTRE DEL 2025 - CORPORACIÓN FAVORITA
+            INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025
         </h2>
         <img 
-            src="/static/img/juntas_2024/semestral_favorita.jpg"
-            alt="INFORMACIÓN DEL PRIMER SEMESTRE DEL 2025 - CORPORACIÓN FAVORITA"
+            src={{ url_for('static', filename='img/juntas_2024/SEMESTRAL' + profile.Nombre + '.jpg') }}"
+            alt="INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025 {{ profile.Nombre }}"
             class="imagen-dividendo"
             style="width: 100%; max-width: 1200px; height: auto;">
     </div>
