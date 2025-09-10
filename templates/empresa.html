@@ -197,12 +197,14 @@
             INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025
         </h2>
         <img 
-            src="{{ url_for('static', filename='img/juntas_2024/SEMESTRAL' ~ profile.Nombre ~ '.jpg') }}"
+            src="{{ url_for('static', filename='img/juntas_2024/SEMESTRAL/' + profile.Nombre + '.jpg') }}"
             alt="INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025 {{ profile.Nombre }}"
             class="imagen-dividendo"
             style="width: 100%; max-width: 1200px; height: auto;">
     </div>
 {% endif %}
+
+
 
 
 
