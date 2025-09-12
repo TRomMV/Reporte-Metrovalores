@@ -17,6 +17,11 @@ app = Flask(__name__)
 
 
 model = pickle.load(open("data/Modelo_NC.pkl", "rb"))
+print("Modelo cargado:", type(model))
+if hasattr(model, "get_params"):
+    print("Parámetros:", model.get_params())
+if hasattr(model, "coef_"):
+    print("Coeficientes:", model.coef_)
 
 
 # Ruta de los archivos CSV
