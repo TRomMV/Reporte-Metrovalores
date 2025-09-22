@@ -16,12 +16,24 @@ app = Flask(__name__)
 
 
 
+import pickle
+import pandas as pd
+
+# Cargar el modelo KNN
 model = pickle.load(open("data/Modelo_NC.pkl", "rb"))
-print("Modelo cargado:", type(model))
+print("✅ Modelo KNN cargado:", type(model))
+
+# Verificar parámetros del modelo
 if hasattr(model, "get_params"):
-    print("Parámetros:", model.get_params())
-if hasattr(model, "coef_"):
-    print("Coeficientes:", model.coef_)
+    print("🔧 Parámetros del modelo:", model.get_params())
+
+# Probar predicciones con valores nominales variados
+valores_prueba = [1000, 5000, 10000, 20000, 50000, 100000, 500000, 1000000]
+print("\n🔍 Predicciones de prueba:")
+for valor in valores_prueba:
+    input_df = pd.DataFrame({'valor_nominal': [valor]})
+    pred = model.predict(input_df)[0]
+    print(f"Valor nominal: {valor:,.2f} → Precio estimado: {pred:.4f}")
 
 
 # Ruta de los archivos CSV
