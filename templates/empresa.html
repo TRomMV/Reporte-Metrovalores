@@ -41,19 +41,23 @@
     width: 100%;
 }
 
-.dividendos-resumen {
-    flex: 1;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 1.1em;
-    text-align: justify;
-    width: 100%;
-}
+    .parrafo-justificado {
+        text-align: justify;
+        text-indent: 2em; /* Sangría estándar */
+        margin-bottom: 1em;
+    }
+
 
 
 .card h2, .dividendos-section h2 {
     text-align: center;
 }
+
+    .parrafo-justificado {
+        text-align: justify;
+        text-indent: 2em; /* Sangría de 2 espacios em, limpia y estándar */
+        margin-bottom: 1em;
+    }
 
     </style>
 </head>
@@ -80,218 +84,221 @@
         </div>
     </header>
     <main>
-        <div class="container">
-            <section id="dashboard">
-                <div class="dashboard-section">
-                    <div class="card">
-                        <!-- Mostramos solo el logo del emisor -->
-                        {% if profile.Nombre in ["BOLSA DE VALORES DE GUAYAQUIL", "BRIKAPITAL SA", "SAN CARLOS SOC. AGR. IND.", "BEVERAGE BRAND PATENTS SA"] %}
-                            <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo-pequeño">
-                        {% else %}
-                            <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo">
-                        {% endif %}
-                        <!-- Subtítulo en gris -->
-                        <h3 class="subtitulo">Precio y Volumen</h3>
-                        <div id="grafico">
-                            {{ graph|safe }}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h2>Perfil del Emisor</h2>
-                        <p>{{ profile.Nombre }}</p>
-                        <p>{{ profile.Descripción }}</p>
-                        <p><strong>Sector:</strong> {{ profile.Sector }}</p>
+    <div class="container">
+        <section id="dashboard">
+            <!-- Precio y Volumen + Perfil -->
+            <div class="dashboard-section">
+                <div class="card">
+                    {% if profile.Nombre in ["BOLSA DE VALORES DE GUAYAQUIL", "BRIKAPITAL SA", "SAN CARLOS SOC. AGR. IND.", "BEVERAGE BRAND PATENTS SA"] %}
+                        <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo-pequeño">
+                    {% else %}
+                        <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo">
+                    {% endif %}
+                    <h3 class="subtitulo">Precio y Volumen</h3>
+                    <div id="grafico">
+                        {{ graph|safe }}
                     </div>
                 </div>
-                <!-- Índice de Cotizaciones Máximas y Mínimas -->
-                <div class="dashboard-section">
-                    <div class="card">
-                        <h2>Cotizaciones Máximas y Mínimas</h2>
-                        <div class="cotizaciones" style="display: flex; justify-content: space-between;">
-                            <div class="cotizaciones-lista" style="flex: 1; margin-right: 10px;">
-                                <h3>Cotizaciones Máximas</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Año</th>
-                                            <th>Fecha</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for quote in max_quotes %}
-                                        <tr>
-                                            <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
-                                            <td>${{ quote.PRECIO }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="cotizaciones-lista" style="flex: 1; margin-left: 10px;">
-                                <h3>Cotizaciones Mínimas</h3>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Año</th>
-                                            <th>Fecha</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for quote in min_quotes %}
-                                        <tr>
-                                            <td>{{ quote.AÑO }}</td>
-                                            <td>{{ quote.FECHA }}</td>
-                                            <td>${{ quote.PRECIO }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="card">
+    <h2>Perfil del Emisor</h2>
+    <p>{{ profile.Nombre }}</p>
+    <p class="parrafo-justificado">{{ profile.Descripción }}</p>
+    <p><strong>Sector:</strong> {{ profile.Sector }}</p>
+</div>
+
+            </div>
+
+            <!-- Cotizaciones Máximas y Mínimas -->
+            <div class="dashboard-section">
+                <div class="card">
+                    <h2>Cotizaciones Máximas y Mínimas</h2>
+                    <div class="cotizaciones" style="display: flex; justify-content: space-between;">
+                        <div class="cotizaciones-lista" style="flex: 1; margin-right: 10px;">
+                            <h3>Cotizaciones Máximas</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Fecha</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for quote in max_quotes %}
+                                    <tr>
+                                        <td>{{ quote.AÑO }}</td>
+                                        <td>{{ quote.FECHA }}</td>
+                                        <td>${{ quote.PRECIO }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cotizaciones-lista" style="flex: 1; margin-left: 10px;">
+                            <h3>Cotizaciones Mínimas</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Fecha</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for quote in min_quotes %}
+                                    <tr>
+                                        <td>{{ quote.AÑO }}</td>
+                                        <td>{{ quote.FECHA }}</td>
+                                        <td>${{ quote.PRECIO }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                               <!-- Sección de Dividendos y Balances -->
-<div class="dashboard-section dividendos-section" style="background-color: white; padding-bottom: 35px;">
-    {% if profile.Nombre not in ["BANCO DEL AUSTRO"] %}
-    <h2>Dividendos Repartidos</h2>
-    <div class="dividendos-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        <!-- Imagen de las Juntas -->
-<div class="dividendos-imagen" style="margin-bottom: 20px;">
-    <img 
-        src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
-        alt="Junta de Dividendos {{ profile.Nombre }}" 
-        class="imagen-dividendo" 
-        style="max-width: 100%; height: auto;">
+            </div>
+
+            <!-- Dividendos Repartidos -->
+            {% if profile.Nombre not in ["BANCO DEL AUSTRO"] %}
+            <div class="dashboard-section dividendos-section" style="background-color: white; padding-bottom: 35px;">
+                <h2>Dividendos Repartidos</h2>
+                <div class="dividendos-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div class="dividendos-imagen" style="margin-bottom: 20px;">
+                        <img 
+                            src="{{ url_for('static', filename='img/juntas_2024/' + profile.Nombre + '.jpg') }}"
+                            alt="Junta de Dividendos {{ profile.Nombre }}" 
+                            class="imagen-dividendo" 
+                            style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="dividendos-resumen" style="flex: 2;">
+    <p class="parrafo-justificado">{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
 </div>
 
-<!-- Resumen de Dividendos debajo de la primera imagen -->
-<div class="dividendos-resumen" style="flex: 2; text-align: left;">
-    <p>{{ obtener_resumen_dividendos(profile.Nombre)|safe }}</p>
+
+                    <!-- Imágenes adicionales solo si el emisor es CONCLINA -->
+                    {% if profile.Nombre == "CONCLINA C A  CIA CONJU CLINICO NACIONAL" %}
+                        <div class="dividendos-imagen" style="margin-bottom: 20px;">
+                            <img 
+                                src="/static/img/juntas_2024/CONCLINA_CA_PREFERENCIAL_VN_2500.jpg"
+                                alt="CONCLINA PREFERENCIAL VN 2500"
+                                class="imagen-dividendo"
+                                style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="dividendos-imagen" style="margin-bottom: 20px;">
+                            <img 
+                                src="/static/img/juntas_2024/CONCLINA_CA_PREFERENCIAL_VN_1.jpg"
+                                alt="CONCLINA PREFERENCIAL VN 1"
+                                class="imagen-dividendo"
+                                style="max-width: 100%; height: auto;">
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Información Comparativa Semestral -->
+            {% if profile.Nombre in [
+                "CORPORACION FAVORITA C.A.",
+                "CERVECERIA NACIONAL CN S A",
+                "BEVERAGE BRAND PATENTS SA",
+                "BOLSA DE VALORES DE GUAYAQUIL",
+                "BANCO GUAYAQUIL S.A.",
+                "BANCO DE LA PRODUCCION S.A . PRODUBANCO",
+                "HOLCIM ECUADOR S.A.",
+                "CONCLINA C A  CIA CONJU CLINICO NACIONAL",
+                "BOLSA DE VALORES DE QUITO",
+                "BANCO PICHINCHA C.A.",
+                "BANCO BOLIVARIANO C.A.",
+                "SAN CARLOS SOC. AGR. IND.",
+                "CONTINENTAL TIRE ANDINA S A",
+                "BRIKAPITAL SA",
+                "INVERSANCARLOS",
+                "INDUSTRIAS ALES",
+                "CRIDESA"
+            ] %}
+            <div class="dashboard-section" style="background-color: white; padding-bottom: 35px; text-align: center;">
+                <h2 style="font-size: 1.5em; margin-bottom: 10px;">
+                    INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025
+                </h2>
+                <img 
+                    src="{{ url_for('static', filename='img/juntas_2024/SEMESTRAL/' + profile.Nombre + '.jpg') }}"
+                    alt="INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025 {{ profile.Nombre }}"
+                    class="imagen-dividendo"
+                    style="width: 100%; max-width: 1200px; height: auto;">
+            </div>
+            {% endif %}
+
+            <!-- Estados Financieros -->
+            {% if profile.Nombre in [
+                "CORPORACION FAVORITA C.A.",
+                "CERVECERIA NACIONAL CN S A",
+                "BEVERAGE BRAND PATENTS SA",
+                "BOLSA DE VALORES DE GUAYAQUIL",
+                "BANCO GUAYAQUIL S.A.",
+                "BANCO DE LA PRODUCCION S.A . PRODUBANCO",
+                "HOLCIM ECUADOR S.A.",
+                "CONCLINA C A  CIA CONJU CLINICO NACIONAL",
+                "BOLSA DE VALORES DE QUITO",
+                "BANCO PICHINCHA C.A.",
+                "BANCO BOLIVARIANO C.A.",
+                "SAN CARLOS SOC. AGR. IND.",
+                "CONTINENTAL TIRE ANDINA S A",
+                "BRIKAPITAL SA",
+                "INVERSANCARLOS",
+                "INDUSTRIAS ALES",
+                "CRIDESA"
+            ] %}
+            <div class="balances-section" style="background-color: white; padding-bottom: 35px;">
+                <!-- Estado de Resultados Integral -->
+                <h2 style="text-align: center;">Estado de Resultados Integral</h2>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
+                         alt="Ingresos" 
+                         style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                    <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+                    </p>
+                </div>
+
+                <!-- Estado de Situación Financiera -->
+                <h2 style="text-align: center;">Estado de Situación Financiera</h2>
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos.jpeg" 
+                         alt="Activos" 
+                         style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                </div>
+
+                                <!-- Principales Indicadores -->
+                <h2 style="text-align: center;">Principales Indicadores</h2>
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
+                         alt="Liquidez" 
+                         style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                    <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+                    </p>
+                </div>
+<!-- Indicadores Adicionales -->
+<div class="indicadores-cuadro">
+    <div class="fila-indicadores">
+        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/indicadores_1.jpeg" alt="Indicador 1">
+        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/indicadores_2.jpeg" alt="Indicador 2">
+    </div>
+    <div class="fila-indicadores">
+        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/indicadores_3.jpeg" alt="Indicador 3">
+        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/indicadores_4.jpeg" alt="Indicador 4">
+    </div>
+    <p style="margin-top: 10px; font-size: 0.9em; color: black; text-align: center;">
+        Fuente: Superintendencia de Compañías e Instituciones Emisoras
+    </p>
 </div>
-{% endif %}
-
-{% if profile.Nombre in [
-    "CORPORACION FAVORITA C.A.",
-    "CERVECERIA NACIONAL CN S A",
-    "BEVERAGE BRAND PATENTS SA",
-    "BOLSA DE VALORES DE GUAYAQUIL",
-    "BANCO GUAYAQUIL S.A.",
-    "BANCO DE LA PRODUCCION S.A . PRODUBANCO",
-    "HOLCIM ECUADOR S.A.",
-    "CONCLINA C A  CIA CONJU CLINICO NACIONAL",
-    "BOLSA DE VALORES DE QUITO",
-    "BANCO PICHINCHA C.A.",
-    "BANCO BOLIVARIANO C.A.",
-    "SAN CARLOS SOC. AGR. IND.",
-    "CONTINENTAL TIRE ANDINA S A",
-    "BRIKAPITAL SA",
-    "INVERSANCARLOS",
-    "INDUSTRIAS ALES",
-    "CRIDESA"
-] %}
-    <div class="dividendos-imagen" style="margin-bottom: 20px; text-align: center;">
-        <h2 style="font-size: 1.5em; margin-bottom: 10px;">
-            INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025
-        </h2>
-        <img 
-            src="{{ url_for('static', filename='img/juntas_2024/SEMESTRAL/' + profile.Nombre + '.jpg') }}"
-            alt="INFORMACIÓN COMPARATIVA DEL PRIMER SEMESTRE - 2024 Y 2025 {{ profile.Nombre }}"
-            class="imagen-dividendo"
-            style="width: 100%; max-width: 1200px; height: auto;">
+            </div>
+            {% endif %}
+        </section>
     </div>
-{% endif %}
+</main>
 
-
-
-
-
-<!-- Mostrar imágenes adicionales solo si el emisor es CONCLINA -->
-<!-- Mostrar las dos imágenes nuevas solo si es CONCLINA -->
-{% if profile.Nombre == "CONCLINA C A  CIA CONJU CLINICO NACIONAL" %}
-    <div class="dividendos-imagen" style="margin-bottom: 20px;">
-        <img 
-            src="/static/img/juntas_2024/CONCLINA_CA_PREFERENCIAL_VN_2500.jpg"
-            alt="CONCLINA PREFERENCIAL VN 2500"
-            class="imagen-dividendo"
-            style="max-width: 100%; height: auto;">
-    </div>
-    <div class="dividendos-imagen" style="margin-bottom: 20px;">
-        <img 
-            src="/static/img/juntas_2024/CONCLINA_CA_PREFERENCIAL_VN_1.jpg"
-            alt="CONCLINA PREFERENCIAL VN 1"
-            class="imagen-dividendo"
-            style="max-width: 100%; height: auto;">
-    </div>
-{% endif %}
-</div>
-<!-- Nueva Sección: Balances -->
-{% if profile.Nombre == "CORPORACION FAVORITA C.A." or profile.Nombre == "CERVECERIA NACIONAL CN S A" or profile.Nombre == "BEVERAGE BRAND PATENTS SA" or profile.Nombre == "BOLSA DE VALORES DE GUAYAQUIL" or profile.Nombre == "BANCO GUAYAQUIL S.A." or profile.Nombre == "BANCO DE LA PRODUCCION S.A . PRODUBANCO"  or profile.Nombre == "HOLCIM ECUADOR S.A." or profile.Nombre == "CONCLINA C A  CIA CONJU CLINICO NACIONAL" or profile.Nombre == "BOLSA DE VALORES DE QUITO"
-or profile.Nombre == "BANCO PICHINCHA C.A." or profile.Nombre == "BANCO BOLIVARIANO C.A." or profile.Nombre == "SAN CARLOS SOC. AGR. IND." or profile.Nombre == "CONTINENTAL TIRE ANDINA S A" or profile.Nombre == "BRIKAPITAL SA" or profile.Nombre == "INVERSANCARLOS" or profile.Nombre == "INDUSTRIAS ALES" or profile.Nombre == "CRIDESA" %}
-<div class="balances-section" style="background-color: white; padding-bottom: 35px;">
-    <h2 style="text-align: center;">Estados Financieros</h2>
-
-    <!-- Imagen: Activos -->
-    <h2 style="text-align: center;">Estado de Situación Financiera</h2>
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos.jpeg" 
-             alt="Activos" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-    </div>
-    <!-- Imagen: Activos Gráfico -->
-    <div style="position: relative; text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos_grafico.jpeg" 
-             alt="Activos Gráfico" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="position: absolute; bottom: -20px; left: 0; font-size: 0.9em; color: black; margin: 0;">
-            Fuente: Superintendencia de Compañías e Instituciones Emisoras
-        </p>
-    </div>
-
-    <!-- Espacio entre Estado de situación financiera y Estado de resultados integral -->
-    <div style="margin-top: 30px;"></div>
-
-    <!-- Imagen: Ingresos -->
-    <h2 style="text-align: center;">Estado de Resultados Integral</h2>
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
-             alt="Ingresos" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="margin-top: 10px; font-size: 0.9em; color: black;">
-            Fuente: Superintendencia de Compañías e Instituciones Emisoras
-        </p>
-    </div>
-    
-    <!-- Espacio entre Estado de resultados integral y Principales indicadores -->
-    <div style="margin-top: 30px;"></div>
-    
-    <!-- Imagen: Liquidez -->
-    <h2 style="text-align: center;">Principales Indicadores</h2>
-    <div style="text-align: center; margin-bottom: 40px;">
-        <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
-             alt="Liquidez" 
-             style="max-width: 100%; height: auto; border: 1.5px solid black;">
-        <p style="margin-top: 10px; font-size: 0.9em; color: black;">
-            Fuente: Superintendencia de Compañías e Instituciones Emisoras
-        </p>
-    </div>
-    
-{% endif %}
-
-<!-- Espacio adicional con fondo blanco -->
-<div style="background-color: white; height: 35px;"></div>
-
-<!-- Calculadora de Rendimientos -->
-<div style="background-color: white; padding-top: 20px;">
-    <h2 style="text-align: center;">Calculadora de Rendimientos de la BVQ</h2> 
-    <div style="display: flex; justify-content: center; margin-top: 20px;"> 
-        <iframe id="calculator" 
-        src="https://bvqservicesct.com/bvqweb/zHtmls/CalculadorAcciones/p_infbiblio.asp" 
-        style="width:80%; height:600px; border:none;"></iframe> 
-    </div>
-</html>
 <footer class="pie-de-pagina">
     <!-- Información General y Redes Sociales -->
     <div class="pie-informacion-redes">
