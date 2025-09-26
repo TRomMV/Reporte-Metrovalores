@@ -383,6 +383,15 @@ def grafico_sector_real():
 
 
 
+@app.route('/submenu_renta_variable')
+def submenu_renta_variable():
+    return render_template('submenu_renta_variable.html')
+
+@app.route('/calculadora-de-rendimientos')
+def calculadora_de_rendimientos():
+    return render_template('calculadora_de_rendimientos.html')
+
+
 @app.route('/juntas-de-accionistas')
 def juntas_de_accionistas():
     # Leer los datos desde el archivo combinado

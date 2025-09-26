@@ -8,48 +8,51 @@
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
     <style>
-        /* Ajuste del descargo de responsabilidad */
         .descargo-de-responsabilidad {
             font-size: 1em;
             text-align: justify;
-            margin: 20px; /* Espacio alrededor del texto */
-            padding: 10px; /* Asegurar margen interno */
+            margin: 20px;
+            padding: 10px;
             border-radius: 5px;
-            background-color: #f8f8f8; /* Fondo ligero para destacar */
+            background-color: #f8f8f8;
         }
-
         .descargo-de-responsabilidad strong {
             font-weight: bold;
         }
     </style>
 </head>
 <body class="azul-marino">
+
+    <!-- 🔷 HEADER -->
     <header>
         <div class="container">
             <a href="/">
                 <img src="/static/img/Logo.png" alt="Metrovalores Logo">
             </a>
             <nav>
-                <ul class="nav">
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
-    <li class="submenu">
-        <a href="javascript:void(0);">Renta Variable ▾</a>
-        <ul class="dropdown">
-            <li><a href="/renta-variable">Reporte semanal de renta variable</a></li>
-            <li><a href="/informacion-individual-por-empresa">Información individual por empresa</a></li>
-        </ul>
-    </li>
-    <li><a href="/notas-de-credito">Notas de Crédito</a></li>
-</ul>
-            </nav>
+    <ul class="nav">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/juntas-de-accionistas">Juntas De Accionistas</a></li>
+        <li class="submenu">
+            <a href="/submenu_renta_variable">Renta Variable ▾</a>
+            <ul class="dropdown">
+                <li><a href="/renta-variable">Renta Variable</a></li>
+                <li><a href="/informacion-individual-por-empresa">Información individual por empresa</a></li>
+                <li><a href="/calculadora-de-rendimientos">Calculadora de rendimientos</a></li>
+            </ul>
+        </li>
+        <li><a href="/notas-de-credito">Notas de Crédito</a></li>
+    </ul>
+</nav>
+
         </div>
     </header>
-    
+
+    <!-- 🔷 MAIN -->
     <main>
         <div class="container">
             <div class="boton-container">
-                <a href="/renta-variable">
+                <a href="/submenu_renta_variable">
                     <img src="/static/img/botones/Renta_variable_boton.png" alt="Renta Variable" class="boton-imagen">
                 </a>
                 <a href="/notas-de-credito">
@@ -58,10 +61,10 @@
             </div>
         </div>
     </main>
-    
+
     <script src="/static/js/scripts.js"></script>
 
-    <!-- Descargo de responsabilidad con título en negrita y espaciado corregido -->
+    <!-- 🔷 DESCARGO -->
     <p class="descargo-de-responsabilidad">
         <strong>Descargo de responsabilidad:</strong> Este documento es únicamente con fines informativos. 
         La información contenida en el mismo se basa en las ofertas de inversión de Metrovalores Casa de Valores S.A., 
@@ -73,42 +76,42 @@
         Los rendimientos históricos no deben considerarse como una indicación o garantía de rendimientos futuros, y no se realiza ninguna representación o garantía, 
         ya sea expresa o implícita, con respecto a los rendimientos futuros. Queda prohibida la reproducción total o parcial de este informe sin la autorización expresa de Metrovalores Casa de Valores S.A.
     </p>
-</html>
-<footer class="pie-de-pagina">
-    <!-- Información General y Redes Sociales -->
-    <div class="pie-informacion-redes">
-        <div class="pie-informacion">
-            <p>
-                Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
-                Ed. San Salvador, Piso 7. Quito, Ecuador.
-            </p>
-            <p>info@metrovalores.com.ec | (593 2) 2266 400 | (593) 96 260 3638</p>
-        </div>
-        <div class="pie-redes">
-            <a href="https://www.instagram.com/metrovalores/" target="_blank">
-                <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
-            </a>
-            <a href="https://www.facebook.com/metrovalores/" target="_blank">
-                <img src="/static/img/pie_de_pagina/facebook.jpg" alt="Facebook">
-            </a>
-            <a href="https://es.linkedin.com/company/metrovalores-casa-de-valores-s.a." target="_blank">
-                <img src="/static/img/pie_de_pagina/linkedin.jpg" alt="LinkedIn">
-            </a>
-        </div>
-    </div>
-    <!-- Línea divisora -->
-    <hr class="linea-separadora">
 
-    <!-- Noticias -->
-    <div class="pie-noticias">
-        <h3 class="titulo-noticias">NOTICIAS</h3>
-        <div class="noticias-enlaces">
-            <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
-                <img src="/static/img/pie_de_pagina/BVQ.jpg" alt="BVQ Noticias">
-            </a>
-            <a href="https://bvgnoticias.com/" target="_blank">
-                <img src="/static/img/pie_de_pagina/BVG.jpg" alt="BVG Noticias">
-            </a>
+    <!-- 🔷 FOOTER -->
+    <footer class="pie-de-pagina">
+        <div class="pie-informacion-redes">
+            <div class="pie-informacion">
+                <p>
+                    Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
+                    Ed. San Salvador, Piso 7. Quito, Ecuador.
+                </p>
+                <p>info@metrovalores.com.ec | (593 2) 2266 400 | (593) 96 260 3638</p>
+            </div>
+            <div class="pie-redes">
+                <a href="https://www.instagram.com/metrovalores/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
+                </a>
+                <a href="https://www.facebook.com/metrovalores/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/facebook.jpg" alt="Facebook">
+                </a>
+                <a href="https://es.linkedin.com/company/metrovalores-casa-de-valores-s.a." target="_blank">
+                    <img src="/static/img/pie_de_pagina/linkedin.jpg" alt="LinkedIn">
+                </a>
+            </div>
         </div>
-    </div>
-</footer>
+        <hr class="linea-separadora">
+        <div class="pie-noticias">
+            <h3 class="titulo-noticias">NOTICIAS</h3>
+            <div class="noticias-enlaces">
+                <a href="https://www.bolsadequito.com/index.php/noticias-2" target="_blank">
+                    <img src="/static/img/pie_de_pagina/BVQ.jpg" alt="BVQ Noticias">
+                </a>
+                <a href="https://bvgnoticias.com/" target="_blank">
+                    <img src="/static/img/pie_de_pagina/BVG.jpg" alt="BVG Noticias">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
