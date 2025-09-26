@@ -96,12 +96,12 @@
                     {% else %}
                         <img src="/static/img/Logos_nombres/{{ profile.Nombre }}.png" alt="Logo de {{ profile.Nombre }}" class="logo">
                     {% endif %}
-                    <h3 class="subtitulo">Precio y Volumen</h3>
-                    <div id="grafico">
-                        {{ graph|safe }}
-                    </div>
-                </div>
-                <div class="card">
+                    <h3 class="subtitulo">Evolución del precio y volumen de acciones</h3>
+<div id="grafico">
+    {{ graph|safe }}
+</div>
+</div>
+<div class="card">
     <h2>Perfil del Emisor</h2>
     <p>{{ profile.Nombre }}</p>
     <p class="parrafo-justificado">{{ profile.Descripción }}</p>
