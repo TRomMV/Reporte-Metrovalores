@@ -178,7 +178,7 @@ def show_company(company):
         indices_financieros = {}  # Manejar el caso donde no hay datos para procesar índices
 
     # Obtener las cotizaciones máximas y mínimas por año desde 2019 hasta 2024
-    años = list(range(2020, 2025))
+    años = list(range(2020, 2026))
     max_quotes = []
     min_quotes = []
 
