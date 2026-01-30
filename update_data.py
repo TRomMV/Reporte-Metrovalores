@@ -28,8 +28,8 @@ if not os.path.exists(file_path):
 
 # Leer el archivo .xls y separar las hojas usando xlrd
 try:
-    df_2024 = pd.read_excel(file_path, sheet_name='2024', header=8, engine='xlrd')
     df_2025 = pd.read_excel(file_path, sheet_name='2025', header=8, engine='xlrd')
+    df_2026 = pd.read_excel(file_path, sheet_name='2026', header=8, engine='xlrd')
 except Exception as e:
     print("Error al leer el archivo Excel:", e)
     exit()
@@ -43,8 +43,8 @@ def clean_data(df):
     df['PROCEDENCIA'] = df['PROCEDENCIA'].replace({'G': 'BVG', 'Q': 'BVQ'})
     return df
 
-df_2024 = clean_data(df_2024)
 df_2025 = clean_data(df_2025)
+df_2026 = clean_data(df_2026)
 
 # Leer el archivo combinado para obtener la lista de empresas de interés
 acciones_combinadas_path = 'data/acciones_combinadas.csv'
@@ -70,17 +70,17 @@ if 'CRIDESA' not in empresas_interes:
     empresas_interes.append('CRIDESA')
 
 # Filtrar los datos para incluir solo las empresas de interés
-df_2024 = df_2024[df_2024['EMISOR'].isin(empresas_interes)]
 df_2025 = df_2025[df_2025['EMISOR'].isin(empresas_interes)]
+df_2026 = df_2026[df_2026['EMISOR'].isin(empresas_interes)]
 
 # Eliminar archivos CSV existentes si existen
-if os.path.exists('data/acciones_2024.csv'):
-    os.remove('data/acciones_2024.csv')
 if os.path.exists('data/acciones_2025.csv'):
     os.remove('data/acciones_2025.csv')
+if os.path.exists('data/acciones_2026.csv'):
+    os.remove('data/acciones_2026.csv')
 
 # Guardar los datos como archivos CSV
-df_2024.to_csv('data/acciones_2024.csv', index=False)
 df_2025.to_csv('data/acciones_2025.csv', index=False)
+df_2026.to_csv('data/acciones_2026.csv', index=False)
 
 print('Datos actualizados correctamente.')
