@@ -39,9 +39,9 @@ for valor in valores_prueba:
 # Ruta de los archivos CSV
 datos_actualizados_path = 'data/datos_actualizados.csv'
 acciones_combinadas_path = 'data/acciones_combinadas.csv'  # Archivo de datos de empresas
-rendimiento_sector_financiero_path = pd.read_csv('data/rendimiento_sector_financiero.csv')
-rendimiento_sector_real_path = pd.read_csv('data/rendimiento_bolsas.csv')
-rendimiento_bolsas_path = pd.read_csv('data/rendimiento_sector_real.csv')
+rendimiento_sector_financiero_path = pd.read_csv('data/rendimiento_sector_financiero_2024.csv')
+rendimiento_sector_real_path = pd.read_csv('data/rendimiento_bolsas_2024.csv')
+rendimiento_bolsas_path = pd.read_csv('data/rendimiento_sector_real_2024.csv')
 
 
 # Verifica si el archivo existe
@@ -63,9 +63,9 @@ df_empresas = df_empresas.dropna(subset=['FECHA'])
 df_empresas = df_empresas[(df_empresas['PRECIO'].notnull()) & (df_empresas['VALOR'] == 'ACCIONES')]
 
 # Definir las rutas a los archivos de datos
-rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero.csv'
-rendimiento_bolsas_path = 'data/rendimiento_bolsas.csv'
-rendimiento_sector_real_path = 'data/rendimiento_sector_real.csv'
+rendimiento_sector_financiero_path = 'data/rendimiento_sector_financiero_2024.csv'
+rendimiento_bolsas_path = 'data/rendimiento_bolsas_2024.csv'
+rendimiento_sector_real_path = 'data/rendimiento_sector_real_2024.csv'
 
 # Leer los datos de los archivos de rendimiento
 df_financiero = pd.read_csv(rendimiento_sector_financiero_path)
@@ -423,6 +423,38 @@ def juntas_de_accionistas():
         grafico_bolsas=grafico_bolsas_html,
         grafico_sector_real=grafico_sector_real_html
     )
+
+
+@app.route('/submenu_juntas_de_accionistas')
+def submenu_juntas_de_accionistas():
+    return render_template('submenu_juntas_de_accionistas.html')
+
+@app.route('/junta_de_accionistas_2024')
+def junta_de_accionistas_2024():
+    # copia la lógica de la función original o llama a una función común que devuelva los gráficos
+    grafico_tres_empresas_html = grafico_tres_empresas()
+    grafico_bolsas_html = grafico_bolsas()
+    grafico_sector_real_html = grafico_sector_real()
+    return render_template(
+        'juntas_de_accionistas_2024.html',
+        grafico_tres_empresas=grafico_tres_empresas_html,
+        grafico_bolsas=grafico_bolsas_html,
+        grafico_sector_real=grafico_sector_real_html
+    )
+
+@app.route('/junta_de_accionistas_2025')
+def junta_de_accionistas_2025():
+    # copia la lógica de la función original o llama a una función común que devuelva los gráficos
+    grafico_tres_empresas_html = grafico_tres_empresas()
+    grafico_bolsas_html = grafico_bolsas()
+    grafico_sector_real_html = grafico_sector_real()
+    return render_template(
+        'juntas_de_accionistas_2025.html',
+        grafico_tres_empresas=grafico_tres_empresas_html,
+        grafico_bolsas=grafico_bolsas_html,
+        grafico_sector_real=grafico_sector_real_html
+    )
+
 
 
 

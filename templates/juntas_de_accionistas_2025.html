@@ -3,43 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Semanal - Metrovalores</title>
+    <title>Juntas de accionistas 2025 - Metrovalores</title>
     <link rel="stylesheet" href="/static/css/styles1.css">
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
+
     <style>
-        body {
-            background-color: #f5f5f5;
-            transition: background-color 0.3s ease;
-        }
-        .contenedor-imagen {
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
+        .resultados-titulo {
+            color: #000000;
+            font-size: 2.2rem;
+            font-weight: 700;
             text-align: center;
+            margin: 40px 0 20px 0;
         }
-        .contenedor-imagen img {
-            max-width: 100%;
+
+        .contenido-central {
+            text-align: center;
+            padding: 40px 0 80px 0;
+        }
+
+        .contenido-central img {
+            max-width: 40%;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .volver-inicio {
-            text-align: right;
-            margin-top: 20px;
-        }
-        .volver-inicio button {
-            background-color: #005A9E;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
         }
     </style>
 </head>
+
 <body class="azul-marino">
-    <header>
+
+<header>
     <div class="container">
         <a href="/">
             <img src="/static/img/Logo.png" alt="Metrovalores Logo">
@@ -71,26 +63,24 @@
     </div>
 </header>
 
-    <main>
-        <div class="container">
-            <div class="titulo-centro">
-                <h1 class="titulo-profesional">Informe Semanal de Renta Variable</h1>
-                <p>{{ fecha_actual }}</p>
-            </div>
+<main>
+    <div class="container contenido-central">
+        <h1 class="resultados-titulo">Resultados 2025</h1>
+        <img src="/static/img/en_construccion/en_construccion.png" alt="En construcción">
+    </div>
+</main>
 
-            <div class="contenedor-imagen">
-                <img src="/static/img/renta_variable.png" alt="Informe Renta Variable">
-
-            </div>
-        </div>
-    </main>
-</html>
 <footer class="pie-de-pagina">
+
     <div class="pie-informacion-redes">
         <div class="pie-informacion">
-            <p>Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, Ed. San Salvador, Piso 7. Quito, Ecuador.</p>
+            <p>
+                Dirección de la empresa: Av. República de El Salvador N34-229 y Moscú, 
+                Ed. San Salvador, Piso 7. Quito, Ecuador.
+            </p>
             <p>info@metrovalores.com.ec | (593 2) 2266 400 | (593) 96 260 3638</p>
         </div>
+
         <div class="pie-redes">
             <a href="https://www.instagram.com/metrovalores/" target="_blank">
                 <img src="/static/img/pie_de_pagina/instagram.jpg" alt="Instagram">
@@ -103,7 +93,9 @@
             </a>
         </div>
     </div>
+
     <hr class="linea-separadora">
+
     <div class="pie-noticias">
         <h3 class="titulo-noticias">NOTICIAS</h3>
         <div class="noticias-enlaces">
@@ -115,6 +107,8 @@
             </a>
         </div>
     </div>
+
 </footer>
 
-
+</body>
+</html>
