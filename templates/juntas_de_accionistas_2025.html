@@ -66,9 +66,48 @@
 <main>
     <div class="container contenido-central">
         <h1 class="resultados-titulo">Resultados 2025</h1>
-        <img src="/static/img/en_construccion/en_construccion.png" alt="En construcción">
     </div>
-</main>
+
+<!-- Sección 1: Sector Financiero -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Sector Financiero</h2>
+            <h3>Rendimiento = Dividendo en efectivo por acción / último precio de la acción en 2024</h3>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_sector_financiero/juntas_sector_financiero_2025.jpg" 
+                     alt="Juntas del Sector Financiero" 
+                     style="max-width: 110%; height: auto; border: 0.5px solid black; border-radius: 0.7px;">
+                <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                    Fuente: Superintendencia de Bancos e Instituciones Emisoras
+                </p>
+            </div>
+            <div id="grafico-financiero" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos del Sector Financiero</h2>
+                <div>
+                    {{ grafico_tres_empresas|safe }}
+                </div>
+            </div>
+        </section>    
+
+<!-- Sección 3: Sector Real -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Sector Real</h2>
+            <h3>Rendimiento = Dividendo en efectivo por acción / último precio de la acción en 2024</h3>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_sector_real/juntas_sector_real_2025.jpg" 
+                     alt="Juntas del Sector Real" 
+                     style="max-width: 110%; height: auto; border: 0.5px solid black; border-radius: 0.7px;">
+                <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                    Fuente: Superintendencia de Compañías e Instituciones Emisoras
+                </p>
+            </div>
+            <div id="grafico-sector-real" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos del Sector Real</h2>
+                <div>
+                    {{ grafico_sector_real|safe }}
+                </div>
+            </div>
+        </section>
+    </main>        
 
 <footer class="pie-de-pagina">
 

@@ -272,7 +272,7 @@ def grafico_tres_empresas():
         legend=dict(x=0, y=1.2),
         xaxis=dict(
             tickmode='array',
-            tickvals=[2020, 2021, 2022, 2023, 2024],
+            tickvals=[2020, 2021, 2022, 2023, 2024, 2025],
             ticktext=['2020', '2021', '2022', '2023', '2024']
         ),
         yaxis=dict(tickformat=".1%")
