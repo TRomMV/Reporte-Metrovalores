@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juntas de accionistas 2025 - Metrovalores</title>
+    <title>Juntas de accionistas - Metrovalores</title>
     <link rel="stylesheet" href="/static/css/styles1.css">
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="icon" href="/static/img/Logo_pestaña.png" type="image/png">
-
     <style>
+        /* Centrar los subtítulos */
+        h3 {
+            text-align: center;
+        }
+        /* Estilo para el título principal de la página */
         .resultados-titulo {
             color: #000000;
-            font-size: 2.2rem;
+            font-size: 2.2rem; /* más grande que h2 */
             font-weight: 700;
-            text-align: center;
-            margin: 40px 0 20px 0;
+            text-align: left;
+            margin: 18px 0 8px 0;
+        }
+        /* Asegura que "Pago De Dividendos" siga siendo más pequeño */
+        .seccion-titulo {
+            font-size: 1.6rem;
+            color: inherit;
+            margin: 8px 0;
         }
 
-        .contenido-central {
-            text-align: center;
-            padding: 40px 0 80px 0;
-        }
-
-        .contenido-central img {
-            max-width: 40%;
-            height: auto;
+        /* Cambia SOLO el subtítulo "Pago De Dividendos" al mismo azul que usan los otros subtítulos.
+           He usado un azul estándar (Bootstrap primary) para coincidir con el estilo existente:
+           si tu CSS global usa otro azul, reemplaza #0b5ed7 por ese valor. */
+        .pago-titulo-azul {
+            color: #0b5ed7;
         }
     </style>
 </head>
-
 <body class="azul-marino">
 
 <header>
