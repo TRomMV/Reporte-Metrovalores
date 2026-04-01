@@ -94,6 +94,26 @@
             </div>
         </section>    
 
+         <!-- Sección 2: Bolsas de Valores -->
+        <section class="dividendos-section" style="margin-bottom: 50px;">
+            <h2>Resultados Juntas de Accionistas - Bolsas de Valores</h2>
+            <h3>Rendimiento = Dividendo en efectivo por acción / último precio de la acción en 2024</h3>
+            <div class="dividendos-cuadros" style="position: relative; text-align: center; margin-bottom: 30px;">
+                <img src="/static/img/juntas_comparativas/juntas_bolsas/juntas_bolsas_2025.jpg" 
+                     alt="Juntas de las Bolsas de Valores" 
+                     style="max-width: 50%; height: auto; border: 0.5px solid black; border-radius: 0.7px;">
+                <p style="margin-top: 10px; font-size: 0.9em; color: black;">
+                    Fuente: Superintendencia de Compañías e Instituciones Emisoras
+                </p>
+            </div>
+            <div id="grafico-bolsas" style="position: relative; margin-top: 20px; text-align: center;">
+                <h2>Rendimientos de las Bolsas de Valores</h2>
+                <div>
+                    {{ grafico_bolsas|safe }}
+                </div>
+            </div>
+        </section>
+
 <!-- Sección 3: Sector Real -->
         <section class="dividendos-section" style="margin-bottom: 50px;">
             <h2>Resultados Juntas de Accionistas - Sector Real</h2>
