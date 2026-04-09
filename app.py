@@ -333,7 +333,8 @@ def grafico_sector_real():
         'SAN CARLOS SOC. AGR. IND.', 
         'CERVECERIA NACIONAL CN S A', 
         'BEVERAGE BRAND PATENTS SA',
-        'CORPORACION FAVORITA C.A.'  # Se incluye Corporación Favorita
+        'CORPORACION FAVORITA C.A.',
+        'CRIDESA'
     ]
 
     # Colores actualizados para cada empresa
@@ -342,7 +343,8 @@ def grafico_sector_real():
         'SAN CARLOS SOC. AGR. IND.': '#00A859',  # Verde
         'CERVECERIA NACIONAL CN S A': '#FFD700',  # Amarillo
         'BEVERAGE BRAND PATENTS SA': '#A9A9A9',  # Gris
-        'CORPORACION FAVORITA C.A.': '#FF0000'  # Rojo
+        'CORPORACION FAVORITA C.A.': '#FF0000',  # Rojo
+        'CRIDESA': "#1E0341"  # Azul oscuro
     }
 
     fig = go.Figure()
