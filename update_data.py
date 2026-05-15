@@ -56,18 +56,45 @@ else:
     empresas_interes = []
 
 # Asegurarse de que INDUSTRIAS ALES, CONTINENTAL e INVERSANCARLOS estaN incluidas en empresas de interés
-if 'CONTINENTAL TIRE ANDINA S.A.' not in empresas_interes:
-    empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
-if 'INDUSTRIAS ALES C.A.' not in empresas_interes:
-    empresas_interes.append('INDUSTRIAS ALES')
-if 'INVERSANCARLOS S.A.' not in empresas_interes:
-    empresas_interes.append('INVERSANCARLOS')
+if 'BANCO GUAYAQUIL S.A.' not in empresas_interes:
+    empresas_interes.append('BANCO GUAYAQUIL S.A.')
+if 'BANCO DE LA PRODUCCION S.A . PRODUBANCO' not in empresas_interes:
+    empresas_interes.append('BANCO DE LA PRODUCCION S.A . PRODUBANCO')
+if 'BANCO PICHINCHA C.A.' not in empresas_interes:
+    empresas_interes.append('BANCO PICHINCHA C.A.')
+if 'BANCO BOLIVARIANO C.A.' not in empresas_interes:
+    empresas_interes.append('BANCO BOLIVARIANO C.A.')
 if 'BANCO DEL AUSTRO' not in empresas_interes:
     empresas_interes.append('BANCO DEL AUSTRO')
+if 'BOLSA DE VALORES DE GUAYAQUIL' not in empresas_interes:
+    empresas_interes.append('BOLSA DE VALORES DE GUAYAQUIL')
+if 'BOLSA DE VALORES DE QUITO' not in empresas_interes:
+    empresas_interes.append('BOLSA DE VALORES DE QUITO')
+
+if 'CORPORACION FAVORITA C.A.' not in empresas_interes:
+    empresas_interes.append('CORPORACION FAVORITA C.A.')
+if 'CERVECERIA NACIONAL CN S A' not in empresas_interes:
+    empresas_interes.append('CERVECERIA NACIONAL CN S A')
+if 'HOLCIM ECUADOR S.A.' not in empresas_interes:
+    empresas_interes.append('HOLCIM ECUADOR S.A.')
+if 'SAN CARLOS SOC. AGR. IND.' not in empresas_interes:
+    empresas_interes.append('SAN CARLOS SOC. AGR. IND.')
+if 'BEVERAGE BRAND PATENTS SA' not in empresas_interes:
+    empresas_interes.append('BEVERAGE BRAND PATENTS SA')
+if 'CONCLINA C A  CIA CONJU CLINICO NACIONAL' not in empresas_interes:
+    empresas_interes.append('CONCLINA C A  CIA CONJU CLINICO NACIONAL')
+if 'CONTINENTAL TIRE ANDINA S A' not in empresas_interes:
+    empresas_interes.append('CONTINENTAL TIRE ANDINA S A')
+if 'INDUSTRIAS ALES' not in empresas_interes:
+    empresas_interes.append('INDUSTRIAS ALES')
+if 'INVERSANCARLOS' not in empresas_interes:
+    empresas_interes.append('INVERSANCARLOS')
 if 'BRIKAPITAL SA' not in empresas_interes:
     empresas_interes.append('BRIKAPITAL SA')
 if 'CRIDESA' not in empresas_interes:
     empresas_interes.append('CRIDESA')
+
+
 
 # Filtrar los datos para incluir solo las empresas de interés
 df_2025 = df_2025[df_2025['EMISOR'].isin(empresas_interes)]
