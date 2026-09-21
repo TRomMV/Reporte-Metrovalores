@@ -4,19 +4,29 @@
 
 {% block extra_css %}
 <style>
-    /* Estilos específicos para asegurar la adaptabilidad móvil de los botones */
+    /* Por defecto (Escritorio): los botones van en horizontal */
     .boton-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         gap: 20px;
-        padding: 20px 0;
+        padding: 40px 0;
     }
     .boton-imagen {
         max-width: 100%;
         height: auto;
         display: block;
         border-radius: 8px;
+    }
+
+    /* En dispositivos móviles: se acomodan en vertical */
+    @media (max-width: 768px) {
+        .boton-container {
+            flex-direction: column;
+            padding: 20px 0;
+        }
     }
 </style>
 {% endblock %}
