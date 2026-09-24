@@ -47,42 +47,71 @@
         text-align: center;
     }
 
-    /* Optimización del gráfico en dispositivos móviles */
+    /* Optimización estricta para dispositivos móviles */
     @media screen and (max-width: 768px) {
         #grafico .plotly-graph-div {
             height: 420px !important;
         }
 
-        /* Apilar las tablas de cotizaciones de forma vertical limpia */
+        /* Contenedor principal de cotizaciones en columna y centrado */
         .cotizaciones {
+            display: flex !important;
             flex-direction: column !important;
-        }
-        .cotizaciones-lista {
-            margin: 0 0 25px 0 !important;
+            align-items: center !important;
             width: 100% !important;
         }
 
-        /* Forzar estructura de tabla clásica limpia en móvil sin etiquetas extrañas */
-        .cotizaciones table, 
+        .cotizaciones-lista {
+            width: 100% !important;
+            margin: 0 0 25px 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        /* Forzar tablas limpias y centradas, eliminando textos parásitos de plantillas externas */
+        .cotizaciones table {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            display: table !important;
+            font-size: 0.95em !important;
+        }
+
         .cotizaciones thead, 
         .cotizaciones tbody, 
         .cotizaciones tr, 
         .cotizaciones th, 
         .cotizaciones td {
-            display: table !important;
-            width: auto !important;
+            display: table-row !important; /* Por defecto se reajusta abajo a cell */
         }
-        .cotizaciones table {
-            width: 100% !important;
-            font-size: 0.95em !important;
+
+        .cotizaciones thead {
+            display: table-header-group !important;
         }
+
+        .cotizaciones tbody {
+            display: table-row-group !important;
+        }
+
         .cotizaciones tr {
             display: table-row !important;
+            width: 100% !important;
         }
-        .cotizaciones th, .cotizaciones td {
+
+        .cotizaciones th, 
+        .cotizaciones td {
             display: table-cell !important;
-            padding: 6px 4px !important;
+            width: 33.33% !important; /* Distribución equitativa para Año, Fecha y Valor */
+            padding: 8px 4px !important;
             text-align: center !important;
+        }
+
+        /* ANULACIÓN TOTAL y radical de pseudo-elementos inyectados por CSS externo (DESDE / HASTA / PROMEDIO) */
+        .cotizaciones td::before, 
+        .cotizaciones th::before {
+            content: none !important;
+            display: none !important;
         }
     }
 </style>
