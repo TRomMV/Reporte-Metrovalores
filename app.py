@@ -122,12 +122,13 @@ def show_company(company):
     # Inicializar y2_range con un valor predeterminado
     y2_range = [0, 100]
 
-    # Verificar si la columna 'ACCIONES' existe antes de usarla
+    
     if 'ACCIONES' in company_data.columns:
         # Barras de volumen ajustadas según la empresa
         max_acciones = obtener_escala_volumen(company)
         y2_range = [0, max_acciones * 1.1]  # Ajustar el rango con un 10% más para mejorar la visibilidad
-        fig.add_trace(go.Bar(x=company_data_volumen['FECHA'], y=company_data_volumen['ACCIONES'], name='Volumen', yaxis='y2', marker=dict(color='rgba(255, 99, 71, 0.6)')))  # Color más suave
+        fig.add_trace(go.Bar(x=company_data_volumen['FECHA'], y=company_data_volumen['ACCIONES'], name='Volumen', yaxis='y2', marker=dict(color='rgba(255, 99, 71, 0.25)')))  # Color suavizado
+
 
     # Configuración de la escala de tiempo
     # Configuración de la escala de tiempo: Por defecto un año y medio (18 meses) hacia atrás desde la fecha final
