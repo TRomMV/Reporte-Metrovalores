@@ -53,14 +53,16 @@
             height: 420px !important;
         }
 
-        /* Forzar que las tablas de cotizaciones se apilen verticalmente como tablas normales y no como tarjetas */
+        /* Apilar las tablas de cotizaciones de forma vertical limpia */
         .cotizaciones {
             flex-direction: column !important;
         }
         .cotizaciones-lista {
-            margin: 0 0 20px 0 !important;
+            margin: 0 0 25px 0 !important;
             width: 100% !important;
         }
+
+        /* Forzar estructura de tabla clásica limpia en móvil sin etiquetas extrañas */
         .cotizaciones table, 
         .cotizaciones thead, 
         .cotizaciones tbody, 
@@ -68,12 +70,19 @@
         .cotizaciones th, 
         .cotizaciones td {
             display: table !important;
+            width: auto !important;
+        }
+        .cotizaciones table {
+            width: 100% !important;
+            font-size: 0.95em !important;
         }
         .cotizaciones tr {
             display: table-row !important;
         }
         .cotizaciones th, .cotizaciones td {
             display: table-cell !important;
+            padding: 6px 4px !important;
+            text-align: center !important;
         }
     }
 </style>
