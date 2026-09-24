@@ -130,15 +130,14 @@ def show_company(company):
         fig.add_trace(go.Bar(x=company_data_volumen['FECHA'], y=company_data_volumen['ACCIONES'], name='Volumen', yaxis='y2', marker=dict(color='rgba(255, 99, 71, 0.6)')))  # Color más suave
 
     # Configuración de la escala de tiempo
-    # Configuración de la escala de tiempo
-    if company == "BANCO DEL AUSTRO":
-        fecha_inicio_auto = datetime(2024, 1, 1)
-    elif company == "BEVERAGE BRAND PATENTS SA":
-        fecha_inicio_auto = datetime(2021, 1, 1)
-    else:
-        fecha_inicio_auto = datetime(2020, 1, 1)
-
+    # Configuración de la escala de tiempo: Por defecto un año y medio (18 meses) hacia atrás desde la fecha final
     fecha_fin = company_data_precio['FECHA'].max()
+    fecha_inicio_auto = fecha_fin - timedelta(days=547)
+
+    if company == "BANCO DEL AUSTRO":
+        fecha_inicio_auto = max(fecha_inicio_auto, datetime(2024, 1, 1))
+    elif company == "BEVERAGE BRAND PATENTS SA":
+        fecha_inicio_auto = max(fecha_inicio_auto, datetime(2021, 1, 1))
 
 
 
