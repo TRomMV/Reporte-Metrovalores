@@ -225,6 +225,16 @@
                                     class="imagen-dividendo"
                                     style="max-width: 100%; height: auto;">
                             </div>
+
+                            <!-- Imágenes adicionales solo si el emisor es HOLCIM -->
+                        {% if profile.Nombre == "HOLCIM ECUADOR S.A." %}
+                            <div class="dividendos-imagen" style="margin-bottom: 20px;">
+                                <img 
+                                    src="/static/img/juntas_2024/HOLCIM_ECUADOR_SA_CRONOGRAMA.jpg"
+                                    alt="HOLCIM ECUADOR S.A. CRONOGRAMA"
+                                    class="imagen-dividendo"
+                                    style="max-width: 100%; height: auto;">
+                            </div>
                         {% endif %}
                     </div>
                 </div>
