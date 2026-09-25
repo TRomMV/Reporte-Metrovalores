@@ -225,12 +225,13 @@
                                     class="imagen-dividendo"
                                     style="max-width: 100%; height: auto;">
                             </div>
+                        {% endif %}
 
-                            <!-- Imágenes adicionales solo si el emisor es HOLCIM -->
+                        <!-- Imagen de cronograma solo si el emisor es HOLCIM -->
                         {% if profile.Nombre == "HOLCIM ECUADOR S.A." %}
                             <div class="dividendos-imagen" style="margin-bottom: 20px;">
                                 <img 
-                                    src="/static/img/juntas_2024/HOLCIM_ECUADOR_SA_CRONOGRAMA.jpg"
+                                    src="{{ url_for('static', filename='img/juntas_2024/HOLCIM_ECUADOR_SA_CRONOGRAMA.jpg') }}"
                                     alt="HOLCIM ECUADOR S.A. CRONOGRAMA"
                                     class="imagen-dividendo"
                                     style="max-width: 100%; height: auto;">
@@ -299,8 +300,8 @@
                     <h2 style="text-align: center;">Estado de Resultados Integral</h2>
                     <div style="text-align: center; margin-bottom: 20px;">
                         <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/ingresos.jpeg" 
-                             alt="Ingresos" 
-                             style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                           alt="Ingresos" 
+                           style="max-width: 100%; height: auto; border: 1.5px solid black;">
                         <p style="margin-top: 10px; font-size: 0.9em; color: black;">
                             Fuente: Superintendencia de Compañías e Instituciones Emisoras
                         </p>
@@ -310,16 +311,16 @@
                     <h2 style="text-align: center;">Estado de Situación Financiera</h2>
                     <div style="text-align: center; margin-bottom: 20px;">
                         <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/activos.jpeg" 
-                             alt="Activos" 
-                             style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                           alt="Activos" 
+                           style="max-width: 100%; height: auto; border: 1.5px solid black;">
                     </div>
 
                     <!-- Principales Indicadores -->
                     <h2 style="text-align: center;">Principales Indicadores</h2>
                     <div style="text-align: center; margin-bottom: 40px;">
                         <img src="/static/img/Balances/{{ profile.Nombre.rstrip('.') }}/liquidez.jpeg" 
-                             alt="Liquidez" 
-                             style="max-width: 100%; height: auto; border: 1.5px solid black;">
+                           alt="Liquidez" 
+                           style="max-width: 100%; height: auto; border: 1.5px solid black;">
                         <p style="margin-top: 10px; font-size: 0.9em; color: black;">
                             Fuente: Superintendencia de Compañías e Instituciones Emisoras
                         </p>
