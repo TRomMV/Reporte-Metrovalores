@@ -4,7 +4,7 @@
 
 {% block extra_css %}
 <style>
-    /* Estilos base heredados y específicos limpios */
+    /* Estilos base de escritorio (Intactos) */
     main {
         margin: 20px auto;
         max-width: 1200px;
@@ -43,31 +43,26 @@
         background-color: #005A9E;
     }
     
-    /* Contenedor responsivo para la tabla */
     .table-responsive {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        background: #fff;
     }
 
-    table {
+    table.tabla-notas {
         width: 100%;
         border-collapse: collapse;
         white-space: nowrap;
     }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 10px 14px;
+    table.tabla-notas th, table.tabla-notas td {
+        border: 1px solid black;
+        padding: 8px;
         text-align: center;
     }
-    th {
+    table.tabla-notas th {
         background-color: #f2f2f2;
         color: black;
-        font-weight: bold;
     }
     
     footer p {
@@ -86,29 +81,66 @@
         font-weight: bold;
     }
 
-    /* 📱 OPTIMIZACIÓN MÓVIL VERTICAL (Inspirado en el estándar limpio de empresa.html) */
+    /* 📱 DISEÑO MÓVIL VERTICAL OPTIMIZADO (Tarjetas limpias y ordenadas) */
     @media screen and (max-width: 768px) {
         main {
-            margin: 8px;
+            margin: 10px;
             padding: 12px;
         }
         h1 {
             font-size: 1.4rem;
         }
 
-        /* Tabla compacta y deslizable horizontalmente con total orden visual */
-        table {
-            font-size: 0.85em;
-        }
-
-        th, td {
-            padding: 8px 10px;
-        }
-
+        /* Desactivamos la tabla tradicional en móvil y la convertimos en un contenedor de tarjetas */
         .table-responsive {
-            border: 1px solid #ccc;
-            box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+            overflow-x: visible !important;
         }
+
+        table.tabla-notas, 
+        table.tabla-notas tbody, 
+        table.tabla-notas tr {
+            display: block !important;
+            width: 100% !important;
+        }
+
+        table.tabla-notas thead {
+            display: none !important; /* Ocultamos la cabecera vieja de PC */
+        }
+
+        /* Cada fila es ahora una tarjeta elegante y compacta */
+        table.tabla-notas tr {
+            background: #fdfdfd !important;
+            border: 1px solid #dcdcdc !important;
+            border-radius: 8px !important;
+            margin-bottom: 14px !important;
+            padding: 12px !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06) !important;
+        }
+
+        /* Cada celda se convierte en una línea flex estructurada "Etiqueta : Valor" */
+        table.tabla-notas td {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            border: none !important;
+            border-bottom: 1px solid #f0f0f0 !important;
+            padding: 7px 4px !important;
+            text-align: left !important;
+            font-size: 0.92em !important;
+            white-space: normal !important;
+        }
+
+        table.tabla-notas td:last-child {
+            border-bottom: none !important;
+        }
+
+        /* Inyectamos etiquetas claras y ordenadas a la izquierda mediante atributos de datos o texto limpio */
+        table.tabla-notas td:nth-child(1)::before { content: "Desde:"; font-weight: bold; color: #555; }
+        table.tabla-notas td:nth-child(2)::before { content: "Hasta:"; font-weight: bold; color: #555; }
+        table.tabla-notas td:nth-child(3)::before { content: "Precio Promedio:"; font-weight: bold; color: #555; }
+        table.tabla-notas td:nth-child(4)::before { content: "# Transacciones:"; font-weight: bold; color: #555; }
+        table.tabla-notas td:nth-child(5)::before { content: "Porcentaje (%):"; font-weight: bold; color: #555; }
+        table.tabla-notas td:nth-child(6)::before { content: "Valor Nominal Total:"; font-weight: bold; color: #555; }
     }
 </style>
 {% endblock %}
@@ -131,7 +163,7 @@
         {% endif %}
 
         <div class="table-responsive">
-            <table>
+            <table class="tabla-notas">
              <thead>
                <tr>
                  <th>Desde</th>
