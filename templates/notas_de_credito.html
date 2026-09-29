@@ -43,27 +43,30 @@
         background-color: #005A9E;
     }
     
-    /* Contenedor responsivo base para escritorio */
+    /* Contenedor responsivo para la tabla */
     .table-responsive {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
-        white-space: nowrap;
+        white-space: nowrap; /* Evita que los datos numéricos se rompan feo */
     }
     th, td {
-        border: 1px solid black;
-        padding: 8px;
+        border: 1px solid #ddd;
+        padding: 10px 12px;
         text-align: center;
     }
     th {
         background-color: #f2f2f2;
         color: black;
+        font-weight: bold;
     }
     
     footer p {
@@ -82,7 +85,7 @@
         font-weight: bold;
     }
 
-    /* 📱 OPTIMIZACIÓN ESTRICTA PARA MÓVIL VERTICAL (SIN AFECTAR PC) */
+    /* 📱 OPTIMIZACIÓN MÓVIL: Scroll horizontal limpio y legible sin ocultar datos */
     @media screen and (max-width: 768px) {
         main {
             margin: 10px;
@@ -91,66 +94,16 @@
         h1 {
             font-size: 1.5rem;
         }
+        
+        /* Optimizamos las celdas para que se vean proporcionadas y nítidas al deslizar en móvil */
+        th, td {
+            padding: 8px 10px;
+            font-size: 0.9em;
+        }
 
-        /* Convertimos la tabla de notas de crédito en un formato de bloques/tarjetas limpias en móvil */
         .table-responsive {
-            overflow-x: visible;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
         }
-
-        table, thead, tbody, th, td, tr {
-            display: block;
-            width: 100%;
-        }
-
-        /* Ocultar la cabecera tradicional de la tabla en móvil */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        /* Cada fila de la tabla se convierte en una tarjeta independiente */
-        tr {
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            padding: 10px;
-        }
-
-        td {
-            border: none !important;
-            border-bottom: 1px solid #eee !important;
-            position: relative;
-            padding: 8px 6px 8px 45% !important;
-            text-align: right !important;
-            font-size: 0.95em;
-            white-space: normal;
-        }
-
-        td:last-child {
-            border-bottom: none !important;
-        }
-
-        /* Etiquetas automáticas para cada valor en la vista móvil */
-        td::before {
-            position: absolute;
-            left: 10px;
-            width: 40%;
-            padding-right: 10px;
-            white-space: nowrap;
-            text-align: left;
-            font-weight: bold;
-            color: #333;
-        }
-
-        td:nth-of-type(1)::before { content: "Desde:"; }
-        td:nth-of-type(2)::before { content: "Hasta:"; }
-        td:nth-of-type(3)::before { content: "Precio Promedio:"; }
-        td:nth-of-type(4)::before { content: "# Transacciones:"; }
-        td:nth-of-type(5)::before { content: "%:"; }
-        td:nth-of-type(6)::before { content: "Valor Nominal Total:"; }
     }
 </style>
 {% endblock %}
