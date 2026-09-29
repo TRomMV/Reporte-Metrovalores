@@ -43,7 +43,7 @@
         background-color: #005A9E;
     }
     
-    /* Contenedor responsivo para la tabla sin alterar sus datos ni diseño de escritorio */
+    /* Contenedor responsivo base para escritorio */
     .table-responsive {
         width: 100%;
         overflow-x: auto;
@@ -54,12 +54,16 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        white-space: nowrap; /* Evita que los datos numéricos se rompan feo en móvil */
+        white-space: nowrap;
     }
     th, td {
         border: 1px solid black;
         padding: 8px;
         text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+        color: black;
     }
     
     footer p {
@@ -78,8 +82,8 @@
         font-weight: bold;
     }
 
-    /* Media query de optimización móvil pura */
-    @media (max-width: 768px) {
+    /* 📱 OPTIMIZACIÓN ESTRICTA PARA MÓVIL VERTICAL (SIN AFECTAR PC) */
+    @media screen and (max-width: 768px) {
         main {
             margin: 10px;
             padding: 12px;
@@ -87,6 +91,66 @@
         h1 {
             font-size: 1.5rem;
         }
+
+        /* Convertimos la tabla de notas de crédito en un formato de bloques/tarjetas limpias en móvil */
+        .table-responsive {
+            overflow-x: visible;
+        }
+
+        table, thead, tbody, th, td, tr {
+            display: block;
+            width: 100%;
+        }
+
+        /* Ocultar la cabecera tradicional de la tabla en móvil */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        /* Cada fila de la tabla se convierte en una tarjeta independiente */
+        tr {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 10px;
+        }
+
+        td {
+            border: none !important;
+            border-bottom: 1px solid #eee !important;
+            position: relative;
+            padding: 8px 6px 8px 45% !important;
+            text-align: right !important;
+            font-size: 0.95em;
+            white-space: normal;
+        }
+
+        td:last-child {
+            border-bottom: none !important;
+        }
+
+        /* Etiquetas automáticas para cada valor en la vista móvil */
+        td::before {
+            position: absolute;
+            left: 10px;
+            width: 40%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+        }
+
+        td:nth-of-type(1)::before { content: "Desde:"; }
+        td:nth-of-type(2)::before { content: "Hasta:"; }
+        td:nth-of-type(3)::before { content: "Precio Promedio:"; }
+        td:nth-of-type(4)::before { content: "# Transacciones:"; }
+        td:nth-of-type(5)::before { content: "%:"; }
+        td:nth-of-type(6)::before { content: "Valor Nominal Total:"; }
     }
 </style>
 {% endblock %}
@@ -110,103 +174,103 @@
 
         <div class="table-responsive">
             <table>
-              <thead>
-                <tr>
-                  <th>Desde</th>
-                  <th>Hasta</th>
-                  <th>Precio Promedio</th>
-                  <th># de Transacciones</th>
-                  <th>%</th>
-                  <th>Valor Nominal Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>$-</td>
-                  <td>$5.000,00</td>
-                  <td>97.76</td>
-                  <td>453</td>
-                  <td>39.53%</td>
-                  <td>$852.839,72</td>
-                </tr>
-                <tr>
-                  <td>$5.000,01</td>
-                  <td>$10.000,00</td>
-                  <td>98.37</td>
-                  <td>129</td>
-                  <td>11.26%</td>
-                  <td>$917.424,86</td>
-                </tr>
-                <tr>
-                  <td>$10.000,01</td>
-                  <td>$20.000,00</td>
-                  <td>98.49</td>
-                  <td>143</td>
-                  <td>12.48%</td>
-                  <td>$2.073.302,12</td>
-                </tr>
-                <tr>
-                  <td>$20.000,01</td>
-                  <td>$40.000,00</td>
-                  <td>98.53</td>
-                  <td>108</td>
-                  <td>9.42%</td>
-                  <td>$3.074.259,30</td>
-                </tr>
-                <tr>
-                  <td>$40.000,01</td>
-                  <td>$80.000,00</td>
-                  <td>98.62</td>
-                  <td>121</td>
-                  <td>10.56%</td>
-                  <td>$6.970.621,02</td>
-                </tr>
-                <tr>
-                  <td>$80.000,01</td>
-                  <td>$160.000,00</td>
-                  <td>98.66</td>
-                  <td>83</td>
-                  <td>7.24%</td>
-                  <td>$9.369.367,12</td>
-                </tr>
-                <tr>
-                  <td>$160.000,01</td>
-                  <td>$320.000,00</td>
-                  <td>98.65</td>
-                  <td>56</td>
-                  <td>4.89%</td>
-                  <td>$13.124.539,78</td>
-                </tr>
-                <tr>
-                  <td>$320.000,01</td>
-                  <td>$640.000,00</td>
-                  <td>98.70</td>
-                  <td>35</td>
-                  <td>3.05%</td>
-                  <td>$15.481.013,08</td>
-                </tr>
-                <tr>
-                  <td>$640.000,01</td>
-                  <td>$1.280.000,00</td>
-                  <td>98.78</td>
-                  <td>15</td>
-                  <td>1.31%</td>
-                  <td>$13.494.482,91</td>
-                </tr>
-                <tr>
-                  <td>$1.280.000,01</td>
-                  <td>$20.000.000,00</td>
-                  <td>98.63</td>
-                  <td>3</td>
-                  <td>0.26%</td>
-                  <td>$6.841.950,25</td>
-                </tr>
-              </tbody>
+             <thead>
+               <tr>
+                 <th>Desde</th>
+                 <th>Hasta</th>
+                 <th>Precio Promedio</th>
+                 <th># de Transacciones</th>
+                 <th>%</th>
+                 <th>Valor Nominal Total</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>$-</td>
+                 <td>$5.000,00</td>
+                 <td>97.85</td>
+                 <td>483</td>
+                 <td>40.42%</td>
+                 <td>$882.002,34</td>
+               </tr>
+               <tr>
+                 <td>$5.000,01</td>
+                 <td>$10.000,00</td>
+                 <td>98.38</td>
+                 <td>135</td>
+                 <td>11.30%</td>
+                 <td>$982.793,32</td>
+               </tr>
+               <tr>
+                 <td>$10.000,01</td>
+                 <td>$20.000,00</td>
+                 <td>98.51</td>
+                 <td>147</td>
+                 <td>12.30%</td>
+                 <td>$2.145.287,94</td>
+               </tr>
+               <tr>
+                 <td>$20.000,01</td>
+                 <td>$40.000,00</td>
+                 <td>98.56</td>
+                 <td>112</td>
+                 <td>9.37%</td>
+                 <td>$3.192.062,10</td>
+               </tr>
+               <tr>
+                 <td>$40.000,01</td>
+                 <td>$80.000,00</td>
+                 <td>98.63</td>
+                 <td>120</td>
+                 <td>10.04%</td>
+                 <td>$6.973.675,79</td>
+               </tr>
+               <tr>
+                 <td>$80.000,01</td>
+                 <td>$160.000,00</td>
+                 <td>98.67</td>
+                 <td>82</td>
+                 <td>6.86%</td>
+                 <td>$9.178.210,84</td>
+               </tr>
+               <tr>
+                 <td>$160.000,01</td>
+                 <td>$320.000,00</td>
+                 <td>98.67</td>
+                 <td>60</td>
+                 <td>5.02%</td>
+                 <td>$13.698.092,90</td>
+               </tr>
+               <tr>
+                 <td>$320.000,01</td>
+                 <td>$640.000,00</td>
+                 <td>98.71</td>
+                 <td>33</td>
+                 <td>2.76%</td>
+                 <td>$14.784.198,36</td>
+               </tr>
+               <tr>
+                 <td>$640.000,01</td>
+                 <td>$1.280.000,00</td>
+                 <td>98.76</td>
+                 <td>19</td>
+                 <td>1.59%</td>
+                 <td>$17.146.860,25</td>
+               </tr>
+               <tr>
+                 <td>$1.280.000,01</td>
+                 <td>$20.000.000,00</td>
+                 <td>98.69</td>
+                 <td>4</td>
+                 <td>0.33%</td>
+                 <td>$10.370.194,97</td>
+               </tr>
+             </tbody>
             </table>
         </div>
 
         <footer>
-          <p>(Datos del 24/8/2026 al 18/9/2026)</p>
+          <p>(Datos del 31/8/2026 al 28/9/2026)</p>
         </footer>
 
         <p class="aviso-importante">
