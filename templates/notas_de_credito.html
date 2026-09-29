@@ -51,16 +51,17 @@
         margin-bottom: 15px;
         border: 1px solid #ddd;
         border-radius: 6px;
+        background: #fff;
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
-        white-space: nowrap; /* Evita que los datos numéricos se rompan feo */
+        white-space: nowrap;
     }
     th, td {
         border: 1px solid #ddd;
-        padding: 10px 12px;
+        padding: 10px 14px;
         text-align: center;
     }
     th {
@@ -85,24 +86,28 @@
         font-weight: bold;
     }
 
-    /* 📱 OPTIMIZACIÓN MÓVIL: Scroll horizontal limpio y legible sin ocultar datos */
+    /* 📱 OPTIMIZACIÓN MÓVIL VERTICAL (Inspirado en el estándar limpio de empresa.html) */
     @media screen and (max-width: 768px) {
         main {
-            margin: 10px;
+            margin: 8px;
             padding: 12px;
         }
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
-        
-        /* Optimizamos las celdas para que se vean proporcionadas y nítidas al deslizar en móvil */
+
+        /* Tabla compacta y deslizable horizontalmente con total orden visual */
+        table {
+            font-size: 0.85em;
+        }
+
         th, td {
             padding: 8px 10px;
-            font-size: 0.9em;
         }
 
         .table-responsive {
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+            border: 1px solid #ccc;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
         }
     }
 </style>
