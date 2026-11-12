@@ -481,7 +481,7 @@ def notas_de_credito():
 def predict():
     valor_nominal = float(request.form["Valor_Nominal"])
     prediction = model.predict([[valor_nominal]])[0]
-    prediction_text = f"El precio estimado para una nota de crédito con valor nominal de ${valor_nominal:,.2f} es: {prediction:,.2f}"
+    prediction_text = f"El precio estimado para una nota de crédito con valor nominal de ${valor_nominal:,.2f} es: {prediction:,.2f} %"
     return render_template("notas_de_credito.html", prediction_text=prediction_text)
 
 
