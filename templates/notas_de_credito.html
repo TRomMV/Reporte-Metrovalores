@@ -1,300 +1,96 @@
 {% extends "base.html" %}
-
 {% block title %}Notas de Crédito - Metrovalores{% endblock %}
 
 {% block extra_css %}
 <style>
-    .nc-page {
-        --nc-blue: #0069a8;
-        --nc-navy: #153653;
-        --nc-muted: #506778;
-        --nc-border: #d6e1e9;
-        width: calc(100% - 32px);
-        max-width: 920px;
-        margin: 32px auto;
-        padding: clamp(20px, 4vw, 40px);
-        box-sizing: border-box;
-        background: #fff;
-        color: var(--nc-navy);
-        border: 1px solid var(--nc-border);
-        border-radius: 14px;
-        box-shadow: 0 6px 22px rgba(16, 48, 73, 0.09);
-        text-align: left;
-    }
+  .nc { box-sizing: border-box; width: calc(100% - 24px); max-width: 920px; margin: 28px auto; padding: clamp(18px, 4vw, 36px); background: white; color: #153653; border-radius: 14px; box-shadow: 0 6px 22px #10304920; text-align: left; }
+  .nc h1 { margin: 0 0 22px; font-size: clamp(1.5rem, 4vw, 2rem); }
+  .nc label { display: block; margin-bottom: 8px; font-weight: 600; }
+  .nc-controls { display: flex; gap: 10px; max-width: 530px; }
+  .nc-controls input, .nc-controls button { box-sizing: border-box; padding: 12px 16px; border-radius: 7px; font: inherit; }
+  .nc-controls input { flex: 1; min-width: 0; border: 1px solid #9eb2c1; }
+  .nc-controls button { background: #0069a8; color: white; border: 0; cursor: pointer; }
+  .nc-controls button:hover { background: #005487; }
+  .nc-hint, .nc-period, .nc-note { color: #506778; font-size: .9rem; line-height: 1.5; }
+  .nc-result { margin: 20px 0; padding: 16px; border-left: 4px solid #0069a8; background: #edf6fb; border-radius: 6px; font-weight: 600; }
+  .nc details { margin-top: 24px; border: 1px solid #d6e1e9; border-radius: 8px; }
+  .nc summary { padding: 14px; cursor: pointer; font-weight: 600; }
+  .nc-period { display: block; margin-left: 18px; font-weight: 400; }
+  .nc-scroll { max-width: 100%; overflow-x: auto; }
+  .nc table { width: 100%; border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
+  .nc th, .nc td { padding: 9px 12px; border-bottom: 1px solid #d6e1e9; text-align: right; }
+  .nc th { background: #eef3f7; color: #153653; }
+  .nc td { white-space: nowrap; }
+  .nc th:first-child, .nc td:first-child { text-align: left; }
+  .nc-note { margin: 20px 0 0; }
+  .nc-note a { color: #0069a8; }
 
-    .nc-page *,
-    .nc-page *::before,
-    .nc-page *::after {
-        box-sizing: border-box;
-    }
-
-    .nc-page h1 {
-        margin: 0 0 24px;
-        color: var(--nc-navy);
-        font-size: clamp(1.5rem, 3.5vw, 2rem);
-        line-height: 1.2;
-        text-align: left;
-    }
-
-    .nc-form {
-        margin: 0;
-        text-align: left;
-    }
-
-    .nc-form label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: var(--nc-navy);
-    }
-
-    .nc-controls {
-        display: flex;
-        align-items: stretch;
-        gap: 10px;
-        max-width: 530px;
-    }
-
-    .nc-controls input {
-        flex: 1;
-        min-width: 0;
-        min-height: 46px;
-        margin: 0;
-        padding: 10px 14px;
-        border: 1px solid #9eb2c1;
-        border-radius: 7px;
-        background: #fff;
-        color: var(--nc-navy);
-        font: inherit;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .nc-controls button {
-        min-height: 46px;
-        margin: 0;
-        padding: 10px 22px;
-        border: 0;
-        border-radius: 7px;
-        background: var(--nc-blue);
-        color: #fff;
-        font: inherit;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .nc-controls button:hover {
-        background: #005487;
-    }
-
-    .nc-page :is(input, button, summary, a):focus-visible {
-        outline: 3px solid #197dbd;
-        outline-offset: 3px;
-    }
-
-    .nc-hint {
-        margin: 7px 0 0;
-        color: var(--nc-muted);
-        font-size: 0.875rem;
-    }
-
-    .nc-result {
-        margin: 22px 0 0;
-        padding: 16px 18px;
-        border-left: 4px solid var(--nc-blue);
-        border-radius: 0 8px 8px 0;
-        background: #edf6fb;
-        color: var(--nc-navy);
-        font-size: 1.1rem;
-        font-weight: 600;
-        line-height: 1.5;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .nc-history {
-        margin-top: 28px;
-        border: 1px solid var(--nc-border);
-        border-radius: 9px;
-    }
-
-    .nc-history summary {
-        padding: 15px 16px;
-        color: var(--nc-navy);
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .nc-history summary::marker {
-        color: var(--nc-blue);
-    }
-
-    .nc-period {
-        display: block;
-        margin: 4px 0 0 18px;
-        color: var(--nc-muted);
-        font-size: 0.875rem;
-        font-weight: 400;
-    }
-
-    .nc-table-wrap {
-        width: 100%;
-        overflow-x: auto;
-        border-top: 1px solid var(--nc-border);
-    }
-
-    .nc-table {
-        width: 100%;
-        margin: 0;
-        border-collapse: collapse;
-        font-size: 0.9rem;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .nc-table th,
-    .nc-table td {
-        padding: 10px 12px;
-        border: 0;
-        border-bottom: 1px solid var(--nc-border);
-        text-align: right;
-        vertical-align: middle;
-    }
-
-    .nc-table thead th {
-        background: #eef3f7;
-        color: var(--nc-navy);
-        font-weight: 600;
-    }
-
-    .nc-table th:first-child,
-    .nc-table td:first-child {
-        text-align: left;
-    }
-
-    .nc-table td {
-        white-space: nowrap;
-    }
-
-    .nc-table tbody tr:last-child td {
-        border-bottom: 0;
-    }
-
-    .nc-note {
-        margin: 22px 0 0;
-        color: var(--nc-muted);
-        font-size: 0.9rem;
-        line-height: 1.55;
-    }
-
-    .nc-note a {
-        color: var(--nc-blue);
-        text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-        .nc-page {
-            width: calc(100% - 20px);
-            margin: 16px auto;
-            padding: 18px 14px;
-        }
-
-        .nc-controls {
-            flex-direction: column;
-        }
-
-        .nc-controls input,
-        .nc-controls button {
-            width: 100%;
-        }
-
-        .nc-table th,
-        .nc-table td {
-            padding: 8px 10px;
-        }
-    }
+  @media (max-width: 600px) {
+    .nc { margin: 14px auto; }
+    .nc-controls { flex-direction: column; }
+    .nc-controls input, .nc-controls button { width: 100%; }
+  }
 </style>
 {% endblock %}
 
 {% block content %}
-<main class="nc-page">
-    <h1>Cotizador de notas de crédito</h1>
+<main class="nc">
+  <h1>Cotizador de notas de crédito</h1>
 
-    <form class="nc-form" action="{{ url_for('predict') }}" method="post">
-        <label for="Valor_Nominal">Valor nominal (USD)</label>
+  <form action="{{ url_for('predict') }}" method="post">
+    <label for="Valor_Nominal">Valor nominal (USD)</label>
+    <div class="nc-controls">
+      <input id="Valor_Nominal" name="Valor_Nominal" type="number"
+             min="0.01" step="any" inputmode="decimal" required
+             placeholder="Ej. 50000" aria-describedby="nc-hint"
+             value="{{ request.form.get('Valor_Nominal', '') }}">
+      <button type="submit">Estimar precio</button>
+    </div>
+    <p id="nc-hint" class="nc-hint">
+      Ingresa el monto sin separador de miles. Para decimales, usa punto.
+    </p>
+  </form>
 
-        <div class="nc-controls">
-            <input
-                type="number"
-                id="Valor_Nominal"
-                name="Valor_Nominal"
-                min="0.01"
-                step="any"
-                inputmode="decimal"
-                placeholder="Ej. 50000"
-                value="{{ request.form.get('Valor_Nominal', '') }}"
-                aria-describedby="nc-hint"
-                required
-            >
-            <button type="submit">Estimar precio</button>
-        </div>
+  {% if prediction_text %}
+    <p class="nc-result" role="status">{{ prediction_text }}</p>
+  {% endif %}
 
-        <p class="nc-hint" id="nc-hint">
-            Ingresa el monto sin separador de miles. Para los decimales, usa punto.
-        </p>
-    </form>
+  <details>
+    <summary>
+      Resumen histórico por monto
+      <span class="nc-period">Del 12 de octubre al 9 de noviembre de 2026</span>
+    </summary>
+    <div class="nc-scroll">
+      <table aria-label="Negociaciones por rango nominal">
+        <thead>
+          <tr>
+            <th scope="col">Rango nominal (USD)</th>
+            <th scope="col">Precio promedio</th>
+            <th scope="col">Operaciones</th>
+            <th scope="col">% de operaciones</th>
+            <th scope="col">Nominal total (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Hasta 5.000,00</td><td>97,49 %</td><td>481</td><td>39,85 %</td><td>897.527,83</td></tr>
+          <tr><td>5.000,01 – 10.000,00</td><td>98,00 %</td><td>138</td><td>11,43 %</td><td>1.014.722,68</td></tr>
+          <tr><td>10.000,01 – 20.000,00</td><td>98,04 %</td><td>155</td><td>12,84 %</td><td>2.243.843,86</td></tr>
+          <tr><td>20.000,01 – 40.000,00</td><td>98,12 %</td><td>117</td><td>9,69 %</td><td>3.272.256,62</td></tr>
+          <tr><td>40.000,01 – 80.000,00</td><td>98,13 %</td><td>96</td><td>7,95 %</td><td>5.303.098,57</td></tr>
+          <tr><td>80.000,01 – 160.000,00</td><td>98,31 %</td><td>73</td><td>6,05 %</td><td>8.113.613,09</td></tr>
+          <tr><td>160.000,01 – 320.000,00</td><td>98,37 %</td><td>47</td><td>3,89 %</td><td>11.103.086,97</td></tr>
+          <tr><td>320.000,01 – 640.000,00</td><td>98,36 %</td><td>44</td><td>3,65 %</td><td>20.009.295,71</td></tr>
+          <tr><td>640.000,01 – 1.280.000,00</td><td>98,51 %</td><td>28</td><td>2,32 %</td><td>23.986.792,82</td></tr>
+          <tr><td>1.280.000,01 – 20.000.000,00</td><td>98,58 %</td><td>28</td><td>2,32 %</td><td>63.495.047,86</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 
-    {% if prediction_text %}
-        <p class="nc-result" role="status">{{ prediction_text }}</p>
-    {% endif %}
-
-    <details class="nc-history">
-        <summary>
-            Resumen histórico por monto
-            <span class="nc-period">
-                Del 12 de octubre al 9 de noviembre de 2026
-            </span>
-        </summary>
-
-        <div class="nc-table-wrap">
-            <table class="nc-table" aria-label="Negociaciones por rango de valor nominal">
-                <thead>
-                    <tr>
-                        <th scope="col">Rango nominal (USD)</th>
-                        <th scope="col">Precio promedio</th>
-                        <th scope="col">Operaciones</th>
-                        <th scope="col">% de operaciones</th>
-                        <th scope="col">Nominal total (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% set rangos = [
-                        ("Hasta 5.000,00",               "97,49 %", 481, "39,85 %",    "897.527,83"),
-                        ("5.000,01 – 10.000,00",         "98,00 %", 138, "11,43 %",  "1.014.722,68"),
-                        ("10.000,01 – 20.000,00",        "98,04 %", 155, "12,84 %",  "2.243.843,86"),
-                        ("20.000,01 – 40.000,00",        "98,12 %", 117,  "9,69 %",  "3.272.256,62"),
-                        ("40.000,01 – 80.000,00",        "98,13 %",  96,  "7,95 %",  "5.303.098,57"),
-                        ("80.000,01 – 160.000,00",       "98,31 %",  73,  "6,05 %",  "8.113.613,09"),
-                        ("160.000,01 – 320.000,00",      "98,37 %",  47,  "3,89 %", "11.103.086,97"),
-                        ("320.000,01 – 640.000,00",      "98,36 %",  44,  "3,65 %", "20.009.295,71"),
-                        ("640.000,01 – 1.280.000,00",    "98,51 %",  28,  "2,32 %", "23.986.792,82"),
-                        ("1.280.000,01 – 20.000.000,00", "98,58 %",  28,  "2,32 %", "63.495.047,86")
-                    ] %}
-
-                    {% for rango, precio, operaciones, porcentaje, nominal in rangos %}
-                        <tr>
-                            <td>{{ rango }}</td>
-                            <td>{{ precio }}</td>
-                            <td>{{ operaciones }}</td>
-                            <td>{{ porcentaje }}</td>
-                            <td>{{ nominal }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </details>
-
-    <p class="nc-note">
-        El precio estimado es referencial. Para consultar condiciones de negociación,
-        comunícate con Metrovalores al
-        <a href="tel:+593962603638">096 260 3638</a>
-        o escribe a
-        <a href="mailto:info@metrovalores.com.ec">info@metrovalores.com.ec</a>.
+  <p class="nc-note">
+    El precio estimado es referencial. Para consultar condiciones de negociación,
+    comunícate con Metrovalores al <a href="tel:+593962603638">096 260 3638</a>
+    o escribe a <a href="mailto:info@metrovalores.com.ec">info@metrovalores.com.ec</a>.
+  </p>
+</main>
+{% endblock content %}
