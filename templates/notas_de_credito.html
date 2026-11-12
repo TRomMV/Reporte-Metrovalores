@@ -4,270 +4,297 @@
 
 {% block extra_css %}
 <style>
-    /* Estilos base de escritorio (Intactos) */
-    main {
-        margin: 20px auto;
-        max-width: 1200px;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        font-size: 2rem;
-    }
-    form {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    form input[type="number"] {
-        padding: 8px;
-        width: 100%;
-        max-width: 300px;
+    .nc-page {
+        --nc-blue: #0069a8;
+        --nc-navy: #153653;
+        --nc-muted: #506778;
+        --nc-border: #d6e1e9;
+        width: calc(100% - 32px);
+        max-width: 920px;
+        margin: 32px auto;
+        padding: clamp(20px, 4vw, 40px);
         box-sizing: border-box;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        background: #fff;
+        color: var(--nc-navy);
+        border: 1px solid var(--nc-border);
+        border-radius: 14px;
+        box-shadow: 0 6px 22px rgba(16, 48, 73, 0.09);
+        text-align: left;
     }
-    button {
-        background-color: #0072C6;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
+
+    .nc-page *,
+    .nc-page *::before,
+    .nc-page *::after {
+        box-sizing: border-box;
+    }
+
+    .nc-page h1 {
+        margin: 0 0 24px;
+        color: var(--nc-navy);
+        font-size: clamp(1.5rem, 3.5vw, 2rem);
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .nc-form {
+        margin: 0;
+        text-align: left;
+    }
+
+    .nc-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--nc-navy);
+    }
+
+    .nc-controls {
+        display: flex;
+        align-items: stretch;
+        gap: 10px;
+        max-width: 530px;
+    }
+
+    .nc-controls input {
+        flex: 1;
+        min-width: 0;
+        min-height: 46px;
+        margin: 0;
+        padding: 10px 14px;
+        border: 1px solid #9eb2c1;
+        border-radius: 7px;
+        background: #fff;
+        color: var(--nc-navy);
+        font: inherit;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .nc-controls button {
+        min-height: 46px;
+        margin: 0;
+        padding: 10px 22px;
+        border: 0;
+        border-radius: 7px;
+        background: var(--nc-blue);
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
         cursor: pointer;
     }
-    button:hover {
-        background-color: #005A9E;
+
+    .nc-controls button:hover {
+        background: #005487;
     }
-    
-    .table-responsive {
+
+    .nc-page :is(input, button, summary, a):focus-visible {
+        outline: 3px solid #197dbd;
+        outline-offset: 3px;
+    }
+
+    .nc-hint {
+        margin: 7px 0 0;
+        color: var(--nc-muted);
+        font-size: 0.875rem;
+    }
+
+    .nc-result {
+        margin: 22px 0 0;
+        padding: 16px 18px;
+        border-left: 4px solid var(--nc-blue);
+        border-radius: 0 8px 8px 0;
+        background: #edf6fb;
+        color: var(--nc-navy);
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.5;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .nc-history {
+        margin-top: 28px;
+        border: 1px solid var(--nc-border);
+        border-radius: 9px;
+    }
+
+    .nc-history summary {
+        padding: 15px 16px;
+        color: var(--nc-navy);
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .nc-history summary::marker {
+        color: var(--nc-blue);
+    }
+
+    .nc-period {
+        display: block;
+        margin: 4px 0 0 18px;
+        color: var(--nc-muted);
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+
+    .nc-table-wrap {
         width: 100%;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin-bottom: 15px;
+        border-top: 1px solid var(--nc-border);
     }
 
-    table.tabla-notas {
+    .nc-table {
         width: 100%;
+        margin: 0;
         border-collapse: collapse;
+        font-size: 0.9rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .nc-table th,
+    .nc-table td {
+        padding: 10px 12px;
+        border: 0;
+        border-bottom: 1px solid var(--nc-border);
+        text-align: right;
+        vertical-align: middle;
+    }
+
+    .nc-table thead th {
+        background: #eef3f7;
+        color: var(--nc-navy);
+        font-weight: 600;
+    }
+
+    .nc-table th:first-child,
+    .nc-table td:first-child {
+        text-align: left;
+    }
+
+    .nc-table td {
         white-space: nowrap;
     }
-    table.tabla-notas th, table.tabla-notas td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-    }
-    table.tabla-notas th {
-        background-color: #f2f2f2;
-        color: black;
-    }
-    
-    footer p {
-        text-align: center;
+
+    .nc-table tbody tr:last-child td {
+        border-bottom: 0;
     }
 
-    .aviso-importante {
-        margin-top: 15px;
-        font-size: 1.1em;
-        text-align: justify;
-        color: black;
-        font-weight: normal;
+    .nc-note {
+        margin: 22px 0 0;
+        color: var(--nc-muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
     }
 
-    .aviso-importante strong {
-        font-weight: bold;
+    .nc-note a {
+        color: var(--nc-blue);
+        text-decoration: underline;
     }
 
-    /* 📱 DISEÑO MÓVIL VERTICAL OPTIMIZADO (Tarjetas limpias y ordenadas) */
-    @media screen and (max-width: 768px) {
-        main {
-            margin: 10px;
-            padding: 12px;
-        }
-        h1 {
-            font-size: 1.4rem;
+    @media (max-width: 600px) {
+        .nc-page {
+            width: calc(100% - 20px);
+            margin: 16px auto;
+            padding: 18px 14px;
         }
 
-        /* Desactivamos la tabla tradicional en móvil y la convertimos en un contenedor de tarjetas */
-        .table-responsive {
-            overflow-x: visible !important;
+        .nc-controls {
+            flex-direction: column;
         }
 
-        table.tabla-notas, 
-        table.tabla-notas tbody, 
-        table.tabla-notas tr {
-            display: block !important;
-            width: 100% !important;
+        .nc-controls input,
+        .nc-controls button {
+            width: 100%;
         }
 
-        table.tabla-notas thead {
-            display: none !important; /* Ocultamos la cabecera vieja de PC */
+        .nc-table th,
+        .nc-table td {
+            padding: 8px 10px;
         }
-
-        /* Cada fila es ahora una tarjeta elegante y compacta */
-        table.tabla-notas tr {
-            background: #fdfdfd !important;
-            border: 1px solid #dcdcdc !important;
-            border-radius: 8px !important;
-            margin-bottom: 14px !important;
-            padding: 12px !important;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.06) !important;
-        }
-
-        /* Cada celda se convierte en una línea flex estructurada "Etiqueta : Valor" */
-        table.tabla-notas td {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            border: none !important;
-            border-bottom: 1px solid #f0f0f0 !important;
-            padding: 7px 4px !important;
-            text-align: left !important;
-            font-size: 0.92em !important;
-            white-space: normal !important;
-        }
-
-        table.tabla-notas td:last-child {
-            border-bottom: none !important;
-        }
-
-        /* Inyectamos etiquetas claras y ordenadas a la izquierda mediante atributos de datos o texto limpio */
-        table.tabla-notas td:nth-child(1)::before { content: "Desde:"; font-weight: bold; color: #555; }
-        table.tabla-notas td:nth-child(2)::before { content: "Hasta:"; font-weight: bold; color: #555; }
-        table.tabla-notas td:nth-child(3)::before { content: "Precio Promedio:"; font-weight: bold; color: #555; }
-        table.tabla-notas td:nth-child(4)::before { content: "# Transacciones:"; font-weight: bold; color: #555; }
-        table.tabla-notas td:nth-child(5)::before { content: "Porcentaje (%):"; font-weight: bold; color: #555; }
-        table.tabla-notas td:nth-child(6)::before { content: "Valor Nominal Total:"; font-weight: bold; color: #555; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-    <main>
-        <h1>Estimación del Precio de una Nota de Crédito</h1>
+<main class="nc-page">
+    <h1>Cotizador de notas de crédito</h1>
 
-        <form action="/predict" method="POST">
-            <label for="Valor_Nominal">Valor Nominal (utilizar punto como separador de decimales):</label><br>
-            <input type="number" name="Valor_Nominal" id="Valor_Nominal" step="any" required>
-            <br>
-            <button type="submit">Estimar Precio</button>
-        </form>
+    <form class="nc-form" action="{{ url_for('predict') }}" method="post">
+        <label for="Valor_Nominal">Valor nominal (USD)</label>
 
-        <br>
-        <!-- Display the prediction result -->
-        {% if prediction_text %}
-            <p style="text-align: center; font-weight: bold;">{{ prediction_text }}</p>
-        {% endif %}
+        <div class="nc-controls">
+            <input
+                type="number"
+                id="Valor_Nominal"
+                name="Valor_Nominal"
+                min="0.01"
+                step="any"
+                inputmode="decimal"
+                placeholder="Ej. 50000"
+                value="{{ request.form.get('Valor_Nominal', '') }}"
+                aria-describedby="nc-hint"
+                required
+            >
+            <button type="submit">Estimar precio</button>
+        </div>
 
-<div class="table-responsive">
-  <table class="tabla-notas">
-    <thead>
-      <tr>
-        <th>Desde</th>
-        <th>Hasta</th>
-        <th>Precio Promedio</th>
-        <th># de Transacciones</th>
-        <th>%</th>
-        <th>Valor Nominal Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>$-</td>
-        <td>$5.000,00</td>
-        <td>97.49</td>
-        <td>481</td>
-        <td>39.85%</td>
-        <td>$897.527,83</td>
-      </tr>
-      <tr>
-        <td>$5.000,01</td>
-        <td>$10.000,00</td>
-        <td>98.00</td>
-        <td>138</td>
-        <td>11.43%</td>
-        <td>$1.014.722,68</td>
-      </tr>
-      <tr>
-        <td>$10.000,01</td>
-        <td>$20.000,00</td>
-        <td>98.04</td>
-        <td>155</td>
-        <td>12.84%</td>
-        <td>$2.243.843,86</td>
-      </tr>
-      <tr>
-        <td>$20.000,01</td>
-        <td>$40.000,00</td>
-        <td>98.12</td>
-        <td>117</td>
-        <td>9.69%</td>
-        <td>$3.272.256,62</td>
-      </tr>
-      <tr>
-        <td>$40.000,01</td>
-        <td>$80.000,00</td>
-        <td>98.13</td>
-        <td>96</td>
-        <td>7.95%</td>
-        <td>$5.303.098,57</td>
-      </tr>
-      <tr>
-        <td>$80.000,01</td>
-        <td>$160.000,00</td>
-        <td>98.31</td>
-        <td>73</td>
-        <td>6.05%</td>
-        <td>$8.113.613,09</td>
-      </tr>
-      <tr>
-        <td>$160.000,01</td>
-        <td>$320.000,00</td>
-        <td>98.37</td>
-        <td>47</td>
-        <td>3.89%</td>
-        <td>$11.103.086,97</td>
-      </tr>
-      <tr>
-        <td>$320.000,01</td>
-        <td>$640.000,00</td>
-        <td>98.36</td>
-        <td>44</td>
-        <td>3.65%</td>
-        <td>$20.009.295,71</td>
-      </tr>
-      <tr>
-        <td>$640.000,01</td>
-        <td>$1.280.000,00</td>
-        <td>98.51</td>
-        <td>28</td>
-        <td>2.32%</td>
-        <td>$23.986.792,82</td>
-      </tr>
-      <tr>
-        <td>$1.280.000,01</td>
-        <td>$20.000.000,00</td>
-        <td>98.58</td>
-        <td>28</td>
-        <td>2.32%</td>
-        <td>$63.495.047,86</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<footer>
-  <p>(Datos históricos del 12/10/2026 al 9/11/2026)</p>
-        </footer>
-
-        <p class="aviso-importante">
-          <strong>Aviso Importante:</strong> Este simulador proporciona una estimación del precio de las notas de crédito transadas en el mercado de valores ecuatoriano. 
-          La información mostrada se fundamenta en el registro histórico del último mes. 
-          Si requiere datos más precisos o los precios de negociación de días recientes, le invitamos a contactarnos por nuestros canales virtuales 
-          o al número telefónico 096 260 3638 o a info@metrovalores.com.ec.
+        <p class="nc-hint" id="nc-hint">
+            Ingresa el monto sin separador de miles. Para los decimales, usa punto.
         </p>
-    </main>
-{% endblock %}
+    </form>
+
+    {% if prediction_text %}
+        <p class="nc-result" role="status">{{ prediction_text }}</p>
+    {% endif %}
+
+    <details class="nc-history">
+        <summary>
+            Resumen histórico por monto
+            <span class="nc-period">
+                Del 12 de octubre al 9 de noviembre de 2026
+            </span>
+        </summary>
+
+        <div class="nc-table-wrap">
+            <table class="nc-table" aria-label="Negociaciones por rango de valor nominal">
+                <thead>
+                    <tr>
+                        <th scope="col">Rango nominal (USD)</th>
+                        <th scope="col">Precio promedio</th>
+                        <th scope="col">Operaciones</th>
+                        <th scope="col">% de operaciones</th>
+                        <th scope="col">Nominal total (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set rangos = [
+                        ("Hasta 5.000,00",               "97,49 %", 481, "39,85 %",    "897.527,83"),
+                        ("5.000,01 – 10.000,00",         "98,00 %", 138, "11,43 %",  "1.014.722,68"),
+                        ("10.000,01 – 20.000,00",        "98,04 %", 155, "12,84 %",  "2.243.843,86"),
+                        ("20.000,01 – 40.000,00",        "98,12 %", 117,  "9,69 %",  "3.272.256,62"),
+                        ("40.000,01 – 80.000,00",        "98,13 %",  96,  "7,95 %",  "5.303.098,57"),
+                        ("80.000,01 – 160.000,00",       "98,31 %",  73,  "6,05 %",  "8.113.613,09"),
+                        ("160.000,01 – 320.000,00",      "98,37 %",  47,  "3,89 %", "11.103.086,97"),
+                        ("320.000,01 – 640.000,00",      "98,36 %",  44,  "3,65 %", "20.009.295,71"),
+                        ("640.000,01 – 1.280.000,00",    "98,51 %",  28,  "2,32 %", "23.986.792,82"),
+                        ("1.280.000,01 – 20.000.000,00", "98,58 %",  28,  "2,32 %", "63.495.047,86")
+                    ] %}
+
+                    {% for rango, precio, operaciones, porcentaje, nominal in rangos %}
+                        <tr>
+                            <td>{{ rango }}</td>
+                            <td>{{ precio }}</td>
+                            <td>{{ operaciones }}</td>
+                            <td>{{ porcentaje }}</td>
+                            <td>{{ nominal }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </details>
+
+    <p class="nc-note">
+        El precio estimado es referencial. Para consultar condiciones de negociación,
+        comunícate con Metrovalores al
+        <a href="tel:+593962603638">096 260 3638</a>
+        o escribe a
+        <a href="mailto:info@metrovalores.com.ec">info@metrovalores.com.ec</a>.
